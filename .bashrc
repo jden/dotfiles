@@ -1,0 +1,9 @@
+alias edit=subl
+alias ls="ls -p"
+alias s=edit
+alias s.="s ."
+alias editrc="edit ~/.dotfiles"
+alias resource="source ~/.bashrc && echo loaded .bashrc"
+alias dev="cd ~/dev"
+alias cd..="cd .."
+alias gst="git status"
