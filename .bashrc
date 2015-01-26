@@ -9,5 +9,6 @@ alias cd..="cd .."
 alias g=git
 alias gst="git status"
 alias glog="git log"
-alias npms="npm install --save"
+alias npms="npm install --save-exact"
+alias npmr="npm run"
 alias npmsd="npm install --save-dev"
