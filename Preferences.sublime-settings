@@ -1,0 +1,20 @@
+{
+	"default_line_ending": "unix",
+	"folder_exclude_patterns":
+	[
+		"node_modules",
+		".svn",
+		".git",
+		".hg",
+		".sass-cache",
+		"CVS"
+	],
+	"font_size": 14,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"use_tab_stops": true
+}
