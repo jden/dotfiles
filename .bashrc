@@ -12,4 +12,7 @@ alias npms="npm install --save"
 alias npmr="npm run"
 alias npmsd="npm install --save-dev"
 alias dev="cd ~/dev; ls"
-alias deva="cd ~/dev/agilemd; ls"
+
+#work
+alias deva="cd ~/dev/agilemd; ls; source ~/agile-env/apici.sh"
+alias adenv="env | grep AD_"
