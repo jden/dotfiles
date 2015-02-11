@@ -1,7 +1,8 @@
 alias edit=subl
-alias ls="ls -p"
+alias ls="ls -p" # show slashes after folders
+alias ld="ls -A | grep -e ^\\." # list dotfiles
 alias s=edit
-alias s.="s ."
+alias s.="s ." # edit current directory
 alias editrc="edit ~/.dotfiles"
 alias resource="source ~/.bashrc && echo loaded .bashrc"
 alias cd..="cd .."
