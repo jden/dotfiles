@@ -14,13 +14,27 @@ alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 
 alias cd..="cd .."
+
+function cdl () {
+  cd $1
+  ls
+}
+
 alias g=git
 alias gst="git status"
 alias glog="git log"
+
+# eg `release major`, `release minor`, `release patch`
+function release () {
+  npm version $1
+  git push origin master `git describe --tags`
+}
+
 alias npms="npm install --save"
 alias npmr="npm run"
 alias npmsd="npm install --save-dev"
 alias dev="cd ~/dev; ls"
+
 
 whichVersion() {
   which $1
