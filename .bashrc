@@ -23,12 +23,22 @@ function cdl () {
 alias g=git
 alias gst="git status"
 alias glog="git log"
+alias gpom="git pull origin master"
+alias whatbranch="git rev-parse --abbrev-ref HEAD"
+
+function pull () {
+  git pull origin $(whatbranch)
+}
+function push () {
+  git push origin $(whatbranch)
+}
 
 # eg `release major`, `release minor`, `release patch`
 function release () {
   npm version $1
   git push origin master `git describe --tags`
 }
+
 
 alias npms="npm install --save"
 alias npmr="npm run"
