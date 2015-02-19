@@ -20,6 +20,8 @@ function cdl () {
   ls
 }
 
+alias timestamp="node -p 'Date.now()'"
+
 alias g=git
 alias gst="git status"
 alias glog="git log"
