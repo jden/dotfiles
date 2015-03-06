@@ -27,6 +27,7 @@ alias gst="git status"
 alias glog="git log"
 alias gpom="git pull origin master"
 alias whatbranch="git rev-parse --abbrev-ref HEAD"
+alias save="git commit -am"
 
 function pull () {
   git pull origin $(whatbranch)
