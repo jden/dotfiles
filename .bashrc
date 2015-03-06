@@ -48,7 +48,7 @@ alias npmsd="npm install --save-dev"
 alias dev="cd ~/dev; ls"
 
 
-whichVersion() {
+function whichVersion() {
   which $1
   $1 --version
 }
@@ -57,3 +57,19 @@ alias wh=whichVersion
 #work
 alias deva="cd ~/dev/agilemd; ls; source ~/agile-env/apici.sh"
 alias adenv="env | grep AD_"
+
+function log() {
+  local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
+  local file="$1.$serial.log"
+  date "+%c" > $file
+  echo "$*" >> $file
+  echo "---" >> $file
+  $* 2>&1 | tee -a $file ; local exitCode=${PIPESTATUS[0]}
+  echo "---" >> $file
+  echo "⇒ E$exitCode" >> $file
+  return $exitCode
+}
+
+function error() {
+  return $1
+}
