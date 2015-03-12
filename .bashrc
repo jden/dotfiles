@@ -36,6 +36,8 @@ function push () {
   git push origin $(whatbranch)
 }
 
+alias kapow="push && git checkout master && git merge ci && push && git checkout ci"
+
 # eg `release major`, `release minor`, `release patch`
 function release () {
   npm version $1
