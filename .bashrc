@@ -13,6 +13,8 @@ alias commitrc="gitrc commit -am 'save settings'"
 alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 
+alias bode="babel-node -r"
+
 alias cd..="cd .."
 
 function cdl () {
