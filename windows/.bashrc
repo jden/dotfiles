@@ -10,6 +10,16 @@ PATH="$PATH:/c/Python27"
 PATH="$PATH:/c/Ruby21-x64/bin"
 PATH="$PATH:/c/Program Files (x86)/Heroku/bin"
 
+# postgres
+PATH="$PATH:/c/Program Files/PostgreSQL/9.4/bin"
+export PGDATA="C:\Program Files\PostgreSQL\9.4\data"
+export PGDATABASE=postgres
+export PGUSER=postgres
+export PGPORT=5432
+export PGLOCALEDIR="C:\Program Files\PostgreSQL\9.4\share\locale"
+
+export OPENSSL_CONF="/c/Program Files (x86)/Git/ssl/openssl.cnf"
+
 source ~/.dotfiles/windows/hub.bash_completion.sh
 
 # better prompt, based on git bash default
