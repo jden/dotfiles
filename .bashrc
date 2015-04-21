@@ -80,3 +80,33 @@ function log() {
 function error() {
   return $1
 }
+
+function npmrc() {
+  local usage=`cat << EOF
+  npmrc : list available profiles
+  npmrc <name> : switch profile
+  npmrc -c <name> : create a new profile
+EOF`
+  local user=$1
+  if [ $# -eq 0 ]; then
+    echo "$usage"
+    echo 
+    echo available profiles:
+    ls ~/.npmrcs
+    return 1
+  fi
+
+  if [ $user == "-c" ]; then
+    local user=$2
+    echo "making new user $user"
+    touch ~/.npmrcs/$user
+  fi
+
+  if [ -e ~/npmrcs/$user ]; then
+    echo "switching to user $user"
+    ln -sf ~/.npmrcs/$user ~/.npmrc
+  else
+    echo "'$user' does not exist. use 'npmrc -c $user' to create it"
+    return 1
+  fi
+}
