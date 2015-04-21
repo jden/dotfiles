@@ -88,12 +88,21 @@ function npmrc() {
   npmrc -c <name> : create a new profile
 EOF`
   local user=$1
+  local active=`cat ~/.npmrcs/.active`
   if [ $# -eq 0 ]; then
     echo "$usage"
     echo 
     echo available profiles:
     ls ~/.npmrcs
+    echo
+    echo active:
+    echo $active
     return 1
+  fi
+
+  if [ $user == $active ]; then
+    echo "$user is already the active user"
+    return 0
   fi
 
   if [ $user == "-c" ]; then
@@ -104,7 +113,9 @@ EOF`
 
   if [ -e ~/.npmrcs/$user ]; then
     echo "switching to user $user"
-    ln -sf ~/.npmrcs/$user ~/.npmrc
+    cp -f ~/.npmrc ~/.npmrcs/$active
+    cp -f ~/.npmrcs/$user ~/.npmrc
+    echo $user > ~/.npmrcs/.active
   else
     echo "'$user' does not exist. use 'npmrc -c $user' to create it"
     return 1
