@@ -102,7 +102,7 @@ EOF`
     touch ~/.npmrcs/$user
   fi
 
-  if [ -e ~/npmrcs/$user ]; then
+  if [ -e ~/.npmrcs/$user ]; then
     echo "switching to user $user"
     ln -sf ~/.npmrcs/$user ~/.npmrc
   else
