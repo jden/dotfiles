@@ -2,7 +2,7 @@
 	"default_line_ending": "unix",
 	"folder_exclude_patterns":
 	[
-		"node_modules",
+//		"node_modules",
 		".svn",
 		".git",
 		".hg",

@@ -126,3 +126,5 @@ function echos() {
   local port=$1
   node -e "require('http').createServer(function (r, s) { console.log(r. method, r.url); s.end() }).listen($port, function (e) { console.log(e || 'listening on $port')})"
 }
+
+alias bn="babel-node --stage 1"
