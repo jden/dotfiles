@@ -15,6 +15,8 @@ alias syncrc="pullrc && commitrc && pushrc"
 
 alias bode="babel-node -r"
 
+alias n="npm"
+
 alias cd..="cd .."
 
 function cdl () {
