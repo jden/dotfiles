@@ -1,7 +1,6 @@
 source ~/.dotfiles/.bashrc
 
 UAPPDATA="/c/Users/Jason/AppData/Roaming"
-PATH="$PATH:/c/MinGW/msys/1.0/bin"
 PATH="$PATH:/c/Program Files/Sublime Text 3"
 PATH="$PATH:~/bin/bind"
 PATH="$PATH:/c/Program Files/Oracle/VirtualBox"
@@ -9,6 +8,11 @@ PATH="$PATH:/c/Program Files/MongoDB 2.6 Standard/bin"
 PATH="$PATH:/c/Python27"
 PATH="$PATH:/c/Ruby21-x64/bin"
 PATH="$PATH:/c/Program Files (x86)/Heroku/bin"
+
+#git
+PATH="$PATH:/c/Program Files (x86)/Git/cmd"
+source "/c/Program Files (x86)/Git/etc/git-completion.bash"
+source "/c/Program Files (x86)/Git/etc/git-prompt.sh"
 
 # postgres
 PATH="$PATH:/c/Program Files/PostgreSQL/9.4/bin"

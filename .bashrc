@@ -16,6 +16,7 @@ alias syncrc="pullrc && commitrc && pushrc"
 alias bode="babel-node -r"
 
 alias n="npm"
+alias nr="npm run"
 
 alias cd..="cd .."
 
