@@ -4,6 +4,9 @@ alias ld="ls -A | grep -e ^\\." # list dotfiles
 alias s=edit
 alias s.="s ." # edit current directory
 
+# path like npm (run local bins first)
+PATH="./node_modules/.bin:$PATH"
+
 alias resource="source ~/.profile && echo reloaded ~/.profile"
 DOTFILES="$HOME/.dotfiles"
 alias editrc="edit $DOTFILES"
