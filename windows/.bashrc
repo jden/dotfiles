@@ -1,6 +1,7 @@
 source ~/.dotfiles/.bashrc
 
 UAPPDATA="/c/Users/Jason/AppData/Roaming"
+PATH="$PATH:~/bin"
 PATH="$PATH:/c/Program Files/Sublime Text 3"
 PATH="$PATH:~/bin/bind"
 PATH="$PATH:/c/Program Files/Oracle/VirtualBox"

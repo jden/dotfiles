@@ -4,7 +4,7 @@ alias ld="ls -A | grep -e ^\\." # list dotfiles
 alias s=edit
 alias s.="s ." # edit current directory
 
-alias resource="source ~/.bashrc && echo loaded .bashrc"
+alias resource="source ~/.profile && echo reloaded ~/.profile"
 DOTFILES="$HOME/.dotfiles"
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
@@ -65,6 +65,7 @@ function whichVersion() {
 alias wh=whichVersion
 
 #work
+source ~/agile-env/alias.sh
 alias deva="cd ~/dev/agilemd; ls; source ~/agile-env/apici.sh"
 alias adenv="env | grep AD_"
 
