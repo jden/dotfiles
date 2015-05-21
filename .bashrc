@@ -71,6 +71,13 @@ alias wh=whichVersion
 source ~/agile-env/alias.sh
 alias deva="cd ~/dev/agilemd; ls; source ~/agile-env/apici.sh"
 alias adenv="env | grep AD_"
+# add agilians as npm owners
+function npm-add-owners() {
+  npm owner add agilemd & \
+  npm owner add jden & \
+  npm owner add kurttheviking & \
+  npm owner add bornas
+}
 
 function log() {
   local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
