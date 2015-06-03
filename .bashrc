@@ -40,9 +40,11 @@ alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
 
 function pull () {
+  npm test &&
   git pull origin $(whatbranch)
 }
 function push () {
+  npm test &&
   git push origin $(whatbranch)
 }
 
@@ -51,6 +53,7 @@ alias kapow="push && git checkout master && git merge ci && push && git checkout
 # eg `release major`, `release minor`, `release patch`
 function release () {
   npm version $1
+  npm test &&
   git push origin master `git describe --tags`
 }
 
@@ -73,9 +76,9 @@ alias deva="cd ~/dev/agilemd; ls; source ~/agile-env/apici.sh"
 alias adenv="env | grep AD_"
 # add agilians as npm owners
 function npm-add-owners() {
-  npm owner add agilemd & \
-  npm owner add jden & \
-  npm owner add kurttheviking & \
+  npm owner add agilemd &
+  npm owner add jden &
+  npm owner add kurttheviking &
   npm owner add bornas
 }
 
@@ -142,3 +145,12 @@ function echos() {
 }
 
 alias bn="babel-node --stage 1"
+
+function tdd() {
+  local filter=$1
+  if [ $# -eq 0 ]; then
+    local filter=*
+  fi
+
+  mocha --recursive --watch --grep $filter
+}

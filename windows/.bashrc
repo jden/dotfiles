@@ -11,6 +11,7 @@ PATH="$PATH:/c/Program Files/MongoDB/Server/3.0/bin"
 PATH="$PATH:/c/Python27"
 PATH="$PATH:/c/Ruby21-x64/bin"
 PATH="$PATH:/c/Program Files (x86)/Heroku/bin"
+PATH="$PATH:/c/Program Files (x86)/Git/bin"
 
 #git
 PATH="$PATH:/c/Program Files (x86)/Git/cmd"

@@ -1,16 +1,17 @@
 {
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"default_line_ending": "unix",
 	"folder_exclude_patterns":
 	[
 		"node_modules",
 		"artifacts",
 		".svn",
-		".git",
+		// ".git",
 		".hg",
 		".sass-cache",
 		"CVS"
 	],
-	"font_size": 12,
+	"font_size": 13,
 	"hot_exit": false,
 	"ignored_packages":
 	[
