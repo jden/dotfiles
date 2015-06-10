@@ -59,6 +59,7 @@ function release () {
   npm version $1 &&
   git push origin master `git describe --tags` &&
   [ "$2" == "publish" ] && npm publish
+  echo release ok
 }
 
 
