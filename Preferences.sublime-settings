@@ -6,12 +6,12 @@
 		"node_modules",
 		"artifacts",
 		".svn",
-		// ".git",
+		".git",
 		".hg",
 		".sass-cache",
 		"CVS"
 	],
-	"font_size": 13,
+	"font_size": 10,
 	"hot_exit": false,
 	"ignored_packages":
 	[

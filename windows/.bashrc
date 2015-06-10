@@ -13,6 +13,10 @@ PATH="$PATH:/c/Ruby21-x64/bin"
 PATH="$PATH:/c/Program Files (x86)/Heroku/bin"
 PATH="$PATH:/c/Program Files (x86)/Git/bin"
 
+#diffmerge // cinst diffmerge
+PATH="$PATH:/c/Program Files/SourceGear/Common/DiffMerge"
+alias diffmerge=sgdm.exe
+
 #git
 PATH="$PATH:/c/Program Files (x86)/Git/cmd"
 source "/c/Program Files (x86)/Git/etc/git-completion.bash"

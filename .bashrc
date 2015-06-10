@@ -39,8 +39,11 @@ alias save="git commit -am"
 alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
 
-function pull () {
+function cam () {
   npm test &&
+  git commit -am "$1"
+}
+function pull () {
   git pull origin $(whatbranch)
 }
 function push () {
@@ -52,9 +55,10 @@ alias kapow="push && git checkout master && git merge ci && push && git checkout
 
 # eg `release major`, `release minor`, `release patch`
 function release () {
-  npm version $1
   npm test &&
-  git push origin master `git describe --tags`
+  npm version $1 &&
+  git push origin master `git describe --tags` &&
+  [ "$2" == "publish" ] && npm publish
 }
 
 
