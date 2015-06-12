@@ -55,6 +55,8 @@ alias kapow="push && git checkout master && git merge ci && push && git checkout
 
 # eg `release major`, `release minor`, `release patch`
 function release () {
+  [ "$(whatbranch)" != "master" ] && echo must be on master && return 1
+  pull &&
   npm test &&
   npm version $1 &&
   git push origin master `git describe --tags` &&
