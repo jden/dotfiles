@@ -3,7 +3,7 @@
 	"default_line_ending": "unix",
 	"folder_exclude_patterns":
 	[
-		"node_modules",
+		// "node_modules",
 		"artifacts",
 		".svn",
 		".git",
@@ -20,6 +20,7 @@
 	"remember_open_files": false,
 	"show_line_endings": true,
 	"tab_size": 2,
+	"theme": "Orchis Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"use_tab_stops": true
 }

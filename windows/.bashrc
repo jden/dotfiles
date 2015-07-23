@@ -12,6 +12,7 @@ PATH="$PATH:/c/Python27"
 PATH="$PATH:/c/Ruby21-x64/bin"
 PATH="$PATH:/c/Program Files (x86)/Heroku/bin"
 PATH="$PATH:/c/Program Files (x86)/Git/bin"
+PATH="$PATH:$UHOME/bin/nginx"
 
 #diffmerge // cinst diffmerge
 PATH="$PATH:/c/Program Files/SourceGear/Common/DiffMerge"
@@ -21,6 +22,9 @@ alias diffmerge=sgdm.exe
 PATH="$PATH:/c/Program Files (x86)/Git/cmd"
 source "/c/Program Files (x86)/Git/etc/git-completion.bash"
 source "/c/Program Files (x86)/Git/etc/git-prompt.sh"
+
+#silly windows npm
+PATH="$PATH:$UHOME/bin/node_modules/npm/bin"
 
 # postgres
 PATH="$PATH:/c/Program Files/PostgreSQL/9.4/bin"

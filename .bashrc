@@ -3,9 +3,12 @@ alias ls="ls -p" # show slashes after folders
 alias ld="ls -A | grep -e ^\\." # list dotfiles
 alias s=edit
 alias s.="s ." # edit current directory
+alias s,="s ."
 
 # path like npm (run local bins first)
 PATH="./node_modules/.bin:$PATH"
+
+alias tdd="mocha --recursive --watch"
 
 alias resource="source ~/.profile && echo reloaded ~/.profile"
 DOTFILES="$HOME/.dotfiles"
