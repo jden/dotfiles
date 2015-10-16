@@ -138,3 +138,26 @@ function tdd() {
 
   mocha --recursive --watch --grep $filter
 }
+
+
+function __ps1_errs() {
+  local err=$?
+  if [ "$err" != "0" ]
+  then
+    echo -e "\a" #bell
+    echo -e "⇒ E$err" # print err in red
+  fi
+}
+
+PS1=""
+PS1="$PS1"'\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]' # set window title
+PS1='$(__ps1_errs)\n' # show exit code
+if test -z "$WINELOADERNOEXEC"
+then
+  PS1="$PS1"'\[\033[32m\]'       # change color
+fi
+PS1="$PS1"'\[\033[33m\]'       # change color
+PS1="$PS1"'\w'                 # current working directory
+PS1="$PS1"'\[\033[0m\]'        # change color
+PS1="$PS1"'\n'                 # new line
+PS1="$PS1"'$(date +%l:%M)> '                 # prompt
