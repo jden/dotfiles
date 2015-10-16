@@ -1,3 +1,4 @@
+PATH="$PATH:~/bin"
 alias edit=subl
 alias ls="ls -p" # show slashes after folders
 alias ld="ls -A | grep -e ^\\." # list dotfiles
@@ -10,7 +11,7 @@ PATH="./node_modules/.bin:$PATH"
 
 alias tdd="mocha --recursive --watch"
 
-alias resource="source ~/.profile && echo reloaded ~/.profile"
+alias resource="source ~/.bashrc && echo reloaded ~/.bashrc"
 DOTFILES="$HOME/.dotfiles"
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
@@ -18,8 +19,6 @@ alias pullrc="gitrc pull origin master"
 alias commitrc="gitrc commit -am 'save settings'"
 alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
-
-alias bode="babel-node -r"
 
 alias n="npm"
 alias nr="npm run"
@@ -54,20 +53,6 @@ function push () {
   git push origin $(whatbranch)
 }
 
-alias kapow="push && git checkout master && git merge ci && push && git checkout ci"
-
-# eg `release major`, `release minor`, `release patch`
-function release () {
-  [ "$(whatbranch)" != "master" ] && echo must be on master && return 1
-  pull &&
-  npm test &&
-  npm version $1 &&
-  git push origin master `git describe --tags` &&
-  [ "$2" == "publish" ] && npm publish
-  echo release ok
-}
-
-
 alias npms="npm install --save"
 alias npmr="npm run"
 alias npmsd="npm install --save-dev"
@@ -80,17 +65,6 @@ function whichVersion() {
 }
 alias wh=whichVersion
 
-#work
-source ~/agile-env/alias.sh
-alias deva="cd ~/dev/agilemd; ls; source ~/agile-env/apici.sh"
-alias adenv="env | grep AD_"
-# add agilians as npm owners
-function npm-add-owners() {
-  npm owner add agilemd &
-  npm owner add jden &
-  npm owner add kurttheviking &
-  npm owner add bornas
-}
 
 function log() {
   local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
