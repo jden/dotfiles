@@ -1,6 +1,7 @@
 PATH="$PATH:~/bin"
 alias edit=subl
 alias ls="ls -p" # show slashes after folders
+alias ll="ls -al"
 alias ld="ls -A | grep -e ^\\." # list dotfiles
 alias s=edit
 alias s.="s ." # edit current directory
@@ -20,7 +21,7 @@ alias commitrc="gitrc commit -am 'save settings'"
 alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 
-alias n="npm"
+# alias n="npm"
 alias nr="npm run"
 
 alias cd..="cd .."
