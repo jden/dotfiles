@@ -150,9 +150,13 @@ function __ps1_errs() {
   fi
 }
 
+function __terminal_title() {
+  pwd | sed "s|$HOME|~|"
+}
+
 PS1=""
-PS1="$PS1"'\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]' # set window title
-PS1='$(__ps1_errs)\n' # show exit code
+PS1="$PS1"'\[\033]0;$(__terminal_title)\007\]' # set window title
+PS1="$PS1"'$(__ps1_errs)\n' # show exit code
 if test -z "$WINELOADERNOEXEC"
 then
   PS1="$PS1"'\[\033[32m\]'       # change color
