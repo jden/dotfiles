@@ -166,3 +166,8 @@ PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
 PS1="$PS1"'\n'                 # new line
 PS1="$PS1"'$(date +%l:%M)> '                 # prompt
+
+## git completions
+source "$HOME/.dotfiles/scripts/.git-completion.bash"
+source "$HOME/.dotfiles/scripts/hub.bash_completion.sh"
+source "$HOME/.dotfiles/scripts/git-prompt.sh"
