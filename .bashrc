@@ -160,6 +160,7 @@ PS1="$PS1"'$(__ps1_errs)\n' # show exit code
 if test -z "$WINELOADERNOEXEC"
 then
   PS1="$PS1"'\[\033[32m\]'       # change color
+  PS1="$PS1"'$(__git_ps1 "%s") '   # bash function
 fi
 PS1="$PS1"'\[\033[33m\]'       # change color
 PS1="$PS1"'\w'                 # current working directory
