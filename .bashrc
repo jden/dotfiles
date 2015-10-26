@@ -35,7 +35,7 @@ alias timestamp="node -p 'Date.now()'"
 
 alias g=git
 alias gst="git status"
-alias glog="git log"
+alias glog="git log --graph"
 alias gpom="git pull origin master"
 alias whatbranch="git rev-parse --abbrev-ref HEAD"
 alias save="git commit -am"
