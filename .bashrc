@@ -42,6 +42,7 @@ alias whatbranch="git rev-parse --abbrev-ref HEAD"
 alias save="git commit -am"
 alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
+alias gitsha="git rev-parse HEAD"
 
 function cam () {
   npm test &&
