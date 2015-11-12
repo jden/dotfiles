@@ -26,6 +26,11 @@ alias syncrc="pullrc && commitrc && pushrc"
 alias nr="npm run"
 
 alias cd..="cd .."
+alias lc="wc -l" #line count
+function psgrep () {
+  ps ax | grep $1 | grep -v grep
+}
+alias psg="psgrep"
 
 function cdl () {
   cd $1
