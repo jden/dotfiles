@@ -180,3 +180,10 @@ PS1="$PS1"'$(date +%l:%M)> '                 # prompt
 source "$HOME/.dotfiles/scripts/.git-completion.bash"
 source "$HOME/.dotfiles/scripts/hub.bash_completion.sh"
 source "$HOME/.dotfiles/scripts/git-prompt.sh"
+
+## anybarrrrrrrrr
+function anybar {
+  open -g ~/Applications/AnyBar.app
+  echo -n $1 | nc -4u -w0 localhost ${2:-1738};
+}
+alias bar=anybar
