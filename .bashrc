@@ -44,6 +44,7 @@ alias gst="git status"
 alias glog="git log --graph"
 alias gpom="git pull origin master"
 alias whatbranch="git rev-parse --abbrev-ref HEAD"
+alias br=whatbranch
 alias save="git commit -am"
 alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
@@ -58,6 +59,26 @@ function pull () {
   git pull origin $(whatbranch)
 }
 function push () {
+  git push origin $(whatbranch)
+}
+function fush () {
+  if [ $(whatbranch) == master ]; then
+    echo "don't fush to master"
+    printf '\a'
+    return 1
+  fi
+  read -r -p "Really force push to $(whatbranch)? [y/N] " response
+  case $response in
+      [yY][eE][sS]|[yY]) 
+          git push origin $(whatbranch) --force
+          ;;
+      *)
+          # do nothing
+          return 1
+          ;;
+  esac
+}
+function pusht () {
   npm test &&
   git push origin $(whatbranch)
 }
