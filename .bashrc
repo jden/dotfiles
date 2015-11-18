@@ -96,6 +96,7 @@ alias npmr="npm run"
 alias npmsd="npm install --save-dev"
 alias dev="cd ~/dev; ls"
 alias t="npm test"
+alias reshrink="rm npm-shrinkwrap.json && npm prune && npm shrinkwrap"
 
 function whichVersion() {
   which $1
