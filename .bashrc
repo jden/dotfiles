@@ -50,6 +50,8 @@ alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
 alias gitsha="git rev-parse HEAD"
 alias cpsha="gitsha | pbcopy && pbpaste"
+alias gpr="hub pull-request"
+alias gc="hub browse"
 
 function cam () {
   npm test &&
