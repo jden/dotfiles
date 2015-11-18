@@ -95,7 +95,7 @@ alias npms="npm install --save"
 alias npmr="npm run"
 alias npmsd="npm install --save-dev"
 alias dev="cd ~/dev; ls"
-
+alias t="npm test"
 
 function whichVersion() {
   which $1
