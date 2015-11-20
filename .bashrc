@@ -90,6 +90,22 @@ function pusht () {
   npm test &&
   git push origin $(whatbranch)
 }
+function repull () {
+  read -r -p "Delete local branch & repull from GH? [Y/n] " response
+  case $response in
+      [nN][oO]|[nN])
+        return 1
+          ;;
+      *)
+        local BRANCH=$(whatbranch)
+        echo $BRANCH
+        git checkout master
+        git branch -D $BRANCH
+        git fetch
+        git checkout $BRANCH 
+        ;;
+  esac
+}
 
 alias npms="npm install --save"
 alias npmr="npm run"
