@@ -1,4 +1,4 @@
-PATH="$PATH:$HOME/bin"
+PATH="$PATH:$HOME/bin:/usr/libexec"
 alias edit=subl
 alias ls="ls -p" # show slashes after folders
 alias ll="ls -al"
@@ -7,6 +7,7 @@ alias s=edit
 alias s.="s ." # edit current directory
 alias s,="s ."
 alias b="bundle exec"
+alias blah="head /dev/urandom | base64"
 
 # path like npm (run local bins first)
 PATH="./node_modules/.bin:$PATH"
@@ -234,3 +235,6 @@ function anybar {
   echo -n $1 | nc -4u -w0 localhost ${2:-1738};
 }
 alias bar=anybar
+
+
+export JAVA_HOME=$(java_home)
