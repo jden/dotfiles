@@ -7,11 +7,17 @@ alias s=edit
 alias s.="s ." # edit current directory
 alias s,="s ."
 alias b="bundle exec"
+alias bt="b ruby -Ilib/test"
 alias blah="head /dev/urandom | base64"
+export EDITOR=vim
+
+# rbenv
+eval "$(rbenv init -)"
 
 # path like npm (run local bins first)
 PATH="./node_modules/.bin:$PATH"
-
+export GOPATH="$HOME/gopath"
+mkdir -p $GOPATH
 alias tdd="mocha --recursive --watch"
 
 alias resource="source ~/.bashrc && echo reloaded ~/.bashrc"
