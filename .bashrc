@@ -52,6 +52,7 @@ alias glog="git log --graph"
 alias gpom="git pull origin master"
 alias whatbranch="git rev-parse --abbrev-ref HEAD"
 alias br=whatbranch
+alias pws="git log -1 --pretty=%H" # print working sha
 alias save="git commit -am"
 alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
