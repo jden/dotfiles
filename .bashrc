@@ -11,6 +11,10 @@ alias bt="b ruby -Ilib/test"
 alias blah="head /dev/urandom | base64"
 export EDITOR=vim
 
+function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
+alias c=code
+alias c.="c ."
+
 # rbenv
 eval "$(rbenv init -)"
 
