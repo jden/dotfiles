@@ -23,6 +23,7 @@ eval "$(rbenv init -)"
 PATH="./node_modules/.bin:$PATH"
 export GOPATH="$HOME/gopath"
 mkdir -p $GOPATH
+PATH="$GOPATH/bin:$PATH"
 alias tdd="mocha --recursive --watch"
 
 alias resource="source ~/.bashrc && echo reloaded ~/.bashrc"
