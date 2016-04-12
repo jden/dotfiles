@@ -14,6 +14,7 @@ export EDITOR=vim
 function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
 alias c=code
 alias c.="c ."
+alias cz="cd ~/Code/zendesk"
 
 # rbenv
 eval "$(rbenv init -)"
