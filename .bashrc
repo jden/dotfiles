@@ -14,7 +14,6 @@ export EDITOR=vim
 function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
 alias c=code
 alias c.="c ."
-alias cz="cd ~/Code/zendesk"
 
 # rbenv
 eval "$(rbenv init -)"
@@ -34,6 +33,9 @@ alias pullrc="gitrc pull origin master"
 alias commitrc="gitrc commit -am 'save settings'"
 alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
+
+alias cz="cd ~/Code/zendesk"
+alias gz="cd $GOPATH/src/github.com/zendesk"
 
 # alias n="npm"
 alias nr="npm run"
