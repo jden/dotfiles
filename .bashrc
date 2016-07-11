@@ -11,7 +11,6 @@ alias bt="b ruby -Ilib/test"
 alias blah="head /dev/urandom | base64"
 export EDITOR=vim
 
-function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
 alias c=code
 alias c.="c ."
 
@@ -255,3 +254,5 @@ alias bar=anybar
 
 
 export JAVA_HOME=$(java_home)
+export NVM_DIR="/Users/jdenizac/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
