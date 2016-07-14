@@ -14,6 +14,11 @@ export EDITOR=vim
 alias c=code
 alias c.="c ."
 
+function bundle_rake_test () {
+  bundle exec rake test TEST=$1
+}
+alias brt=bundle_rake_test
+
 # rbenv
 eval "$(rbenv init -)"
 
