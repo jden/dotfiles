@@ -5,7 +5,7 @@
 ```sh
 cd ~
 git clone git@github.com:jden/.dotfiles.git
-ln ~/.dotfiles/.bashrc .bashrc
+./install.sh
 ```
 
 ### windows
