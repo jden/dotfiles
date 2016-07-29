@@ -59,6 +59,7 @@ function cdl () {
 alias timestamp="node -p 'Date.now()'"
 
 alias g=git
+
 alias gst="git status"
 alias glog="git log --graph"
 alias gpom="git pull origin master"
@@ -71,7 +72,8 @@ alias cb="git checkout" #change branch
 alias gitsha="git rev-parse HEAD"
 alias cpsha="gitsha | pbcopy && pbpaste"
 alias gpr="hub pull-request"
-alias gc="hub browse"
+alias gf="git fetch"
+alias gh="hub browse"
 alias rmbr="git branch --merged master | grep -v ' master$' | xargs git branch -d" # remove merged branches
 
 git config --global diff.tool diffmerge
