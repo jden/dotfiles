@@ -101,7 +101,7 @@ function fush () {
   read -r -p "Really force push to $(whatbranch)? [y/N] " response
   case $response in
       [yY][eE][sS]|[yY]) 
-          git push origin $(whatbranch) --force
+          git push origin $(whatbranch) --force-with-lease
           ;;
       *)
           # do nothing
@@ -109,7 +109,7 @@ function fush () {
           ;;
   esac
 }
-function pusht () {
+function tpush () {
   npm test &&
   git push origin $(whatbranch)
 }
