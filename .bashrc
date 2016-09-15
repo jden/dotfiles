@@ -62,6 +62,7 @@ alias g=git
 
 alias gst="git status"
 alias glog="git log --graph"
+alias gam="git commit -a --amend"
 alias gpom="git pull origin master"
 alias whatbranch="git rev-parse --abbrev-ref HEAD"
 alias br=whatbranch
