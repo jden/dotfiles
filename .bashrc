@@ -71,6 +71,7 @@ alias save="git commit -am"
 alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
 alias gitsha="git rev-parse HEAD"
+alias gitref="gitsha"
 alias cpsha="gitsha | pbcopy && pbpaste"
 alias gpr="hub pull-request"
 alias gf="git fetch"
