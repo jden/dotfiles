@@ -265,3 +265,8 @@ alias bar=anybar
 export JAVA_HOME=$(java_home)
 export NVM_DIR="/Users/jdenizac/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
