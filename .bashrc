@@ -70,6 +70,7 @@ alias pws="git log -1 --pretty=%H" # print working sha
 alias save="git commit -am"
 alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
 alias cb="git checkout" #change branch
+alias cb-="cb -"
 alias gitsha="git rev-parse HEAD"
 alias gitref="gitsha"
 alias cpsha="gitsha | pbcopy && pbpaste"
