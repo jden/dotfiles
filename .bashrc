@@ -38,6 +38,7 @@ alias commitrc="gitrc commit -am 'save settings'"
 alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 
+alias cj="cd ~/Code/jsdnxx"
 alias cz="cd ~/Code/zendesk"
 alias gz="cd $GOPATH/src/github.com/zendesk"
 
