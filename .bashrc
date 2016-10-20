@@ -113,6 +113,8 @@ function fush () {
           ;;
   esac
 }
+alias afush="git commit -a --amend && fush"
+
 function tpush () {
   npm test &&
   git push origin $(whatbranch)
