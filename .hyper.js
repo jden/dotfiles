@@ -1,19 +1,19 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 13,
 
     // font family with optional fallbacks
-    fontFamily: 'Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+    fontFamily: 'Source Code Pro',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-    cursorShape: 'BLOCK',
+    cursorShape: 'UNDERLINE',
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: 'rgba(0,205,46,0.9)',
 
     // terminal background color
     backgroundColor: '#000',
@@ -35,20 +35,20 @@ module.exports = {
     // an array here instead of a color map object
     colors: {
       black: '#000000',
-      red: '#ff0000',
-      green: '#33ff00',
-      yellow: '#ffff00',
-      blue: '#0066ff',
-      magenta: '#cc00ff',
-      cyan: '#00ffff',
-      white: '#d0d0d0',
-      lightBlack: '#808080',
-      lightRed: '#ff0000',
-      lightGreen: '#33ff00',
-      lightYellow: '#ffff00',
-      lightBlue: '#0066ff',
-      lightMagenta: '#cc00ff',
-      lightCyan: '#00ffff',
+      red: '#c91b00',
+      green: '#00c200',
+      yellow: '#c7c400',
+      blue: '#0225c7',
+      magenta: '#ca30c7',
+      cyan: '#00c5c7',
+      white: '#c7c7c7',
+      lightBlack: '#686868',
+      lightRed: '#ff6e67',
+      lightGreen: '#5ffa68',
+      lightYellow: '#fffc67',
+      lightBlue: '#6871ff',
+      lightMagenta: '#ff77ff',
+      lightCyan: '#60fdff',
       lightWhite: '#ffffff'
     },
 
