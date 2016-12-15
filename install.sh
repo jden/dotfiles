@@ -1,15 +1,39 @@
 #! /bin/sh
+# Ensure this file is idempotent!
+
 set -x
+:
+: profile
+:
 ln -sf ~/.dotfiles/.bashrc ~/.bashrc
+
+:
+: bins
+:
 ln -sf ~/.dotfiles/scripts/git-uncommit.sh ~/bin/git-uncommit
 ln -sf ~/.dotfiles/scripts/git-thank.sh ~/bin/git-thank
+
+:
+: program settings
+:
+# Hyperterm settings
 ln -sf ~/.dotfiles/.hyper.js ~/.hyper.js
 
-set +x
-echo installing some other tools
+case $(uname) in
+  Darwin)
+    # VS Code settings
+    ln -sf ~/.dotfiles/.code.settings.json ~/Library/Application\ Support/Code/User/settings.json 
+    ;;
+  Linux)
+    ;;
+esac
 
+:
+: installing some other tools
+:
 # https://github.com/paulirish/git-recent/
 npm install --global git-recent
 
-
-echo setup ok
+:
+: setup ok
+:

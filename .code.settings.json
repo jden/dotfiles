@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite the default settings
+{
+// Font
+  "editor.fontFamily": "Hasklig, 'Source Code Pro'",
+  "editor.fontSize": 15,
+  "editor.fontWeight": "400",
+  "editor.lineHeight": 20,
+// Other
+	"standard.enable": true,
+	"editor.tabSize": 2,
+	"editor.detectIndentation": false,
+  "files.trimTrailingWhitespace": true,
+  "javascript.validate.enable": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "vendor/*": true,
+    "node_modules/*": true,
+    "tmp/cache/*": true
+  }
+}
