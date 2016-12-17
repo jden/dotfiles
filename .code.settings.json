@@ -18,6 +18,9 @@
     "**/.DS_Store": true,
     "vendor/*": true,
     "node_modules/*": true,
-    "tmp/cache/*": true
+    "tmp/cache/*": true,
+    "obj/*": true
   }
+,
+"window.zoomLevel": -1
 }
