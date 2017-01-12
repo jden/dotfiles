@@ -41,6 +41,7 @@ alias syncrc="pullrc && commitrc && pushrc"
 alias cj="cd ~/Code/jsdnxx"
 alias cz="cd ~/Code/zendesk"
 alias czi="cd ~/Code/zendesk/inbox"
+alias czd="cd ~/Code/zendesk/docker-images"
 alias gz="cd $GOPATH/src/github.com/zendesk"
 
 # alias n="npm"
