@@ -1,8 +1,9 @@
-PATH="$PATH:$HOME/bin:/usr/libexec"
+PATH="$HOME/bin:$PATH:/usr/libexec"
 alias edit=subl
 alias ls="ls -p" # show slashes after folders
 alias ll="ls -al"
 alias ld="ls -A | grep -e ^\\." # list dotfiles
+alias l="ls"
 alias s=edit
 alias s.="s ." # edit current directory
 alias s,="s ."
@@ -10,6 +11,10 @@ alias b="bundle exec"
 alias bt="b ruby -Ilib/test"
 alias blah="head /dev/urandom | base64"
 export EDITOR=vim
+
+# some other tools (TODO: organize this file better)
+# https://github.com/simeji/jid
+alias jid="jid > /dev/null"
 
 alias c=code
 alias c.="c ."
