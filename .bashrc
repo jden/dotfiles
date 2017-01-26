@@ -24,9 +24,6 @@ function bundle_rake_test () {
 }
 alias brt=bundle_rake_test
 
-# rbenv
-eval "$(rbenv init -)"
-
 # path like npm (run local bins first)
 PATH="./node_modules/.bin:$PATH"
 export GOPATH="$HOME/gopath"
