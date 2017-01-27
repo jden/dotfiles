@@ -47,6 +47,7 @@ alias czd="cd ~/Code/zendesk/docker-images"
 alias gz="cd $GOPATH/src/github.com/zendesk"
 
 alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
+alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}\t{{.Size}}' | (head; sort)"
 alias zdips=dps
 
 # alias n="npm"
