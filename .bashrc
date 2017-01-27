@@ -46,7 +46,8 @@ alias czi="cd ~/Code/zendesk/inbox"
 alias czd="cd ~/Code/zendesk/docker-images"
 alias gz="cd $GOPATH/src/github.com/zendesk"
 
-alias zdips="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
+alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
+alias zdips=dps
 
 # alias n="npm"
 alias nr="npm run"
