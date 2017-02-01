@@ -224,7 +224,9 @@ function echos() {
   node -e "require('http').createServer(function (r, s) { console.log(r. method, r.url); s.end() }).listen($port, function (e) { console.log(e || 'listening on $port')})"
 }
 
-alias bn="babel-node --stage 1"
+alias dii="docker image inspect"
+alias dci="docker container inspect"
+
 
 function tdd() {
   local filter=$1
