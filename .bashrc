@@ -11,6 +11,9 @@ alias b="bundle exec"
 alias bt="b ruby -Ilib/test"
 alias blah="head /dev/urandom | base64"
 export EDITOR=vim
+# TODO pleasseeeeeee organize your aliases better
+alias tarls="tar -tvf"
+alias tls="tarls"
 
 # some other tools (TODO: organize this file better)
 # https://github.com/simeji/jid
