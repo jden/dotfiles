@@ -254,6 +254,12 @@ function __terminal_title() {
   pwd | sed "s|$HOME|~|"
 }
 
+
+function __vpn_status () {
+  type vpn_is_connected 1>&2 > /dev/null || return #ensure function is defined
+  vpn_is_connected && echo 🍃 || echo 🚫
+}
+
 PS1=""
 PS1="$PS1"'\[\033]0;$(__terminal_title)\007\]' # set window title
 PS1="$PS1"'$(__ps1_errs)\n' # show exit code
@@ -266,7 +272,7 @@ PS1="$PS1"'\[\033[33m\]'       # change color
 PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
 PS1="$PS1"'\n'                 # new line
-PS1="$PS1"'$(date +%l:%M)> '                 # prompt
+PS1="$PS1"'$(__vpn_status) $(date +%l:%M)> '                 # prompt
 
 ## git completions
 source "$HOME/.dotfiles/scripts/.git-completion.bash"
