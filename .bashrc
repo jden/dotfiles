@@ -241,6 +241,22 @@ function tdd() {
 }
 
 
+## anybarrrrrrrrr
+function newbar {
+  ANYBAR_PORT=${1:-1738} open -g ~/Applications/AnyBar.app
+}
+function setbar {
+  PORT=${2:-1738}
+  echo -n $1 | nc -4u -w0 localhost $PORT; 
+}
+function anybar {
+  PORT=${2:-1738}
+  [[ $1 != "quit" ]] && newbar $PORT
+  setbar $1 $PORT
+}
+alias bar=anybar
+
+## Prompt
 function __ps1_errs() {
   local err=$?
   if [ "$err" != "0" ]
@@ -257,7 +273,7 @@ function __terminal_title() {
 
 function __vpn_status () {
   type vpn_is_connected 1>&2 > /dev/null || return #ensure function is defined
-  vpn_is_connected && echo 🍃 || echo 🚫
+  vpn_is_connected && (echo 🍃; bar green 29999) || (echo 🚫; setbar quit 29999)
 }
 
 PS1=""
@@ -278,13 +294,6 @@ PS1="$PS1"'$(__vpn_status) $(date +%l:%M)> '                 # prompt
 source "$HOME/.dotfiles/scripts/.git-completion.bash"
 source "$HOME/.dotfiles/scripts/hub.bash_completion.sh"
 source "$HOME/.dotfiles/scripts/git-prompt.sh"
-
-## anybarrrrrrrrr
-function anybar {
-  open -g ~/Applications/AnyBar.app
-  echo -n $1 | nc -4u -w0 localhost ${2:-1738};
-}
-alias bar=anybar
 
 
 export JAVA_HOME=$(java_home)
