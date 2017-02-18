@@ -273,7 +273,7 @@ function __terminal_title() {
 
 function __vpn_status () {
   type vpn_is_connected 1>&2 > /dev/null || return #ensure function is defined
-  vpn_is_connected && (echo 🍃; bar green 29999) || (echo 🚫; setbar quit 29999)
+  vpn_is_connected && (echo 🍃; bar white 29999) || (echo 🚫; bar black 29999)
 }
 
 PS1=""
