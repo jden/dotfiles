@@ -92,6 +92,7 @@ alias gh="hub browse"
 alias rmbr="git branch --merged master | grep -v ' master$' | xargs git branch -d" # remove merged branches
 alias grm="git fetch && git rebase origin/master"
 alias gri="git fetch && git rebase origin/master -i"
+alias grit="git"
 
 git config --global diff.tool diffmerge
 git config --global difftool.diffmerge.cmd 'diffmerge "$LOCAL" "$REMOTE"'
