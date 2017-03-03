@@ -1,5 +1,7 @@
 # .dotfiles
 
+note for people who aren't me: these are a total mess and have been schlepped about from system to system over several years. it's stuff that i'm used to and have muscle memory for, but certainly not stuff i can recommend that other's copy. consider y'selves warned.
+
 ## installation
 
 ```sh
