@@ -6,6 +6,8 @@
   "editor.fontWeight": "400",
   "editor.lineHeight": 20,
 // Other
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": true,
 	"standard.enable": true,
 	"editor.tabSize": 2,
 	"editor.detectIndentation": false,
@@ -22,5 +24,6 @@
     "obj/*": true
   }
 ,
-"window.zoomLevel": 0
+"window.zoomLevel": 0,
+"workbench.colorTheme": "Visual Studio Dark"
 }
