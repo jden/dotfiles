@@ -288,8 +288,8 @@ fi
 PS1="$PS1"'\[\033[33m\]'       # change color
 PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
-PS1="$PS1"'\n'                 # new line
-PS1="$PS1"'$(__vpn_status) $(date +%l:%M)> '                 # prompt
+PS1="$PS1"' $(__vpn_status) \n'                 # new line
+PS1="$PS1"'$(date +%l:%M)> '                 # prompt
 
 ## git completions
 source "$HOME/.dotfiles/scripts/.git-completion.bash"
