@@ -1,63 +1,24 @@
-PATH="$HOME/bin:$PATH:/usr/libexec"
-alias edit=subl
-alias ls="ls -p" # show slashes after folders
-alias ll="ls -al"
-alias ld="ls -A | grep -e ^\\." # list dotfiles
-alias l="ls"
-alias s=edit
-alias s.="s ." # edit current directory
-alias s,="s ."
-alias b="bundle exec"
-alias bt="b ruby -Ilib/test"
-alias blah="head /dev/urandom | base64"
+export DOTFILES="$HOME/.dotfiles"
+source "$DOTFILES/.preamble"
+
+export PATH="$HOME/bin:$PATH:/usr/libexec"
 export EDITOR=vim
-# TODO pleasseeeeeee organize your aliases better
-alias tarls="tar -tvf"
-alias lst="tarls"
 
-# some other tools (TODO: organize this file better)
-# https://github.com/simeji/jid
-alias jid="jid > /dev/null"
-
-alias c=code
-alias c.="c ."
+_p source "$DOTFILES/.aliases"
 
 function bundle_rake_test () {
   bundle exec rake test TEST=$1
 }
 alias brt=bundle_rake_test
 
+
+
 # path like npm (run local bins first)
 PATH="./node_modules/.bin:$PATH"
 export GOPATH="$HOME/gopath"
 mkdir -p $GOPATH
 PATH="$GOPATH/bin:$PATH"
-alias tdd="mocha --recursive --watch"
 
-alias resource="source ~/.bashrc && echo reloaded ~/.bashrc"
-DOTFILES="$HOME/.dotfiles"
-alias editrc="edit $DOTFILES"
-alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
-alias pullrc="gitrc pull origin master"
-alias commitrc="gitrc commit -am 'save settings'"
-alias pushrc="gitrc push origin master"
-alias syncrc="pullrc && commitrc && pushrc"
-
-alias cj="cd ~/Code/jsdnxx"
-alias cz="cd ~/Code/zendesk"
-alias czi="cd ~/Code/zendesk/inbox"
-alias czd="cd ~/Code/zendesk/docker-images"
-alias gz="cd $GOPATH/src/github.com/zendesk"
-
-alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
-alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}\t{{.Size}}' | (head; sort)"
-alias zdips=dps
-
-# alias n="npm"
-alias nr="npm run"
-
-alias cd..="cd .."
-alias lc="wc -l" #line count
 function psgrep () {
   ps ax | grep $1 | grep -v grep
 }
@@ -67,32 +28,6 @@ function cdl () {
   cd $1
   ls
 }
-
-alias timestamp="node -p 'Date.now()'"
-
-alias g=git
-
-alias gst="git status"
-alias glog="git log --graph"
-alias gam="git commit -a --amend"
-alias gpom="git pull origin master"
-alias whatbranch="git rev-parse --abbrev-ref HEAD"
-alias br=whatbranch
-alias pws="git log -1 --pretty=%H" # print working sha
-alias save="git commit -am"
-alias pwb="git rev-parse --abbrev-ref HEAD" #print working branch
-alias cb="git checkout" #change branch
-alias cb-="cb -"
-alias gitsha="git rev-parse HEAD"
-alias gitref="gitsha"
-alias cpsha="gitsha | pbcopy && pbpaste"
-alias gpr="hub pull-request"
-alias gf="git fetch"
-alias gh="hub browse"
-alias rmbr="git branch --merged master | grep -v ' master$' | xargs git branch -d" # remove merged branches
-alias grm="git fetch && git rebase origin/master"
-alias gri="git fetch && git rebase origin/master -i"
-alias grit="git"
 
 git config --global diff.tool diffmerge
 git config --global difftool.diffmerge.cmd 'diffmerge "$LOCAL" "$REMOTE"'
@@ -118,7 +53,7 @@ function fush () {
   fi
   read -r -p "Really force push to $(whatbranch)? [y/N] " response
   case $response in
-      [yY][eE][sS]|[yY]) 
+      [yY][eE][sS]|[yY])
           git push origin $(whatbranch) --force-with-lease
           ;;
       *)
@@ -145,26 +80,16 @@ function repull () {
         git checkout master
         git branch -D $BRANCH
         git fetch
-        git checkout $BRANCH 
+        git checkout $BRANCH
         ;;
   esac
 }
-
-alias npms="npm install --save"
-alias npmr="npm run"
-alias npmsd="npm install --save-dev"
-alias dev="cd ~/dev; ls"
-alias cz="cd ~/Code/zendesk"
-alias t="npm test"
-alias shrink="npm prune && npm shrinkwrap"
-alias reshrink="rm npm-shrinkwrap.json && shrink"
 
 function whichVersion() {
   which $1
   $1 --version
 }
 alias wh=whichVersion
-
 
 function log() {
   local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
@@ -192,7 +117,7 @@ EOF`
   local active=`cat ~/.npmrcs/.active`
   if [ $# -eq 0 ]; then
     echo "$usage"
-    echo 
+    echo
     echo available profiles:
     ls ~/.npmrcs
     echo
@@ -228,10 +153,6 @@ function echos() {
   node -e "require('http').createServer(function (r, s) { console.log(r. method, r.url); s.end() }).listen($port, function (e) { console.log(e || 'listening on $port')})"
 }
 
-alias dii="docker image inspect"
-alias dci="docker container inspect"
-
-
 function tdd() {
   local filter=$1
   if [ $# -eq 0 ]; then
@@ -248,7 +169,7 @@ function newbar {
 }
 function setbar {
   PORT=${2:-1738}
-  echo -n $1 | nc -4u -w0 localhost $PORT; 
+  echo -n $1 | nc -4u -w0 localhost $PORT;
 }
 function anybar {
   PORT=${2:-1738}
@@ -258,51 +179,26 @@ function anybar {
 alias bar=anybar
 
 ## Prompt
-function __ps1_errs() {
-  local err=$?
-  if [ "$err" != "0" ]
-  then
-    echo -e "\a" #bell
-    echo -e "⇒ E$err" # print err in red
-  fi
-}
-
-function __terminal_title() {
-  pwd | sed "s|$HOME|~|"
-}
-
-
-function __vpn_status () {
-  type vpn_is_connected &> /dev/null || return #ensure function is defined
-  vpn_is_connected && (echo 🍃; bar white 29999) || (echo 🚫; bar black 29999)
-}
-
-PS1=""
-PS1="$PS1"'\[\033]0;$(__terminal_title)\007\]' # set window title
-PS1="$PS1"'$(__ps1_errs)\n' # show exit code
-if test -z "$WINELOADERNOEXEC"
-then
-  PS1="$PS1"'\[\033[32m\]'       # change color
-  PS1="$PS1"'$(__git_ps1 "%s") '   # bash function
-fi
-PS1="$PS1"'\[\033[33m\]'       # change color
-PS1="$PS1"'\w'                 # current working directory
-PS1="$PS1"'\[\033[0m\]'        # change color
-PS1="$PS1"' $(__vpn_status) \n'                 # new line
-PS1="$PS1"'$(date +%l:%M)> '                 # prompt
+P source "$DOTFILES/.prompt"
 
 ## git completions
-source "$HOME/.dotfiles/scripts/.git-completion.bash"
-source "$HOME/.dotfiles/scripts/hub.bash_completion.sh"
-source "$HOME/.dotfiles/scripts/git-prompt.sh"
-
+P source "$HOME/.dotfiles/scripts/.git-completion.bash"
+P source "$HOME/.dotfiles/scripts/hub.bash_completion.sh"
+P source "$HOME/.dotfiles/scripts/git-prompt.sh"
 
 export JAVA_HOME=$(java_home)
 export NVM_DIR="/Users/jdenizac/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# _p [ -s "$NVM_DIR/nvm.sh" ] && _p . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 # chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-export RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline) --with-openssl-dir=$(brew --prefix openssl)"
+P source /usr/local/opt/chruby/share/chruby/chruby.sh
+P source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# configure readline to be good:
+# the original version is:
+## export RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline) --with-openssl-dir=$(brew --prefix openssl)"
+# but we cache the brew lookups for speediness:
+export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-openssl-dir=/usr/local/opt/openssl"
+
+# echo bashrc took $(expr $(timestamp) - $DOTFILES_START)

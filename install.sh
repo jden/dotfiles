@@ -23,7 +23,8 @@ ln -sf ~/.dotfiles/.hyper.js ~/.hyper.js
 case $(uname) in
   Darwin)
     # VS Code settings
-    ln -sf ~/.dotfiles/.code.settings.json ~/Library/Application\ Support/Code/User/settings.json 
+    ln -sf ~/.dotfiles/.code.settings.json ~/Library/Application\ Support/Code/User/settings.json
+    brew install coreutils
     ;;
   Linux)
     ;;
