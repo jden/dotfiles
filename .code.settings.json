@@ -1,18 +1,19 @@
 // Place your settings in this file to overwrite the default settings
 {
-// Font
+  // Font
   "editor.fontFamily": "Hasklig, 'Source Code Pro'",
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "editor.lineHeight": 20,
-// Other
+  // Other
   "editor.minimap.enabled": true,
   "editor.minimap.renderCharacters": true,
-	"standard.enable": true,
-	"editor.tabSize": 2,
-	"editor.detectIndentation": false,
+  "standard.enable": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
   "files.trimTrailingWhitespace": true,
   "javascript.validate.enable": false,
+  "editor.formatOnSave": false,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -21,9 +22,16 @@
     "vendor/*": true,
     "node_modules/*": true,
     "tmp/cache/*": true,
-    "obj/*": true
-  }
-,
-"window.zoomLevel": 0,
-"workbench.colorTheme": "Visual Studio Dark"
+    "obj/*": true,
+    "*.bundle.js": true,
+    "*.js.map": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.bundle.js": true,
+    "**/*.js.map": true
+  },
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Visual Studio Dark"
 }
