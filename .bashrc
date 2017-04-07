@@ -4,7 +4,7 @@ source "$DOTFILES/.preamble"
 export PATH="$HOME/bin:$PATH:/usr/libexec"
 export EDITOR=vim
 
-_p source "$DOTFILES/.aliases"
+P source "$DOTFILES/.aliases"
 
 function bundle_rake_test () {
   bundle exec rake test TEST=$1
@@ -188,7 +188,7 @@ P source "$HOME/.dotfiles/scripts/git-prompt.sh"
 
 export JAVA_HOME=$(java_home)
 export NVM_DIR="/Users/jdenizac/.nvm"
-# _p [ -s "$NVM_DIR/nvm.sh" ] && _p . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && P . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 # chruby
