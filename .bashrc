@@ -1,7 +1,7 @@
 export DOTFILES="$HOME/.dotfiles"
 source "$DOTFILES/.preamble"
 
-export PATH="$HOME/bin:$PATH:/usr/libexec"
+export PATH="$HOME/bin:$PATH:/usr/libexec:$HOME/Library/Python/3.6/bin"
 export EDITOR=vim
 
 P source "$DOTFILES/.aliases"
@@ -63,6 +63,7 @@ function fush () {
   esac
 }
 alias afush="git commit -a --amend && fush"
+alias amf=afush
 
 function tpush () {
   npm test &&
