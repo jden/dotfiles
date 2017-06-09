@@ -7,12 +7,14 @@
   "editor.lineHeight": 20,
   // Other
   "editor.minimap.enabled": true,
+  "editor.minimap.showSlider": "always",
   "editor.minimap.renderCharacters": true,
   "standard.enable": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "files.trimTrailingWhitespace": true,
   "javascript.validate.enable": false,
+  "editor.snippetSuggestions": "bottom",
   "editor.formatOnSave": false,
   "files.exclude": {
     "**/.git": true,

@@ -188,8 +188,8 @@ P source "$HOME/.dotfiles/scripts/hub.bash_completion.sh"
 P source "$HOME/.dotfiles/scripts/git-prompt.sh"
 
 export JAVA_HOME=$(java_home)
-export NVM_DIR="/Users/jdenizac/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && P . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="/Users/jdenizac/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && P . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 # chruby
