@@ -15,7 +15,7 @@ alias tarls="tar -tvf"
 alias lst="tarls"
 alias jid="jid > /dev/null" # https://github.com/simeji/jid
 alias code-stable="`which code`"
-alias code=code-insiders
+#alias code=code-insiders
 alias c=code
 alias c.="c ."
 
