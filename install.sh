@@ -33,8 +33,9 @@ esac
 :
 : installing some other tools
 :
-# https://github.com/paulirish/git-recent/
-npm install --global git-recent
+npm install --global \
+  npx \
+  git-recent # https://github.com/paulirish/git-recent/
 
 :
 : setup ok
