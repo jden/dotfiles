@@ -21,7 +21,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
-    "node_modules/*": true,
+    "node_modulesx/*": true,
     "tmp/cache/*": true,
     "obj/*": true,
     "*.bundle.js": true,
