@@ -203,3 +203,11 @@ P source /usr/local/opt/chruby/share/chruby/auto.sh
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-openssl-dir=/usr/local/opt/openssl"
 
 # echo bashrc took $(expr $(timestamp) - $DOTFILES_START)
+
+function demomode {
+  export PS1="> "
+  clear
+  echo demo mode activated
+  sleep .5
+  clear
+}
