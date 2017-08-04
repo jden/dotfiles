@@ -16,6 +16,7 @@
   "javascript.validate.enable": false,
   "editor.snippetSuggestions": "bottom",
   "editor.formatOnSave": false,
+  "editor.trimAutoWhitespace": true,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -28,7 +29,7 @@
     "*.js.map": true
   },
   "search.exclude": {
-    "**/node_modules": true,
+    "**/node_modulesx": true,
     "**/bower_components": true,
     "**/*.bundle.js": true,
     "**/*.js.map": true,
