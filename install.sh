@@ -26,7 +26,12 @@ case $(uname) in
   Darwin)
     # VS Code settings
     ln -sf ~/.dotfiles/.code.settings.json ~/Library/Application\ Support/Code/User/settings.json
-    brew install coreutils
+    deps=(
+      coreutils
+      reattach-to-user-namespace # see see https://github.com/Microsoft/vscode/issues/12587#issuecomment-280681178
+    )
+    brew install ${deps[*]}
+    brew upgrade ${deps[*]}
     ;;
   Linux)
     ;;
@@ -35,9 +40,11 @@ esac
 :
 : installing some other tools
 :
-npm install --global \
-  npx \
+deps=(
+  npx
   git-recent # https://github.com/paulirish/git-recent/
+)
+npm install --global ${deps[*]}
 
 :
 : setup ok
