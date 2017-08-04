@@ -12,7 +12,8 @@ function __terminal_title() {
 }
 
 PS1=""
-PS1="$PS1"'\[\033]0;$(__terminal_title)\007\]' # set window title
+#PS1="$PS1"'\[\033]0;$(__terminal_title)\007\]' # set window title iterm
+PS1="$PS1"'\033k$(__terminal_title)\033\\' # set window title tmux
 PS1="$PS1"'$(__ps1_errs)\n' # show exit code
 if test -z "$WINELOADERNOEXEC"
 then
