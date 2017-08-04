@@ -7,8 +7,21 @@ function __ps1_errs() {
 }
 
 function __terminal_title() {
-  pwd | sed "s|$HOME|~|"
+  echo "$__TITLE$(pwd | sed "s|$HOME|~|")"
 }
+
+function __set_title() {
+  export __TITLE="$1 "
+  case "$TERM" in
+  screen*) # set window title tmux
+    printf '\033k$1\033\\'
+    ;;
+  xterm*) # set window title in iterm, etc
+    printf '\033]0;$1\007'
+    ;;
+  esac
+}
+alias name=__set_title
 
 PS1=""
 PS1="$PS1"'$(__ps1_errs)\n' # show exit code
