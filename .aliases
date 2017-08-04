@@ -1,5 +1,5 @@
 #
-alias edit=subl
+alias edit=code
 alias ls="ls -p" # show slashes after folders
 alias la="ls -a"
 alias ll="ls -al"
