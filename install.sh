@@ -6,6 +6,7 @@ set -x
 : profile
 :
 ln -sf ~/.dotfiles/.bashrc ~/.bashrc
+ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 :
 : bins
@@ -13,6 +14,7 @@ ln -sf ~/.dotfiles/.bashrc ~/.bashrc
 ln -sf ~/.dotfiles/scripts/git-uncommit.sh ~/bin/git-uncommit
 ln -sf ~/.dotfiles/scripts/git-thank.sh ~/bin/git-thank
 ln -sf ~/.dotfiles/scripts/grit-attackclone.sh ~/bin/git-attackclone
+ln -sf ~/.dotfiles/.status ~/bin/status
 
 :
 : program settings

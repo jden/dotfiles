@@ -1,3 +1,4 @@
+# login -pfq jdenizac /usr/local/bin/bash
 export DOTFILES="$HOME/.dotfiles"
 source "$DOTFILES/.preamble"
 
