@@ -11,6 +11,7 @@ ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
 :
 : bins
 :
+mkdir -p ~/bin
 ln -sf ~/.dotfiles/scripts/git-uncommit.sh ~/bin/git-uncommit
 ln -sf ~/.dotfiles/scripts/git-thank.sh ~/bin/git-thank
 ln -sf ~/.dotfiles/scripts/grit-attackclone.sh ~/bin/git-attackclone
@@ -45,6 +46,12 @@ deps=(
   git-recent # https://github.com/paulirish/git-recent/
 )
 npm install --global ${deps[*]}
+
+:
+:installing fonts
+:
+# check if exists in local fonts, else
+curl https://raw.githubusercontent.com/adobe-fonts/source-code-pro/release/OTF/SourceCodePro-Regular.otf  > ~/Library/Fonts/SourceCodePro-Regular.otf
 
 :
 : setup ok
