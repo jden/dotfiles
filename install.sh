@@ -48,7 +48,7 @@ deps=(
 npm install --global ${deps[*]}
 
 :
-:installing fonts
+: installing fonts
 :
 # check if exists in local fonts, else
 curl https://raw.githubusercontent.com/adobe-fonts/source-code-pro/release/OTF/SourceCodePro-Regular.otf  > ~/Library/Fonts/SourceCodePro-Regular.otf
