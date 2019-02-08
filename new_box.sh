@@ -1,5 +1,4 @@
 packages=(
-  chruby
   tmux
 )
 brew install ${packages[*]}
