@@ -45,6 +45,7 @@ alias lc="wc -l" #line count
 # git aliases
 alias g=git
 alias gst="git status"
+alias glo="git log --pretty=oneline --abbrev-commit"
 alias glog="git log --graph"
 alias gam="git commit -a --amend"
 alias gpom="git pull origin master"
