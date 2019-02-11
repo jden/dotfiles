@@ -33,6 +33,7 @@ case $(uname) in
     )
     brew install ${deps[*]}
     brew upgrade ${deps[*]}
+    git config --global core.excludesfile ~/.dotfiles/gitignore
     ;;
   Linux)
     ;;
