@@ -26,7 +26,11 @@
     "tmp/cache/*": true,
     "obj/*": true,
     "*.bundle.js": true,
-    "*.js.map": true
+    "*.js.map": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
   },
   "search.exclude": {
     "**/node_modulesx": true,
