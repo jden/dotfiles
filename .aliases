@@ -19,6 +19,7 @@ alias code-stable="`which code`"
 #alias code=code-insiders
 alias c=code
 alias c.="c ."
+alias ij=intellij
 
 # dotfiles management workflow
 alias resource="source ~/.bashrc && echo reloaded ~/.bashrc"
