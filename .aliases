@@ -30,7 +30,9 @@ alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 
 # navigation
-alias cs="cd ~/Code/tryscroll/scroll"
+alias sc="cd ~/Code/tryscroll/scroll"
+alias scs="cd ~/Code/tryscroll/scroll/server"
+alias scc="cd ~/Code/tryscroll/scroll/client"
 alias cj="cd ~/Code/jsdnxx"
 alias ghub="npx ghub-cli"
 
