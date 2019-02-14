@@ -70,6 +70,7 @@ alias grm="git fetch && git rebase origin/master"
 alias gri="git fetch && git rebase origin/master -i"
 alias grit="git"
 alias rmbranches="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | xargs -p git branch -D"
+alias cleanreview="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | grep review- | xargs -p git branch -D"
 
 # npm workflow
 alias npms="npm install --save"

@@ -9,5 +9,6 @@ casks=(
   iterm2
   spectacle
   visual-studio-code
+  diffmerge
 )
 brew cask install ${casks[*]}

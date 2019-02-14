@@ -9,13 +9,12 @@
   "editor.minimap.enabled": true,
   "editor.minimap.showSlider": "always",
   "editor.minimap.renderCharacters": true,
-  "standard.enable": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "files.trimTrailingWhitespace": true,
   "javascript.validate.enable": false,
   "editor.snippetSuggestions": "bottom",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.trimAutoWhitespace": true,
   "files.exclude": {
     "**/.git": true,
@@ -41,5 +40,8 @@
   },
   "window.zoomLevel": 0,
   "window.title": "${activeEditorMedium}",
-  "workbench.colorTheme": "Visual Studio Dark"
+  "workbench.colorTheme": "Visual Studio Dark",
+  "jumpToAliasFile.alias": {
+    "lib": "/Users/juno/Code/tryscroll/scroll/client/webapp/src"
+  }
 }
