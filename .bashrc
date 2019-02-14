@@ -5,14 +5,14 @@ source "$DOTFILES/.preamble"
 export PATH="$HOME/bin:$PATH:/usr/libexec:$HOME/Library/Python/3.6/bin"
 export EDITOR=vim
 
+export SCROLLROOT="$HOME/Code/tryscroll/scroll"
+
 P source "$DOTFILES/.aliases"
 
 function bundle_rake_test () {
   bundle exec rake test TEST=$1
 }
 alias brt=bundle_rake_test
-
-
 
 # path like npm (run local bins first)
 PATH="./node_modules/.bin:$PATH"
