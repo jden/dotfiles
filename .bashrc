@@ -93,17 +93,17 @@ function whichVersion() {
 }
 alias wh=whichVersion
 
-function log() {
-  local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
-  local file="$1.$serial.log"
-  date "+%c" > $file
-  echo "$*" >> $file
-  echo "---" >> $file
-  $* 2>&1 | tee -a $file ; local exitCode=${PIPESTATUS[0]}
-  echo "---" >> $file
-  echo "⇒ E$exitCode" >> $file
-  return $exitCode
-}
+# function log() {
+#   local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
+#   local file="$1.$serial.log"
+#   date "+%c" > $file
+#   echo "$*" >> $file
+#   echo "---" >> $file
+#   $* 2>&1 | tee -a $file ; local exitCode=${PIPESTATUS[0]}
+#   echo "---" >> $file
+#   echo "⇒ E$exitCode" >> $file
+#   return $exitCode
+# }
 
 function error() {
   return $1
