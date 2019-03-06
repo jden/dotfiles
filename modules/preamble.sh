@@ -1,5 +1,5 @@
 # preamble
-__BASHRC_DEBUG=true
+# __BASHRC_DEBUG=true
 
 function timestamp () {
   echo $(($(gdate +%s%N)/1000000))
