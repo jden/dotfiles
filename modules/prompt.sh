@@ -23,6 +23,23 @@ function __set_title() {
 }
 alias name=__set_title
 
+function __get_emoji () {
+  hour=$(gdate +%H)
+  case $hour in
+  08|09|10)
+    echo 🍵
+    ;;
+  11|12|13)
+    echo 🍕
+    ;;
+  14|15|16)
+    echo 🚰
+    ;;
+  17|18)
+    echo 🚋
+  esac
+}
+
 PS1=""
 PS1="$PS1"'$(__ps1_errs)\n' # show exit code
 case "$TERM" in
@@ -42,5 +59,5 @@ fi
 PS1="$PS1"'\[\033[33m\]'       # change color
 PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
-PS1="$PS1"' $(date +%l:%M) 🍕\n'
+PS1="$PS1"' $(date +%l:%M) $(__get_emoji)\n'
 PS1="$PS1"'λ '                 # prompt
