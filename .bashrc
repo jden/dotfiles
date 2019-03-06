@@ -6,6 +6,7 @@ export PATH="$HOME/bin:$PATH:/usr/libexec:$HOME/Library/Python/3.6/bin"
 export EDITOR=vim
 
 export SCROLLROOT="$HOME/Code/tryscroll/scroll"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 P source "$DOTFILES/.aliases"
 
