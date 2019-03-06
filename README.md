@@ -10,8 +10,14 @@ git clone git@github.com:jden/.dotfiles.git
 ./install.sh
 ```
 
+## show dotfiles on macos:
+
+`CMD + SHIFT + .`
+
 ### windows
+
 with mingw
+
 ```sh
 cd ~
 git clone git@github.com:jden/.dotfiles.git
