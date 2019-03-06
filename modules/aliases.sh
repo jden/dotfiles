@@ -39,8 +39,7 @@ alias ghub="npx ghub-cli"
 
 alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
 alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}\t{{.Size}}' | (head; sort)"
-alias zdips=dps
-alias nr="npm run"
+
 alias cd..="cd .."
 alias lc="wc -l" #line count
 
@@ -69,16 +68,15 @@ alias rmbr="git branch --merged master | grep -v ' master$' | xargs git branch -
 alias grm="git fetch && git rebase origin/master"
 alias gri="git fetch && git rebase origin/master -i"
 alias grit="git"
-alias rmbranches="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | xargs -p git branch -D"
-alias cleanreviews="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | grep review- | xargs -p git branch -D"
+# alias rmbranches="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | xargs -p git branch -D"
+# alias cleanreviews="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | grep review- | xargs -p git branch -D"
 
 alias review="$SCROLLROOT/review.sh"
 
 # npm workflow
-alias npms="npm install --save"
+alias npmi="npm install"
+alias npmt="npm test"
 alias npmr="npm run"
-alias npmsd="npm install --save-dev"
-alias t="npm test"
 alias shrink="npm prune && npm shrinkwrap"
 alias reshrink="rm npm-shrinkwrap.json && shrink"
 
@@ -88,4 +86,3 @@ alias dci="docker container inspect"
 
 # tools
 # alias yarn="npx yarn"
-
