@@ -43,5 +43,7 @@
   "workbench.colorTheme": "Visual Studio Dark",
   "jumpToAliasFile.alias": {
     "lib": "/Users/juno/Code/tryscroll/scroll/client/webapp/src"
-  }
+  },
+  "java.autobuild.enabled": false,
+  "java.errors.incompleteClasspath.severity": "ignore"
 }

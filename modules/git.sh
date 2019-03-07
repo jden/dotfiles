@@ -47,3 +47,25 @@ function tpush () {
 P source "$DOTFILES/scripts/.git-completion.bash"
 P source "$DOTFILES/scripts/hub.bash_completion.sh"
 P source "$DOTFILES/scripts/git-prompt.sh"
+
+
+function start_task () {
+  # sanitize for $1 = asana url
+  task="$(basename $1)"
+  branch="a$task"
+
+  git fetch origin master
+
+  git branch | grep $branch > /dev/null
+  if [[ $? == 0 ]]; then
+    # if branch exists, switch to it and fetch / rebase origin master
+    git checkout $branch
+    git rebase origin/master
+  else
+    # if branch doesnt exist, init
+    git checkout origin/master
+    git checkout -b $branch
+    git commit --allow-empty -m "$USER began work on $1"
+  fi
+
+}

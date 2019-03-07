@@ -26,6 +26,9 @@ alias name=__set_title
 function __get_emoji () {
   hour=$(gdate +%H)
   case $hour in
+  06|07)
+    echo lies.
+    ;;
   08|09|10)
     echo 🍵
     ;;
@@ -37,6 +40,10 @@ function __get_emoji () {
     ;;
   17|18)
     echo 🚋
+    ;;
+  *)
+    echo 😴
+    ;;
   esac
 }
 
