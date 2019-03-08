@@ -47,7 +47,7 @@ alias lc="wc -l" #line count
 # git aliases
 alias g=git
 alias gst="git status"
-alias glo="git log --pretty=oneline --abbrev-commit"
+alias glo="git log --pretty=format:'%h EML%aEEML %s' | sed 's/EML\(.\{1,6\}\).*@.*EML/EML\1     EML/; s/EML\(.\{6\}\).*EML/\1/' | less"
 alias glog="git log --graph"
 alias gam="git commit -a --amend"
 alias gpom="git pull origin master"
