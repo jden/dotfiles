@@ -154,9 +154,5 @@ module.exports = {
   keymaps: {
     // Example
     // 'window:devtools': 'cmd+alt+o',
-  },
-
-  hyperline: {
-    plugins: ["cpu", "battery", "spotify"]
   }
 };

@@ -49,23 +49,37 @@ P source "$DOTFILES/scripts/hub.bash_completion.sh"
 P source "$DOTFILES/scripts/git-prompt.sh"
 
 
-function start_task () {
+function workon () {
   # sanitize for $1 = asana url
-  task="$(basename $1)"
-  branch="a$task"
+  URL="$1"
+  if [[ $1 == "" ]]; then
+    read -p "Enter the asana task url: "
+    URL="$REPLY"
+  fi
 
-  git fetch origin master
+  if [[ $URL != https://app.asana.com/* ]]; then
+    echo not asana url
+    return 1
+  fi;
 
-  git branch | grep $branch > /dev/null
+  TASK="$(basename $URL)"
+  BRANCH="a$TASK"
+
+  git fetch origin master >/dev/null 2>&1
+
+  git branch | grep $BRANCH > /dev/null
   if [[ $? == 0 ]]; then
     # if branch exists, switch to it and fetch / rebase origin master
-    git checkout $branch
+    git checkout $BRANCH
     git rebase origin/master
   else
     # if branch doesnt exist, init
     git checkout origin/master
-    git checkout -b $branch
-    git commit --allow-empty -m "$USER began work on $1"
+    git checkout -b $BRANCH
+    git commit --allow-empty -m "$USER began work on $URL"
   fi
 
 }
+
+alias git-reset-master="echo 'resetting master, ctrl+c to abort...' && git fetch origin master && read -t 1; git checkout master && git stash && git reset origin/master --hard"
+alias rsm="git-reset-master"
