@@ -1,6 +1,7 @@
 #
 alias edit=code
-alias ls="ls -p" # show slashes after folders
+alias ls="CLICOLOR_FORCE=1 ls -p -G" # show slashes after folders and color
+alias less="less -R" # enable color
 alias cls="clear && echo 🔎 && ls"
 alias la="ls -a"
 alias ll="ls -al"
@@ -47,7 +48,7 @@ alias lc="wc -l" #line count
 # git aliases
 alias g=git
 alias gst="git status"
-alias glo="git log --pretty=format:'%h EML%aEEML  %s' | sed 's/EML\(.\{1,6\}\).*@.*EML/EML\1     EML/; s/EML\(.\{6\}\).*EML/\1/' | less"
+alias glo="git log --pretty=format:'%h EML%aEEML  %Cgreen%d%Creset %s' --color=always | sed 's/EML\(.\{1,6\}\).*@.*EML/EML\1     EML/; s/EML\(.\{6\}\).*EML/\1/' | less -R"
 alias glog="git log --graph"
 alias gam="git commit -a --amend"
 alias gpom="git pull origin master"
