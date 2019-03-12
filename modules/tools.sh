@@ -32,6 +32,7 @@ function log_shell_event() {
   network=$(get_ssid)
   type=$1
   message=$2
+  code=""
   shellpid=$$
 
   if [[ $2 == "-m" ]]; then
