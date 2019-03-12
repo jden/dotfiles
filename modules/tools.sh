@@ -27,13 +27,13 @@ function get_ssid() {
 }
 
 function log_shell_event() {
-  time=$(timestamp)
-  user=$USER
-  network=$(get_ssid)
-  type=$1
-  message=$2
-  code=""
-  shellpid=$$
+  local time=$(timestamp)
+  local user=$USER
+  local network=$(get_ssid)
+  local type=$1
+  local message=$2
+  local code=""
+  local shellpid=$$
 
   if [[ $2 == "-m" ]]; then
     message=( "$@" )
