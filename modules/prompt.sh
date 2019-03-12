@@ -1,7 +1,7 @@
 function __ps1_errs() {
   local err=$?
   if [ "$err" != "0" ]; then
-    log_shell_event program.error -m $err
+    log_shell_event program.error -c $err
     echo -e "⇒ E$err" # print err in red
   fi
 }

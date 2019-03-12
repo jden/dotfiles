@@ -39,9 +39,19 @@ function log_shell_event() {
     message=${message[*]:2}
   fi
 
+  if [[ $2 == "-c" ]]; then
+    code=( "$@" )
+    code=${code[*]:2}
+    message=""
+  fi
+
+
   J=$(printf '{"time":%s,"shellpid","%s","user":"%s","network":"%s","type":"%s"' $time $shellpid $user $network $type)
   if [[ $message != "" ]]; then
     J="$J$(printf ',"message":"%s"' "$message")"
+  fi
+  if [[ $code != "" ]]; then
+    J="$J$(printf ',"code":%s' $code)"
   fi
   J="$J}"
   echo $J >> $SHELL_LOG
