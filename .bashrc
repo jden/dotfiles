@@ -13,7 +13,7 @@ export PATH="$HOME/bin:$PATH:/usr/libexec"
 export JAVA_HOME=$(java_home)
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 
-
+export SHELL_LOG="$HOME/.shell_log"
 
 ## Platform-specific modules
 
@@ -46,5 +46,7 @@ function echos() {
 
 ## Prompt
 __include prompt
+
+log_shell_event shell.new
 
 __endbashrc

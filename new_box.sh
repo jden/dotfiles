@@ -10,5 +10,6 @@ casks=(
   spectacle
   visual-studio-code
   diffmerge
+  virtualbox
 )
 brew cask install ${casks[*]}

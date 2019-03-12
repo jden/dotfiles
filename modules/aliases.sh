@@ -23,11 +23,11 @@ alias c.="c ."
 alias ij=intellij
 
 # dotfiles management workflow
-alias resource="source ~/.bashrc && echo reloaded ~/.bashrc"
+alias resource="source ~/.bashrc && log_shell_event dotfiles.resource && echo reloaded ~/.bashrc"
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
-alias commitrc="gitrc commit -am 'save settings'"
+alias commitrc="gitrc commit -am 'save settings' && log_shell_event dotfiles.saved"
 alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 

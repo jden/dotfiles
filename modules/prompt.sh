@@ -1,13 +1,13 @@
 function __ps1_errs() {
   local err=$?
-  if [ "$err" != "0" ]
-  then
+  if [ "$err" != "0" ]; then
+    log_shell_event program.error -m $err
     echo -e "⇒ E$err" # print err in red
   fi
 }
 
 function __terminal_title() {
-  echo "$__TITLE$(pwd | sed "s|$HOME|~|")"
+  echo "$__TITLE$(pwd | sed "s|$SCROLLROOT|~S|; s|$HOME|~|")"
 }
 
 function __set_title() {
@@ -47,6 +47,10 @@ function __get_emoji () {
   esac
 }
 
+function __end_prompt() {
+  log_shell_event prompt
+}
+
 PS1=""
 PS1="$PS1"'$(__ps1_errs)\n' # show exit code
 case "$TERM" in
@@ -61,10 +65,11 @@ esac
 if test -z "$WINELOADERNOEXEC"
 then
   PS1="$PS1"'\[\033[32m\]'       # change color
-  PS1="$PS1"'$(__git_ps1 "%s") '   # bash function
+  PS1="$PS1"'$(__git_ps1 "%s") ' # bash function
 fi
 PS1="$PS1"'\[\033[33m\]'       # change color
 PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
 PS1="$PS1"' $(date +%l:%M) $(__get_emoji)\n'
 PS1="$PS1"'λ '                 # prompt
+PS1="$PS1"'$(__end_prompt)'    # trigger
