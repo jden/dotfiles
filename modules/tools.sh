@@ -47,7 +47,7 @@ function log_shell_event() {
   fi
 
 
-  J=$(printf '{"time":%s,"shellpid","%s","user":"%s","network":"%s","type":"%s"' $time $shellpid $user $network $type)
+  J=$(printf '{"time":%s,"shellpid":"%s","user":"%s","network":"%s","type":"%s"' $time $shellpid $user $network $type)
   if [[ $message != "" ]]; then
     J="$J$(printf ',"message":"%s"' "$message")"
   fi
