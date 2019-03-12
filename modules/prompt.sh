@@ -70,6 +70,6 @@ fi
 PS1="$PS1"'\[\033[33m\]'       # change color
 PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
-PS1="$PS1"' $(date +%l:%M) $(__get_emoji)\n'
+PS1="$PS1"' \D{%l:%M} $(__get_emoji)\n'
 PS1="$PS1"'λ '                 # prompt
 PS1="$PS1"'$(__end_prompt)'    # trigger
