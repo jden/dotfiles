@@ -65,6 +65,8 @@ function workon () {
   TASK="$(basename $URL)"
   BRANCH="a$TASK"
 
+  log_shell_event work.workon -m "$URL"
+
   git fetch origin master >/dev/null 2>&1
 
   git branch | grep $BRANCH > /dev/null

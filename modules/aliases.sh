@@ -32,9 +32,6 @@ alias pushrc="gitrc push origin master"
 alias syncrc="pullrc && commitrc && pushrc"
 
 # navigation
-alias sc="cd ~/Code/tryscroll/scroll"
-alias scs="cd ~/Code/tryscroll/scroll/server"
-alias scc="cd ~/Code/tryscroll/scroll/client"
 alias cj="cd ~/Code/jsdnxx"
 alias ghub="npx ghub-cli"
 
@@ -72,7 +69,12 @@ alias grit="git"
 # alias rmbranches="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | xargs -p git branch -D"
 # alias cleanreviews="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | grep review- | xargs -p git branch -D"
 
-alias review="$SCROLLROOT/review.sh"
+
+# work
+alias sc="cd ~/Code/tryscroll/scroll"
+alias scs="cd ~/Code/tryscroll/scroll/server"
+alias scc="cd ~/Code/tryscroll/scroll/client"
+alias review='sc && log_shell_event work.review -m "$@" && $SCROLLROOT/review.sh'
 
 # npm workflow
 alias npmi="npm install"
