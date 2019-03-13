@@ -47,7 +47,13 @@ function log_shell_event() {
   fi
 
 
-  J=$(printf '{"time":%s,"shellpid":"%s","user":"%s","network":"%s","type":"%s"' $time $shellpid $user $network $type)
+  J=$(printf '{"time":%s,"shellpid":"%s","user":"%s"' $time $shellpid $user)
+  if [[ $network != "" ]]; then
+    J="$J$(printf ',"network":"%s"' "$network")"
+  else
+    J="$J"',"network":null'
+  fi
+  J="$J$(printf ',"type":"%s"' $type)"
   if [[ $message != "" ]]; then
     J="$J$(printf ',"message":"%s"' "$message")"
   fi
