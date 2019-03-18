@@ -7,7 +7,7 @@ function __ps1_errs() {
 }
 
 function __terminal_title() {
-  echo "$__TITLE$(pwd | sed "s|$SCROLLROOT|~S|; s|$HOME|~|")"
+  echo "$__TITLE$(pwd | sed "s|$SCROLL_HOME|~S|; s|$HOME|~|")"
 }
 
 function __set_title() {

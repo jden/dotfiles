@@ -35,6 +35,7 @@ alias syncrc="pullrc && commitrc && pushrc"
 alias cj="cd ~/Code/jsdnxx"
 alias ghub="npx ghub-cli"
 
+
 alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
 alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}\t{{.Size}}' | (head; sort)"
 
@@ -74,7 +75,7 @@ alias grit="git"
 alias sc="cd ~/Code/tryscroll/scroll"
 alias scs="cd ~/Code/tryscroll/scroll/server"
 alias scc="cd ~/Code/tryscroll/scroll/client"
-alias review='sc && log_shell_event work.review -m "$@" && $SCROLLROOT/review.sh'
+alias review='sc && log_shell_event work.review -m "$@" && $SCROLL_HOME/review.sh'
 
 # npm workflow
 alias npmi="npm install"

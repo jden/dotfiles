@@ -83,5 +83,41 @@ function workon () {
 
 }
 
+function github_go(){
+  git_root=$(git rev-parse --show-toplevel)
+  case $git_root in
+    "$CODE_HOME"*)
+      repo=$(echo $git_root | sed "s|$CODE_HOME/||")
+      echo going to $repo on github
+      ;;
+    "") # not git
+      return 1
+      ;;
+    *)
+      echo not in code home
+      return 1;
+      ;;
+  esac
+
+  if [[ $1 != "" ]]; then
+    # with number, go to that PR
+    url="https://github.com/$repo/pull/$1"
+    echo opening $url
+    open $url
+    return
+  fi
+
+  #otherwise try opening the path
+  branch=$(whatbranch)
+  relpath=$(pwd | sed "s|$git_root/||")
+  echo relpath $relpath
+  url="https://github.com/$repo/tree/$branch/$relpath"
+  echo opening $url
+  open $url
+  return
+}
+alias hgo=github_go
+alias hpr="hub pr list"
+
 alias git-reset-master="echo 'resetting master, ctrl+c to abort...' && git fetch origin master && read -t 1; git checkout master && git stash && git reset origin/master --hard"
 alias rsm="git-reset-master"

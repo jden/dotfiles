@@ -3,7 +3,9 @@ export DOTFILES="$HOME/.dotfiles"
 export EDITOR=vim
 source "$DOTFILES/modules/preamble.sh"
 
-export SCROLLROOT="$HOME/Code/tryscroll/scroll"
+
+export CODE_HOME="$HOME/Code"
+export SCROLL_HOME="$HOME/tryscroll/scroll"
 
 # P source "$DOTFILES/.aliases"
 __include aliases
