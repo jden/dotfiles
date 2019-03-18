@@ -5,7 +5,7 @@ source "$DOTFILES/modules/preamble.sh"
 
 
 export CODE_HOME="$HOME/Code"
-export SCROLL_HOME="$HOME/tryscroll/scroll"
+export SCROLL_HOME="$CODE_HOME/tryscroll/scroll"
 
 # P source "$DOTFILES/.aliases"
 __include aliases
