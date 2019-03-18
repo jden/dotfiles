@@ -47,7 +47,7 @@ function log_shell_event() {
   fi
 
 
-  J=$(printf '{"time":%s,"shellpid":"%s","user":"%s"' $time $shellpid $user)
+  J=$(printf '{"time":%s,"shellpid":"%s","user":"%s","hostname":"%s"' $time $shellpid $user $DOTFILES_HOSTNAME)
   if [[ $network != "" ]]; then
     J="$J$(printf ',"network":"%s"' "$network")"
   else

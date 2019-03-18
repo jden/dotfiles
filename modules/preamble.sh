@@ -5,6 +5,7 @@ function timestamp () {
   echo $(($(gdate +%s%N)/1000000))
 }
 export DOTFILES_START=$(timestamp)
+export DOTFILES_HOSTNAME=$(hostname -f -s)
 
 function __profile () {
   $@ && return $? # comment out to enable profiling
