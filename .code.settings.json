@@ -16,6 +16,7 @@
   "editor.snippetSuggestions": "bottom",
   "editor.formatOnSave": true,
   "editor.trimAutoWhitespace": true,
+  "prettier.disableLanguages": ["html"],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,

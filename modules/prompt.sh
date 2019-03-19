@@ -11,7 +11,7 @@ function __terminal_title() {
 }
 
 function __set_title() {
-  export __TITLE="$1 "
+  export __TITLE="$@ "
   case "$TERM" in
   screen*) # set window title tmux
     printf '\033k$1\033\\'
