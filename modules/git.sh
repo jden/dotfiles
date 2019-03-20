@@ -6,6 +6,7 @@ git config --global mergetool.diffmerge.cmd 'diffmerge --merge --result="$MERGED
 git config --global mergetool.diffmerge.trustExitCode true
 git config --global alias.whomst blame
 git config --global alias.whomstdve blame
+git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 
 # commands
 function cam () {
