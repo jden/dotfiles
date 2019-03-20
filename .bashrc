@@ -11,6 +11,7 @@ export SCROLL_HOME="$CODE_HOME/tryscroll/scroll"
 __include aliases
 
 export PATH="$HOME/bin:$PATH:/usr/libexec"
+PATH="$PATH:/usr/local/opt/gettext/bin" #grr @ brew
 
 export JAVA_HOME=$(java_home)
 export ANDROID_HOME="$HOME/Library/Android/sdk"

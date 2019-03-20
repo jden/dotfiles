@@ -1,4 +1,7 @@
-# path like npm (run local bins first)
+# setup fnm (node version manager) env
+PATH="$HOME/.fnm/current/bin:$PATH"
+
+# path like npm (run package-local bins first)
 PATH="./node_modules/.bin:$PATH"
 
 function tdd() {

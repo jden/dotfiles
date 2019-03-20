@@ -13,3 +13,8 @@ casks=(
   virtualbox
 )
 brew cask install ${casks[*]}
+
+# fnm + node
+curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
+fnm install latest
+fnm use latest
