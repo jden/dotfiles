@@ -1,20 +1,31 @@
+function needs {
+  ! command -v $1 > /dev/null
+}
+
+if needs brew; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 packages=(
   tmux
+  jid
 )
 brew install ${packages[*]}
 
 casks=(
+  hyper
   google-chrome
+  firefox
   virtualbox
-  iterm2
   spectacle
   visual-studio-code
   diffmerge
-  virtualbox
 )
 brew cask install ${casks[*]}
 
 # fnm + node
-curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
-fnm install latest
-fnm use latest
+if needs fnm; then
+  curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
+  fnm install latest
+  fnm use latest
+fi

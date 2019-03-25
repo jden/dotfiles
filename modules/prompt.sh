@@ -53,6 +53,7 @@ function __end_prompt() {
 
 PS1=""
 PS1="$PS1"'$(__ps1_errs)\n' # show exit code
+
 case "$TERM" in
   screen*) # set window title tmux
     PS1="$PS1"'\033k$(__terminal_title)\033\\'
@@ -61,14 +62,13 @@ case "$TERM" in
     PS1="$PS1"'\[\033]0;$(__terminal_title)\007\]'
     ;;
 esac
-# # set window title iterm
-if test -z "$WINELOADERNOEXEC"
-then
-  PS1="$PS1"'\[\033[32m\]'       # change color
-  PS1="$PS1"'$(__git_ps1 "%s") ' # bash function
-fi
+
+# PS1="$PS1"'$(git status origin/master --short --branch)\n'
+PS1="$PS1"'$(is-git-clean && echo ✨ || echo 🥀)'
+PS1="$PS1"'\[\033[32m\]'       # change color
+PS1="$PS1"'$(__git_ps1 "%s")' # bash function
 PS1="$PS1"'\[\033[33m\]'       # change color
-PS1="$PS1"'\w'                 # current working directory
+PS1="$PS1"' \w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]'        # change color
 PS1="$PS1"' \D{%l:%M} $(__get_emoji)\n'
 PS1="$PS1"'λ '                 # prompt

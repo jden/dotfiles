@@ -12,6 +12,9 @@ git config --global alias.whomst blame
 git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 
+#plumbing
+alias is-git-clean="[[ $(git status --short | wc -l) -eq 0 ]]"
+
 # commands
 function cam () {
   npm test &&
