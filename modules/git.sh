@@ -13,7 +13,12 @@ git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 
 #plumbing
-alias is-git-clean="[[ $(git status --short 2>/dev/null | wc -l) -eq 0 ]]"
+function is-git-clean () {
+  if [[ $(git status --short 2>/dev/null | wc -l) -eq 0 ]]; then
+    return
+  fi
+  return 1
+}
 
 # commands
 function cam () {
