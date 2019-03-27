@@ -28,7 +28,6 @@ alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
 function commitrc () {
-  set +x
   gitrc commit -am "${1:-save settings}" || return 1
   log_shell_event dotfiles.saved
 }
