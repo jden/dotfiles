@@ -69,7 +69,7 @@ alias gri="git fetch && git rebase origin/master -i"
 alias grit="git"
 # alias rmbranches="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | xargs -p git branch -D"
 # alias cleanreviews="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | grep review- | xargs -p git branch -D"
-
+alias gg="git grep"
 
 # work
 alias sc="cd ~/Code/tryscroll/scroll"
