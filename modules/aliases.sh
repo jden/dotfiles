@@ -27,9 +27,16 @@ alias resource="source ~/.bashrc && log_shell_event dotfiles.resource && echo re
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
-alias commitrc="gitrc commit -am 'save settings' && log_shell_event dotfiles.saved"
+function commitrc () {
+  gitrc commit -am "${1:-save settings}" || return 1
+  log_shell_event dotfiles.saved
+}
 alias pushrc="gitrc push origin master"
-alias syncrc="pullrc && commitrc && pushrc"
+function syncrc () {
+  pullrc || return 1
+  commitrc "$@" || return 1
+  pushrc || return 1
+}
 
 # navigation
 alias cj="cd ~/Code/jsdnxx"
