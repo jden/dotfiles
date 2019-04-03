@@ -27,7 +27,6 @@ alias resource="source ~/.bashrc && log_shell_event dotfiles.resource && echo re
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
-alias glorc="gitrc "
 function commitrc () {
   message=${1:-save settings}
   gitrc commit -am "$message" || return 1
