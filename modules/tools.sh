@@ -67,3 +67,24 @@ function log_shell_event() {
 function tail_shell_log() {
   tail $1 $SHELL_LOG
 }
+
+function secret () {
+  case $1 in
+    get)
+      NAME="$2"
+      KEYCHAIN="${3:-$HOME/Library/Keychains/login.keychain-db}"
+      SECRET=$(security find-generic-password -w -s "$2" "$KEYCHAIN" 2> /dev/null)
+      if [[ $SECRET == "" ]]; then
+        echo Could not read secret: $NAME
+        return 1
+      fi
+      echo $SECRET
+      ;;
+    help)
+      echo 'secret get <name> <keychain?>'
+      ;;
+    *)
+      echo invalid command $1, see "'secret help'"
+      return 1
+    esac
+}
