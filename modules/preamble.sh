@@ -1,5 +1,6 @@
 # preamble
 # __BASHRC_DEBUG=true
+# __BASHRC_PROFILE=true
 
 function timestamp () {
   echo $(($(gdate +%s%N)/1000000))
@@ -8,13 +9,17 @@ export DOTFILES_START=$(timestamp)
 export DOTFILES_HOSTNAME=$(hostname -f -s)
 
 function __profile () {
-  $@ && return $? # comment out to enable profiling
+  if [[ ! $__BASHRC_PROFILE ]]; then
+    $@ && return $?
+  fi
 
   local _START=$(timestamp)
   $@
+  RET=$?
   local elapsed=$(expr $(timestamp) - $_START)
   local from_start=$(expr $(timestamp) - $DOTFILES_START)
-  echo '`'"$@"'`'" $elapsed +$from_start"
+  echo '  `'"$@"'`'" $elapsed +$from_start"
+  return $RET
 }
 alias P=__profile
 

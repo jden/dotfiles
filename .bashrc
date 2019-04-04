@@ -23,7 +23,7 @@ export SHELL_LOG="$HOME/.shell_log"
 # __include ruby
 __include node
 __include go
-__include git
+__include git_profile
 
 __include tools
 
