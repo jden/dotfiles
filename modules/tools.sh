@@ -88,3 +88,12 @@ function secret () {
       return 1
     esac
 }
+
+function xin () {
+  if [[ $1  == "-p" ]]; then
+    PARALLEL="-P20"
+    shift
+  fi
+  # cat - | xargs -n1 $PARALLEL -t (cd "$(dirname {})"; '"$@"'
+  cat - | xargs -n1 $PARALLEL -I{} sh -c 'cd $(dirname {}); '"$@"
+}
