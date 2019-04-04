@@ -11,6 +11,8 @@ git config --global url."ssh://git@github.com".insteadOf "https://github.com"
 git config --global alias.whomst blame
 git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
+git config --global alias.find 'ls-files'
+alias gfg="git ls-files | grep"
 
 #plumbing
 function is-git-clean () {
