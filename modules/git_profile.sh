@@ -6,6 +6,7 @@ P source "$DOTFILES/scripts/git-prompt.sh"
 ## git aliases
 
 alias gfg="git ls-files | grep"
+alias gfp="gfg package.json"
 
 alias hgo=github_go
 alias hpr="hub pr list"
