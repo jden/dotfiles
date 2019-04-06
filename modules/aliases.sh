@@ -41,7 +41,7 @@ function syncrc () {
 alias glorc="gitrc log --pretty=format:'%C(dim white)%h%Creset %C(bold white)%>(15)%ar%Creset %Cgreen%d%Creset %s' --color=always"
 
 # navigation
-alias cj="cd ~/Code/jsdnxx"
+alias cj="cd ~/Code/junosuarez"
 alias ghub="npx ghub-cli"
 
 
