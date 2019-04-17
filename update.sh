@@ -4,6 +4,7 @@ packages=(
   tmux
   jid
   coreutils
+  inetutils
   reattach-to-user-namespace # see see https://github.com/Microsoft/vscode/issues/12587#issuecomment-280681178
   cloc
 )
