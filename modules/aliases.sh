@@ -82,11 +82,24 @@ function git_grep_source(){
   git grep -I $@ *.{java,js,jsx,ts,tsx}
 }
 alias gg="git_grep_source"
+function ggjava () {
+  git grep -I $@ *.{java}
+}
 
 # work
+alias gitw="git --git-dir=$SCROLL_HOME/.git --work-tree=$SCROLL_HOME"
 alias sc="cd ~/Code/tryscroll/scroll"
+function sg () {
+  gitw grep -I $@ *.{java,js,jsx,ts,tsx}
+}
 alias scs="cd ~/Code/tryscroll/scroll/server"
+function sgs () {
+  gitw grep -I $@ $SCROLL_HOME/server/**/*.java
+}
 alias scc="cd ~/Code/tryscroll/scroll/client"
+function sgc () {
+  gitw grep -I $@ $SCROLL_HOME/client/**/*.{js,jsx,ts,tsx}
+}
 alias review='sc && log_shell_event work.review -m "$@" && $SCROLL_HOME/review.sh'
 
 # npm workflow
