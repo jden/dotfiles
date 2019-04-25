@@ -101,7 +101,7 @@ function sgc () {
   gitw grep -I $@ $SCROLL_HOME/client/**/*.{js,jsx,ts,tsx}
 }
 alias review='sc && log_shell_event work.review -m "$@" && $SCROLL_HOME/review.sh'
-alias nc="cd ~/Code/Nuzzel"
+alias scn="cd ~/Code/Nuzzel"
 
 # npm workflow
 alias npmi="npm install"
