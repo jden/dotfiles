@@ -97,3 +97,7 @@ function xin () {
   # cat - | xargs -n1 $PARALLEL -t (cd "$(dirname {})"; '"$@"'
   cat - | xargs -n1 $PARALLEL -I{} sh -c 'cd $(dirname {}); '"$@"
 }
+
+# configure ssh agent for key forwarding
+eval `ssh-agent`
+ssh-add -K -q

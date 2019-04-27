@@ -24,28 +24,7 @@ export SHELL_LOG="$HOME/.shell_log"
 __include node
 __include go
 __include git_profile
-
 __include tools
-
-
-# function log() {
-#   local serial=$(ls | grep "$1" | wc -l | sed -e "s/\s*//")
-#   local file="$1.$serial.log"
-#   date "+%c" > $file
-#   echo "$*" >> $file
-#   echo "---" >> $file
-#   $* 2>&1 | tee -a $file ; local exitCode=${PIPESTATUS[0]}
-#   echo "---" >> $file
-#   echo "⇒ E$exitCode" >> $file
-#   return $exitCode
-# }
-
-function echos() {
-  local port=$1
-  node -e "require('http').createServer(function (r, s) { console.log(r. method, r.url); s.end() }).listen($port, function (e) { console.log(e || 'listening on $port')})"
-}
-
-
 
 ## Prompt
 __include prompt

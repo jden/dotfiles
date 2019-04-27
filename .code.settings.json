@@ -48,5 +48,6 @@
   "java.autobuild.enabled": false,
   "java.errors.incompleteClasspath.severity": "ignore",
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "gitblame.statusBarMessageFormat": "By ${author.name} ( ${time.ago} )"
 }
