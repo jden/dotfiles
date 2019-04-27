@@ -99,5 +99,5 @@ function xin () {
 }
 
 # configure ssh agent for key forwarding
-eval `ssh-agent`
+eval `ssh-agent` > /dev/null
 ssh-add -K -q
