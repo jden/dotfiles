@@ -1,5 +1,5 @@
 function demomode {
-  export PS1="> "
+  export PS1="λ "
   clear
   echo demo mode activated
   sleep .5
