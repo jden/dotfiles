@@ -12,6 +12,7 @@ __include aliases
 
 export PATH="$HOME/bin:$PATH:/usr/libexec"
 PATH="$PATH:/usr/local/opt/gettext/bin" #grr @ brew
+PATH="$PATH:$HOME/Library/Android/sdk/platform-tools" # android!
 
 export JAVA_HOME=$(java_home)
 export ANDROID_HOME="$HOME/Library/Android/sdk"
