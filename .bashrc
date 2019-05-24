@@ -21,6 +21,7 @@ PATH="$PATH:$ANDROID_HOME/tools/bin"
 PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 export JAVA_HOME=$(java_home)
+export CATALINA_HOME="/usr/local/Cellar/tomcat@6/6.0.53/libexec/"
 
 export SHELL_LOG="$HOME/.shell_log"
 

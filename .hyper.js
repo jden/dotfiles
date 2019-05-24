@@ -154,5 +154,6 @@ module.exports = {
   keymaps: {
     // Example
     // 'window:devtools': 'cmd+alt+o',
-  }
+  },
+  scrollback: 50000
 };
