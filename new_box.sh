@@ -8,8 +8,7 @@ fi
 
 # fnm + node
 if needs fnm; then
-  curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
-  ln -sf ~/.fnm/fnm ~/bin/fnm
+  brew install Schniz/tap/fnm
   fnm install latest
   fnm use latest
 fi
