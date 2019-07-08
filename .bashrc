@@ -1,4 +1,5 @@
-# login -pfq $(whoami) /usr/local/bin/bash
+export HISTFILESIZE=9999
+
 export DOTFILES="$HOME/.dotfiles"
 export EDITOR=vim
 source "$DOTFILES/modules/preamble.sh"
@@ -7,7 +8,6 @@ source "$DOTFILES/modules/preamble.sh"
 export CODE_HOME="$HOME/Code"
 export SCROLL_HOME="$CODE_HOME/tryscroll/scroll"
 
-# P source "$DOTFILES/.aliases"
 __include aliases
 
 export PATH="$HOME/bin:$PATH:/usr/libexec"
