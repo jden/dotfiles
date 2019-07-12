@@ -110,6 +110,8 @@ alias npmr="npm run"
 alias shrink="npm prune && npm shrinkwrap"
 alias reshrink="rm npm-shrinkwrap.json && shrink"
 
+alias yup="yarn upgrade-interactive --latest"
+
 # docker
 alias dii="docker image inspect"
 alias dci="docker container inspect"
