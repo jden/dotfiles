@@ -117,8 +117,4 @@ alias dii="docker image inspect"
 alias dci="docker container inspect"
 
 # tools
-# alias yarn="npx yarn"
-# temporary, see https://github.com/Schniz/fnm/issues/59
-alias fnm-upgrade="curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell"
-
 alias keychain="open '/Applications/Utilities/Keychain Access.app'"

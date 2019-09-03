@@ -28,5 +28,3 @@ casks=(
 )
 brew cask install ${casks[*]}
 brew cask upgrade
-
-curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
