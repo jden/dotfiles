@@ -14,7 +14,7 @@ git clone git@github.com:jden/.dotfiles.git
 
 `CMD + SHIFT + .`
 
-### windows
+### windows (no longer really supported)
 
 with mingw
 

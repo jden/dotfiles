@@ -28,14 +28,15 @@ chmod +x ~/bin/git-cloc
 : program settings
 :
 # Hyperterm settings
-ln -sf ~/.dotfiles/.hyper.js ~/.hyper.js
+ln -sf ~/.dotfiles/config/hyper.js ~/.hyper.js
 source ~/.dotfiles/modules/git_install.sh
 
 case $(uname) in
   Darwin)
     # VS Code settings
-    ln -sf ~/.dotfiles/.code.settings.json ~/Library/Application\ Support/Code/User/settings.json
-    git config --global core.excludesfile ~/.dotfiles/gitignore
+    ln -sf ~/.dotfiles/config/code.settings.json ~/Library/Application\ Support/Code/User/settings.json
+    # set global git ignore
+    git config --global core.excludesfile ~/.dotfiles/config/gitignore
     ;;
   Linux)
     ;;
