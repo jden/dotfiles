@@ -52,7 +52,49 @@ module.exports = {
     borderColor: "#333",
 
     // custom CSS to embed in the main window
-    css: "",
+    css: `
+    /* lots of ridiculous stuff to make the search bar look better */
+    div.hyper-search-wrapper{
+      border: 0 !important;
+      border-radius: 0 !important;
+      background-color: #aaa !important;
+      height: 30px !important;
+    }
+    .hyper-search-wrapper:before{
+      display:none;
+    }
+    #hyper-search-input.hyper-search-input{
+      opacity: 1 !important;
+      border-radius: 0 !important;
+      padding-left: 6px !important;
+      margin-left: 0;
+      background: transparent !important;
+      font-family: monospace !important;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: none !important;
+    }
+    .hyper-search-case-button{
+      opacity: 1 !important;
+      border-radius: 0 !important;
+      margin: 0 3px 0 0 !important;
+    }
+    .hyper-search-case-button-unfocused{
+      background: none !important;
+    }
+    .hyper-search-case-button::after{
+      content: 'Aa' !important;
+    }
+
+    .hyper-search-wrapper .hyper-search-next-button:nth-of-type(2),
+    .hyper-search-wrapper .hyper-search-previous-button:nth-of-type(1)  {
+      border-radius: 0 !important;
+      border: none !important;
+      color: #666 !important;
+      margin-right: 2px !important;
+    }
+
+    `,
 
     // custom CSS to embed in the terminal window
     termCSS: "",
@@ -143,7 +185,8 @@ module.exports = {
     "hyper-spotify",
     "hyper-night-owl",
     "hyper-confirm",
-    "hyper-quit"
+    "hyper-quit",
+    "hyper-search"
   ],
 
   // in development, you can create a directory under
@@ -155,5 +198,5 @@ module.exports = {
     // Example
     // 'window:devtools': 'cmd+alt+o',
   },
-  scrollback: 50000
+  scrollback: 100000
 };
