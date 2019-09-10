@@ -21,7 +21,7 @@ function bumpdep() {
   REF=$DEP@latest
   DEV=$2
 
-  if [ $(cat package.json | jq --arg d $DEP '[.dependencies[$d] != null, .devDependencies[$d] != null] | any' -e) ]; then
+  if [ $(cat package.json | jq --arg d "$DEP" '[.dependencies["$d"] != null, .devDependencies["$d"] != null] | any' -e) ]; then
     TYPE=transitive
   else
     TYPE=direct

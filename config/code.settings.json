@@ -39,7 +39,7 @@
     "**/*.js.map": true,
     "vendor/*": true
   },
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "window.title": "${activeEditorMedium}",
   "workbench.colorTheme": "Visual Studio Dark",
   "java.autobuild.enabled": false,
