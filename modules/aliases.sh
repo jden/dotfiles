@@ -35,7 +35,7 @@ function commitrc () {
 alias pushrc="gitrc push origin master"
 function syncrc () {
   pullrc || return 1
-  commitrc "$1" || return 1
+  commitrc "$@" || return 1
   pushrc || return 1
 }
 alias glorc="gitrc log --pretty=format:'%C(dim white)%h%Creset %C(bold white)%>(15)%ar%Creset %Cgreen%d%Creset %s' --color=always"
