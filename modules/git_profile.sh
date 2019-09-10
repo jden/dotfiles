@@ -13,7 +13,9 @@ alias hpr="hub pull-request"
 alias prs="hub pr list"
 
 function git-reset-master () {
-  git stash push --all -m "${*:-RESET} - rsm $(whatbranch)@$(git rev-parse --short HEAD) $(date +'%Y-%m-%dT%l:%M%z')"
+  local MESSAGE
+  MESSAGE="${*:-RESET} - rsm $(whatbranch)@$(git rev-parse --short HEAD) $(date +'%Y-%m-%dT%l:%M%z')"
+  git stash push --include-untracked -m "$MESSAGE"
   git checkout master
   git fetch origin master
   git reset origin/master --hard
