@@ -1,6 +1,8 @@
 function bundle_rake_test () {
   bundle exec rake test TEST=$1
 }
+alias b="bundle exec"
+alias bt="b ruby -Ilib/test"
 alias brt=bundle_rake_test
 
 # chruby

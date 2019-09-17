@@ -39,7 +39,7 @@
     "**/*.js.map": true,
     "vendor/*": true
   },
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "window.title": "${activeEditorMedium}",
   "workbench.colorTheme": "Visual Studio Dark",
   "java.autobuild.enabled": false,
@@ -117,5 +117,6 @@
   "workbench.activityBar.visible": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "eslint.lintTask.enable": true
 }
