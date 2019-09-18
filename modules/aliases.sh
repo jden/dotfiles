@@ -84,15 +84,16 @@ function ggjava () {
 
 # work
 alias gitw="git --git-dir=$SCROLL_HOME/.git --work-tree=$SCROLL_HOME"
-alias sc="cd ~/Code/tryscroll/scroll"
+alias sc="cd $SCROLL_HOME"
 function sg () {
   gitw grep -I $@ *.{java,js,jsx,ts,tsx}
 }
-alias scs="cd ~/Code/tryscroll/scroll/server"
+alias scs="cd $SROLL_HOME/server"
 function sgs () {
   gitw grep -I $@ $SCROLL_HOME/server/**/*.java
 }
-alias scc="cd ~/Code/tryscroll/scroll/client"
+alias scc="cd $SCROLL_HOME/client"
+alias scf="cd $SCROLL_HOME/cloud-functions"
 function sgc () {
   gitw grep -I $@ $SCROLL_HOME/client/**/*.{js,jsx,ts,tsx}
 }
