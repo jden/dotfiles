@@ -72,6 +72,7 @@ alias rmbr="git branch --merged master | grep -v ' master$' | xargs git branch -
 alias grm="git fetch && git rebase origin/master"
 alias gri="git fetch && git rebase origin/master -i"
 alias grit="git"
+alias pushpr="push && hub pull-request"
 # alias rmbranches="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | xargs -p git branch -D"
 # alias cleanreviews="[[ $(git rev-parse --abbrev-ref HEAD) == master ]] && git branch --no-merged | grep review- | xargs -p git branch -D"
 function git_grep_source(){
