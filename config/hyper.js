@@ -94,6 +94,32 @@ module.exports = {
       margin-right: 2px !important;
     }
 
+    .tab_tab {
+      border-bottom: 1px solid #fff4 !important;
+    }
+
+    .tab_active {
+      background-color: #011623 !important;
+      border: 1px solid #fff4 !important;
+      border-bottom: none !important;
+      border-radius: 4px 4px 0 0;
+      color: #d2dee7 !important;
+
+    }
+    .tab_active::before {
+      background-color: #011627;
+    }
+    .tab_textActive {
+      background-color: transparent !important;
+    }
+    .tab_text {
+      background-color: transparent !important;
+    }
+
+    .header_header .tabs_borderShim {
+      border-bottom: 1px solid #fff4 !important;
+    }
+
     `,
 
     // custom CSS to embed in the terminal window

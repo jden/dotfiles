@@ -16,7 +16,9 @@
   "editor.snippetSuggestions": "bottom",
   "editor.formatOnSave": true,
   "editor.trimAutoWhitespace": true,
-  "prettier.disableLanguages": ["html"],
+  "prettier.disableLanguages": [
+    "html"
+  ],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -39,7 +41,7 @@
     "**/*.js.map": true,
     "vendor/*": true
   },
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "window.title": "${activeEditorMedium}",
   "workbench.colorTheme": "Visual Studio Dark",
   "java.autobuild.enabled": false,
@@ -118,5 +120,27 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "eslint.lintTask.enable": true
+  "eslint.lintTask.enable": true,
+  "git.ignoreLegacyWarning": true,
+  "editor.maxTokenizationLineLength": 200000000,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "terraform.indexing": {
+    "enabled": false,
+    "liveIndexing": false,
+    "delay": 500,
+    "exclude": [
+      ".terraform/**/*",
+      "**/.terraform/**/*"
+    ]
+  },
+  "terraform.languageServer": {
+    "enabled": true,
+    "args": []
+  },
+  "eslint.packageManager": "yarn"
 }

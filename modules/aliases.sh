@@ -89,7 +89,7 @@ alias sc="cd $SCROLL_HOME"
 function sg () {
   gitw grep -I $@ *.{java,js,jsx,ts,tsx}
 }
-alias scs="cd $SROLL_HOME/server"
+alias scs="cd $SCROLL_HOME/server"
 function sgs () {
   gitw grep -I $@ $SCROLL_HOME/server/**/*.java
 }
