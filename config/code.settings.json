@@ -122,7 +122,7 @@
   },
   "eslint.lintTask.enable": true,
   "git.ignoreLegacyWarning": true,
-  "editor.maxTokenizationLineLength": 200000000,
+  "editor.maxTokenizationLineLength": 512,
   "eslint.validate": [
     "javascript",
     "javascriptreact",

@@ -32,6 +32,7 @@ __include node
 __include go
 __include git_profile
 __include tools
+__include rust
 
 ## Prompt
 __include prompt
