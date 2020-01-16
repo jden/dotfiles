@@ -142,5 +142,7 @@
     "enabled": true,
     "args": []
   },
-  "eslint.packageManager": "yarn"
+  "eslint.packageManager": "yarn",
+  "editor.renderControlCharacters": true,
+  "prettier.packageManager": "yarn"
 }

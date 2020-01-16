@@ -82,6 +82,8 @@ alias gg="git_grep_source"
 function ggjava () {
   git grep -I $@ *.{java}
 }
+alias gfom="git fetch origin master --tags"
+alias grom="git rebase origin/master"
 
 # work
 alias gitw="git --git-dir=$SCROLL_HOME/.git --work-tree=$SCROLL_HOME"
