@@ -86,7 +86,8 @@ alias gfom="git fetch origin master --tags"
 alias grom="git rebase origin/master"
 
 # clean up the files left by my git mergetool
-alias cleanorig="find . | grep -e '\.orig$' | xargs rm"
+# shellcheck disable=SC2142 # the $2 below isn't a positional arg, it's an awk column reference
+alias cleanorig="git status --untracked-files --porcelain | grep -e '^?? .*\.orig' | awk '{print \$2}' | xargs rm"
 
 # work
 alias gitw="git --git-dir=$SCROLL_HOME/.git --work-tree=$SCROLL_HOME"
