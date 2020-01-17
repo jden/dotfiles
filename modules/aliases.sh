@@ -85,6 +85,9 @@ function ggjava () {
 alias gfom="git fetch origin master --tags"
 alias grom="git rebase origin/master"
 
+# clean up the files left by my git mergetool
+alias cleanorig="find . | grep -e '\.orig$' | xargs rm"
+
 # work
 alias gitw="git --git-dir=$SCROLL_HOME/.git --work-tree=$SCROLL_HOME"
 alias sc="cd $SCROLL_HOME"
