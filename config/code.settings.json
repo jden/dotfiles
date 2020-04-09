@@ -41,7 +41,6 @@
     "**/*.js.map": true,
     "vendor/*": true
   },
-  "window.zoomLevel": 0,
   "window.title": "${activeEditorMedium}",
   "workbench.colorTheme": "Visual Studio Dark",
   "java.autobuild.enabled": false,
@@ -144,5 +143,8 @@
   },
   "eslint.packageManager": "yarn",
   "editor.renderControlCharacters": true,
-  "prettier.packageManager": "yarn"
+  "prettier.packageManager": "yarn",
+  "gitlens.advanced.telemetry.enabled": false,
+  "gitlens.mode.active": "zen",
+  "editor.accessibilitySupport": "off"
 }
