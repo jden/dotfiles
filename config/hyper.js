@@ -201,6 +201,10 @@ module.exports = {
     hypest: {
       darkmode: true,
       hideControls: true,
+      colors: {
+        green: "#1DC121",
+        yellow: "#C7C329",
+      },
     },
   },
 
