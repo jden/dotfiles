@@ -99,7 +99,7 @@ module.exports = {
     }
 
     .tab_active {
-      background-color: #011623 !important;
+      /* background-color: #011623 !important; */
       border: 1px solid #fff4 !important;
       border-bottom: none !important;
       border-radius: 4px 4px 0 0;
@@ -132,7 +132,7 @@ module.exports = {
     // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
     // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
-    showWindowControls: "",
+    showWindowControls: false,
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
     padding: "12px 14px",
@@ -156,7 +156,7 @@ module.exports = {
       lightBlue: "#6A76FB",
       lightMagenta: "#FD7CFC",
       lightCyan: "#68FDFE",
-      lightWhite: "#FFFFFF"
+      lightWhite: "#FFFFFF",
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -187,7 +187,7 @@ module.exports = {
     copyOnSelect: false,
 
     // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
-    defaultSSHApp: true
+    defaultSSHApp: true,
 
     // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
     // selection is present (`true` by default on Windows and disables the context menu feature)
@@ -197,6 +197,11 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
+    hypest: {
+      darkmode: true,
+      hideControls: true,
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -206,13 +211,16 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+    "hyper-hypest",
     "hypercwd",
-    "hyper-active-tab",
-    "hyper-spotify",
-    "hyper-night-owl",
+    // "hyper-active-tab",
+    // "hyper-highlight-active-pane",
+    // "hyper-spotify",
+    // "hyper-night-owl",
     "hyper-confirm",
     "hyper-quit",
-    "hyper-search"
+    "hyper-search",
+    "hyper-statusline",
   ],
 
   // in development, you can create a directory under
@@ -224,5 +232,5 @@ module.exports = {
     // Example
     // 'window:devtools': 'cmd+alt+o',
   },
-  scrollback: 100000
+  scrollback: 100000,
 };
