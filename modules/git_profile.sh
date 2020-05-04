@@ -17,7 +17,7 @@ function git-reset-master () {
   MESSAGE="${*:-RESET} - rsm $(whatbranch)@$(git rev-parse --short HEAD) $(date +'%Y-%m-%dT%l:%M%z')"
   git stash push --include-untracked -m "$MESSAGE"
   git checkout master
-  git fetch --tags origin master
+  git fetch --force --tags origin master
   git reset origin/master --hard
 }
 alias rsm="git-reset-master"

@@ -202,8 +202,8 @@ module.exports = {
       darkmode: true,
       hideControls: true,
       colors: {
-        green: "#1DC121",
-        yellow: "#C7C329",
+        // green: "#1DC121",
+        // yellow: "#C7C329",
       },
     },
   },
