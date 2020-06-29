@@ -16,23 +16,22 @@
   "editor.snippetSuggestions": "bottom",
   "editor.formatOnSave": true,
   "editor.trimAutoWhitespace": true,
-  "prettier.disableLanguages": [
-    "html"
-  ],
+  "prettier.disableLanguages": ["html"],
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "node_modulesx/*": true,
-    "tmp/cache/*": true,
-    "obj/*": true,
     "*.bundle.js": true,
     "*.js.map": true,
     "**/.classpath": true,
+    "**/.DS_Store": true,
+    "**/.eslintcache": true,
+    "**/.factorypath": true,
+    "**/.git": true,
+    "**/.hg": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/.factorypath": true
+    "**/.svn": true,
+    "node_modulesx/*": true,
+    "obj/*": true,
+    "tmp/cache/*": true
   },
   "search.exclude": {
     "**/node_modulesx": true,
@@ -132,14 +131,13 @@
     "enabled": false,
     "liveIndexing": false,
     "delay": 500,
-    "exclude": [
-      ".terraform/**/*",
-      "**/.terraform/**/*"
-    ]
+    "exclude": [".terraform/**/*", "**/.terraform/**/*"]
   },
   "terraform.languageServer": {
-    "enabled": true,
-    "args": []
+    "external": true,
+    "args": [
+      "serve"
+    ]
   },
   "eslint.packageManager": "yarn",
   "editor.renderControlCharacters": true,
@@ -147,5 +145,7 @@
   "gitlens.advanced.telemetry.enabled": false,
   "gitlens.mode.active": "zen",
   "editor.accessibilitySupport": "off",
-  "window.zoomLevel": 0
+  "window.zoomLevel": 1,
+  "fileTemplates.templates_dir": "/Users/juno/Templates/Code",
+  "java.semanticHighlighting.enabled": true
 }

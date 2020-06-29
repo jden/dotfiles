@@ -220,7 +220,7 @@ module.exports = {
     // "hyper-active-tab",
     // "hyper-highlight-active-pane",
     // "hyper-spotify",
-    // "hyper-night-owl",
+    "hyper-night-owl",
     "hyper-confirm",
     "hyper-quit",
     "hyper-search",
