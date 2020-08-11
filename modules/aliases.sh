@@ -101,6 +101,7 @@ function sgs () {
   gitw grep -I $@ $SCROLL_HOME/server/**/*.java
 }
 alias scc="cd $SCROLL_HOME/client"
+alias sca="cd $SCROLL_HOME/../analytics"
 alias scf="cd $SCROLL_HOME/cloud-functions"
 function sgc () {
   gitw grep -I $@ $SCROLL_HOME/client/**/*.{js,jsx,ts,tsx}
