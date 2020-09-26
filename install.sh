@@ -11,12 +11,14 @@ ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
 :
 : bins
 :
-mkdir -p ~/bin
+mkdir -p ~/bin ~/.config
 cp -r ~/.dotfiles/bin ~
 ln -sf ~/.dotfiles/scripts/git-uncommit.sh ~/bin/git-uncommit
 ln -sf ~/.dotfiles/scripts/git-thank.sh ~/bin/git-thank
 ln -sf ~/.dotfiles/scripts/grit-attackclone.sh ~/bin/git-attackclone
 ln -sf ~/.dotfiles/.status ~/bin/status
+ln -sf ~/.dotfiles/config/starship.toml ~/.config/starship.toml
+
 # binstub for git alias `git cloc`
 cat << EOF > ~/bin/git-cloc
 #! /bin/bash

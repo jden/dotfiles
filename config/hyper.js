@@ -36,7 +36,7 @@ module.exports = {
     cursorShape: "UNDERLINE",
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: false,
+    cursorBlink: true,
 
     // color of the text
     foregroundColor: "rgba(0,205,46,0.9)",
@@ -215,16 +215,18 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hyper-hypest",
+    // open new tabs in cwd
     "hypercwd",
-    // "hyper-active-tab",
-    // "hyper-highlight-active-pane",
-    // "hyper-spotify",
+
+    // themeing
+    "hyper-hypest",
     "hyper-night-owl",
+
+    "hyper-pane",
+
     "hyper-confirm",
     "hyper-quit",
     "hyper-search",
-    // "hyper-statusline",
   ],
 
   // in development, you can create a directory under
@@ -233,8 +235,9 @@ module.exports = {
   localPlugins: [],
 
   keymaps: {
-    // Example
-    // 'window:devtools': 'cmd+alt+o',
+    // defaults https://github.com/vercel/hyper/blob/master/app/keymaps/darwin.json
+    "pane:splitVertical": "command+\\",
+    "pane:splitHorizontal": "command+shift+\\",
   },
   scrollback: 100000,
 };
