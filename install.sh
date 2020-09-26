@@ -59,8 +59,17 @@ npm install --global ${deps[*]}
 :
 : installing fonts
 :
-# check if exists in local fonts, else
-curl https://raw.githubusercontent.com/adobe-fonts/source-code-pro/release/OTF/SourceCodePro-Regular.otf  > ~/Library/Fonts/SourceCodePro-Regular.otf
+# curl https://raw.githubusercontent.com/adobe-fonts/source-code-pro/release/OTF/SourceCodePro-Regular.otf  > ~/Library/Fonts/SourceCodePro-Regular.otf
+# install patched nerdfonts version of Source Code Pro https://www.nerdfonts.com/font-downloads
+TMP=$(mktemp)
+rm "$TMP"
+mkdir -p "$TMP"
+cd "$TMP" || exit
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip > tmp.zip
+unzip tmp.zip
+rm tmp.zip
+cp -- *.ttf ~/Library/Fonts/
+rm -rf "$TMP"
 
 :
 : setup ok

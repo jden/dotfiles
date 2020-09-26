@@ -224,7 +224,7 @@ module.exports = {
     "hyper-confirm",
     "hyper-quit",
     "hyper-search",
-    "hyper-statusline",
+    // "hyper-statusline",
   ],
 
   // in development, you can create a directory under

@@ -29,15 +29,16 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.svn": true,
-    "node_modulesx/*": true,
+    "node_modules/*x": true,
     "obj/*": true,
     "tmp/cache/*": true
   },
   "search.exclude": {
-    "**/node_modulesx": true,
-    "**/bower_components": true,
     "**/*.bundle.js": true,
     "**/*.js.map": true,
+    "**/bower_components": true,
+    "**/node_modules": false,
+    "**/node_modulesx": true,
     "vendor/*": true
   },
   "window.title": "${activeEditorMedium}",
