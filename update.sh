@@ -8,8 +8,9 @@ packages=(
   reattach-to-user-namespace # see see https://github.com/Microsoft/vscode/issues/12587#issuecomment-280681178
   cloc
   stubby # secure dns
+  lsd # ls replacement https://github.com/Peltoche/lsd
 )
-brew install ${packages[*]}
+brew install "${packages[*]}"
 brew upgrade
 
 # setup stubby
@@ -26,5 +27,5 @@ casks=(
   visual-studio-code
   diffmerge
 )
-brew cask install ${casks[*]}
+brew cask install "${casks[*]}"
 brew cask upgrade

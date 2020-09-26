@@ -1,8 +1,10 @@
 #
 alias edit=code
 alias ls="CLICOLOR_FORCE=1 ls -p -G" # show slashes after folders and color
+alias ls="lsd --classify --group-dirs first " # https://github.com/Peltoche/lsd
 alias less="less -R" # enable color
 alias cls="clear && echo 🔎 && ls"
+
 alias la="ls -a"
 alias ll="ls -al"
 alias ld="ls -A | grep -e ^\\." # list dotfiles
