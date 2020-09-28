@@ -1,0 +1,87 @@
+
+prompt_order = [
+    "username",
+    "hostname",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    "hg_branch",
+    "directory",
+    "docker_context",
+    "package",
+    "dotnet",
+    "elixir",
+    "elm",
+    "erlang",
+    "golang",
+    "java",
+    "julia",
+    "nim",
+    "nodejs",
+    "ocaml",
+    "php",
+    "purescript",
+    "python",
+    "ruby",
+    "rust",
+    "terraform",
+    "zig",
+    "nix_shell",
+    "conda",
+    "memory_usage",
+    "aws",
+    "env_var",
+    "crystal",
+    "cmd_duration",
+    "kubernetes",
+    "jobs",
+    "battery",
+    "time",
+    "custom.foo",
+    "line_break",
+    "character",
+
+]
+
+[directory]
+truncate_to_repo = true
+fish_style_pwd_dir_length = 1
+
+[package]
+disabled = true
+
+# Replace the "❯" symbol in the prompt with "λ"
+[character]      # The name of the module we are configuring is "character"
+symbol = "λ"     # The "symbol" segment is being set to "➜"
+style_success = "bold white"
+
+[battery]
+full_symbol = ""
+charging_symbol = "⚡️ "
+discharging_symbol = " "
+percent = false
+[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
+threshold = 15
+style = "bold red"
+
+[aws]
+disabled = true
+
+[nodejs]
+prefix = ""
+
+[kubernetes]
+disabled = false
+style = "blue"
+[kubernetes.context_aliases]
+"gke_affable-visitor-137123_us-central1-b_cluster-6" = "prod"
+
+[custom.foo]
+command = "echo foo"
+when = "true"
+disabled = true
+
+[time]
+disabled = false
+format = "%H:%M" # see https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html
