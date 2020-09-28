@@ -37,8 +37,6 @@
     "**/*.bundle.js": true,
     "**/*.js.map": true,
     "**/bower_components": true,
-    "**/node_modules": false,
-    "**/node_modulesx": true,
     "tsconfig.tsbuildinfo": true,
     "vendor/*": true
   },

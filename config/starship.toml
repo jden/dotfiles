@@ -48,6 +48,9 @@ prompt_order = [
 truncate_to_repo = true
 fish_style_pwd_dir_length = 1
 
+[git_status]
+stashed = ""
+
 [package]
 disabled = true
 
