@@ -10,7 +10,7 @@ export SCROLL_HOME="$CODE_HOME/tryscroll/scroll"
 
 __include aliases
 
-export PATH="$HOME/bin:$PATH:/usr/libexec"
+export PATH="$HOME/bin:$PATH:/usr/libexec:/usr/local/sbin"
 PATH="$PATH:/usr/local/opt/gettext/bin" #grr @ brew
 
 # android!
