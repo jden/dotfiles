@@ -7,6 +7,9 @@ git config --global merge.tool diffmerge
 git config --global mergetool.diffmerge.cmd 'diffmerge --merge --result="$MERGED" "$LOCAL" "$(if test -f "$BASE"; then echo "$BASE"; else echo "$LOCAL"; fi)" "$REMOTE"'
 git config --global mergetool.diffmerge.trustExitCode true
 
+## make pull safe
+git config --global pull.ff only
+
 ## have sensible upstream push behavior for new branches
 git config --global push.default current
 
