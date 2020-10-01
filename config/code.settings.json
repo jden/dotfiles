@@ -41,7 +41,7 @@
     "vendor/*": true
   },
   "window.title": "${activeEditorMedium}",
-  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.colorTheme": "Noctis Minimus",
   "java.autobuild.enabled": false,
   "java.errors.incompleteClasspath.severity": "ignore",
   "editor.suggestSelection": "first",
