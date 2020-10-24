@@ -14,6 +14,8 @@ packages=(
   stubby # secure dns
   tmux
   p7zip # handle various archive formats https://www.7-zip.org/
+  imagemagick
+  graphviz
 )
 
 # sort and diff packages to find the new ones

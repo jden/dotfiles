@@ -50,7 +50,10 @@ alias cd..="cd .."
 alias lc="wc -l" #line count
 
 # terminal
-alias icat="kitty +kitten icat"
+alias icat="kitty icat --align=left"
+alias isvg="rsvg-convert | icat"
+## dot with default styles, reference https://graphviz.org/doc/info/attrs.html
+alias idot="dot -Gbgcolor=transparent -Ncolor=white -Nfontcolor=white -Nfontsize=18 -Nfontname=monospace -Ecolor=white -Tsvg | rsvg-convert | icat"
 
 # git aliases
 alias g=git
