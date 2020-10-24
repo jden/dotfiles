@@ -147,5 +147,9 @@
   "editor.accessibilitySupport": "off",
   "window.zoomLevel": 1,
   "fileTemplates.templates_dir": "/Users/juno/Templates/Code",
-  "java.semanticHighlighting.enabled": true
+  "java.semanticHighlighting.enabled": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

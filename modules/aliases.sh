@@ -49,6 +49,8 @@ alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}
 alias cd..="cd .."
 alias lc="wc -l" #line count
 
+# terminal
+alias icat="kitty +kitten icat"
 
 # git aliases
 alias g=git

@@ -18,6 +18,8 @@ ln -sf ~/.dotfiles/scripts/git-thank.sh ~/bin/git-thank
 ln -sf ~/.dotfiles/scripts/grit-attackclone.sh ~/bin/git-attackclone
 ln -sf ~/.dotfiles/.status ~/bin/status
 ln -sf ~/.dotfiles/config/starship.toml ~/.config/starship.toml
+mkdir -p ~/.config/kitty
+ln -sf ~/.dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
 
 # binstub for git alias `git cloc`
 cat << EOF > ~/bin/git-cloc

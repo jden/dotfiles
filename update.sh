@@ -44,6 +44,7 @@ casks=(
   spectacle
   virtualbox
   visual-studio-code
+  kitty
 )
 # sort and diff casks to find the new ones
 IFS=$'\n' casks=($(sort <<<"${casks[*]}")); unset IFS
