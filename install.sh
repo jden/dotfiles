@@ -57,6 +57,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y --no-m
 deps=(
   npm
   git-recent # https://github.com/paulirish/git-recent/
+  vega-cli # https://vega.github.io/vega/usage/#cli
 )
 npm install --global ${deps[*]}
 
