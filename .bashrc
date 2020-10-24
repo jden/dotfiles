@@ -1,3 +1,4 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export HISTFILESIZE=99999
 
 export DOTFILES="$HOME/.dotfiles"
@@ -20,7 +21,7 @@ PATH="$PATH:$ANDROID_HOME/tools"
 PATH="$PATH:$ANDROID_HOME/tools/bin"
 PATH="$PATH:$ANDROID_HOME/platform-tools"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home -v 11 2>/dev/null)
 export CATALINA_HOME="/usr/local/Cellar/tomcat@6/6.0.53/libexec/"
 
 export SHELL_LOG="$HOME/.shell_log"
@@ -45,4 +46,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source /Users/juno/Library/Preferences/org.dystroy.broot/launcher/bash/br
+# source /Users/juno/Library/Preferences/org.dystroy.broot/launcher/bash/br
