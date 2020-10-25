@@ -1,48 +1,40 @@
-
-prompt_order = [
-    "username",
-    "hostname",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "hg_branch",
-    "directory",
-    "docker_context",
-    "package",
-    "dotnet",
-    "elixir",
-    "elm",
-    "erlang",
-    "golang",
-    "java",
-    "julia",
-    "nim",
-    "nodejs",
-    "ocaml",
-    "php",
-    "purescript",
-    "python",
-    "ruby",
-    "rust",
-    "terraform",
-    "zig",
-    "nix_shell",
-    "conda",
-    "memory_usage",
-    "aws",
-    "env_var",
-    "crystal",
-    "cmd_duration",
-    "kubernetes",
-    "jobs",
-    "battery",
-    "time",
-    "custom.foo",
-    "line_break",
-    "character",
-
-]
+format = """
+$username\
+$hostname\
+$shlvl\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$directory\
+$docker_context\
+$kubernetes\
+$package\
+$golang\
+$helm\
+$java\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$cmd_duration\
+$jobs\
+$battery\
+$time\
+$status\
+$line_break\
+$character"""
 
 [directory]
 truncate_to_repo = true
@@ -55,9 +47,9 @@ stashed = ""
 disabled = true
 
 # Replace the "❯" symbol in the prompt with "λ"
-[character]      # The name of the module we are configuring is "character"
-symbol = "λ"     # The "symbol" segment is being set to "➜"
-style_success = "bold white"
+[character]
+success_symbol = "λ"
+error_symbol = "λ"
 
 [battery]
 full_symbol = ""
@@ -80,6 +72,9 @@ style = "blue"
 [kubernetes.context_aliases]
 "gke_affable-visitor-137123_us-central1-b_cluster-6" = "prod"
 
+[gcloud]
+format = '$symbol'
+
 [custom.foo]
 command = "echo foo"
 when = "true"
@@ -87,4 +82,4 @@ disabled = true
 
 [time]
 disabled = false
-format = "%H:%M" # see https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html
+time_format = "%H:%M" # see https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html

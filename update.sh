@@ -18,6 +18,7 @@ packages=(
   graphviz
   bat # cat with syntax highlighting https://github.com/sharkdp/bat
   git-absorb # fixup atomic commits https://github.com/tummychow/git-absorb
+  fzf # fuzzy find https://github.com/junegunn/fzf#usage
 )
 
 # sort and diff packages to find the new ones
