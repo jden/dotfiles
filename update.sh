@@ -16,6 +16,8 @@ packages=(
   p7zip # handle various archive formats https://www.7-zip.org/
   imagemagick
   graphviz
+  bat # cat with syntax highlighting https://github.com/sharkdp/bat
+  git-absorb # fixup atomic commits https://github.com/tummychow/git-absorb
 )
 
 # sort and diff packages to find the new ones
