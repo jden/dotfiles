@@ -64,7 +64,12 @@ style = "bold red"
 disabled = true
 
 [nodejs]
-prefix = ""
+format = "[$symbol$version]($style) "
+
+[cmd_duration]
+min_time = 1_000
+show_notifications = true
+min_time_to_notify = 5_000
 
 [kubernetes]
 disabled = false
