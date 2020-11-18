@@ -29,6 +29,7 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.svn": true,
+    "**/bin/*": true,
     "node_modules/*x": true,
     "obj/*": true,
     "tmp/cache/*": true
@@ -151,5 +152,6 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "git.autofetch": true
 }
