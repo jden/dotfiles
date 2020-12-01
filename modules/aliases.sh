@@ -20,6 +20,7 @@ alias c.="c ."
 alias ij=intellij
 
 alias cat=bat # https://github.com/sharkdp/bat
+alias batdiff="git diff --name-only --diff-filter=d | xargs bat --diff"
 
 # dotfiles management workflow
 alias resource="source ~/.bashrc && log_shell_event dotfiles.resource && echo reloaded ~/.bashrc"
