@@ -19,6 +19,8 @@ alias c=code
 alias c.="c ."
 alias ij=intellij
 
+alias cat=bat # https://github.com/sharkdp/bat
+
 # dotfiles management workflow
 alias resource="source ~/.bashrc && log_shell_event dotfiles.resource && echo reloaded ~/.bashrc"
 alias editrc="edit $DOTFILES"
