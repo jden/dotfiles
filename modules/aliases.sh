@@ -64,8 +64,7 @@ function itex() {
   tex2svg "$1" | sed 's|</svg>|<style>*{fill:white;}</style></svg>|' | rsvg-convert --zoom 3 | icat
 }
 
-# TODO migrate to `main`
-MAIN_BRANCH="master"
+MAIN_BRANCH="main"
 
 # git aliases
 alias g=git

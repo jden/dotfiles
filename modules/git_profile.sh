@@ -12,15 +12,15 @@ alias hgo=github_go
 alias hpr="hub pull-request"
 alias prs="hub pr list"
 
-function git-reset-master () {
+function git-reset-main () {
   local MESSAGE
   MESSAGE="${*:-RESET} - rsm $(whatbranch)@$(git rev-parse --short HEAD) $(date +'%Y-%m-%dT%l:%M%z')"
   git stash push --include-untracked -m "$MESSAGE"
-  git checkout master
-  git fetch --force --tags origin master
-  git reset origin/master --hard
+  git checkout $MAIN_BRANCH
+  git fetch --force --tags origin $MAIN_BRANCH
+  git reset origin/$MAIN_BRANCH --hard
 }
-alias rsm="git-reset-master"
+alias rsm="git-reset-main"
 
 
 

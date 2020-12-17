@@ -153,5 +153,14 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "git.autofetch": true
+  "git.autofetch": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "importCost.showCalculatingDecoration": false,
+  "typescript.tsdk": "../node_modules/typescript/lib",
+  "[mjml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
