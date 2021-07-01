@@ -50,8 +50,13 @@ function bumpdep() {
 ## nvm support
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# called in .zlogin to force PATH precedence
+init-nvm() {
+  echo nvm reloaded
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  load-nvmrc
+}
 
 # export NVM_DIR="$HOME/.nvm"
 # # a stub to lazy-load nvm
@@ -62,9 +67,18 @@ export NVM_DIR="$HOME/.nvm"
 #   return $?
 # }
 
-autoload -U add-zsh-hook
+# autoload -U add-zsh-hook
 load-nvmrc() {
-  echo calling nvmrc
+
+  if [[ $(pwd) = "$HOME/workspace"* ]]; then
+    # in ~/workspace, opt out of nvm managed versions altogether, and restore `prefix` config
+    npm config set prefix "$HOME/.npm-global"
+    nvm use system --silent
+    return
+  else
+    npm config delete prefix
+  fi
+
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
@@ -74,12 +88,10 @@ load-nvmrc() {
     if [ "$nvmrc_node_version" = "N/A" ]; then
       nvm install
     elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
+      nvm use --silent
     fi
   elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
+    nvm use default --silent
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# add-zsh-hook chpwd load-nvmrc
