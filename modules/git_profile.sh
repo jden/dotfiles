@@ -1,5 +1,5 @@
 ## git completions
-P source "$DOTFILES/scripts/.git-completion.bash"
+# P source "$DOTFILES/scripts/.git-completion.bash"
 # P source "$DOTFILES/scripts/hub.bash_completion.sh"
 P source "$DOTFILES/scripts/git-prompt.sh"
 
@@ -12,6 +12,7 @@ alias hgo=github_go
 alias hpr="hub pull-request"
 alias prs="hub pr list"
 
+# set $MAIN_BRANCH env based on the current git repo
 function update_main_branch() {
   MAIN_BRANCH=$(git config --get x.main || git config --get init.defaultBranch || echo "master")
 }
