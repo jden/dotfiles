@@ -9,15 +9,15 @@ packages=(
   inetutils
   jid
   lsd # ls replacement https://github.com/Peltoche/lsd
-  reattach-to-user-namespace # see see https://github.com/Microsoft/vscode/issues/12587#issuecomment-280681178
+  #reattach-to-user-namespace # see see https://github.com/Microsoft/vscode/issues/12587#issuecomment-280681178
   starship # shell prompt https://starship.rs/
-  stubby # secure dns
-  tmux
+  #stubby # secure dns
+  #tmux
   p7zip # handle various archive formats https://www.7-zip.org/
-  imagemagick
+  #imagemagick
   graphviz
   bat # cat with syntax highlighting https://github.com/sharkdp/bat
-  git-absorb # fixup atomic commits https://github.com/tummychow/git-absorb
+  #git-absorb # fixup atomic commits https://github.com/tummychow/git-absorb
   fzf # fuzzy find https://github.com/junegunn/fzf#usage
 )
 
@@ -35,20 +35,20 @@ echo upgrading packages: "${packages[@]}"
 brew upgrade --formula "${packages[@]}"
 
 # setup stubby, if newly installed
-if [[ "$newPackages" == *"stubby"* ]]; then
-  echo installing stubby, will ask for root pw
-  sudo brew services start stubby
-  sudo /usr/local/opt/stubby/sbin/stubby-setdns-macos.sh
-  ln -sf ~/.dotfiles/config/stubby.yml /usr/local/etc/stubby/stubby.yml
-fi
+# if [[ "$newPackages" == *"stubby"* ]]; then
+#   echo installing stubby, will ask for root pw
+#   sudo brew services start stubby
+#   sudo /usr/local/opt/stubby/sbin/stubby-setdns-macos.sh
+#   ln -sf ~/.dotfiles/config/stubby.yml /usr/local/etc/stubby/stubby.yml
+# fi
 
 # do not include browsers
 casks=(
   diffmerge
-  hyper
+  #hyper
   spectacle
-  virtualbox
-  visual-studio-code
+  #virtualbox
+  #visual-studio-code
   kitty
 )
 # sort and diff casks to find the new ones
@@ -58,7 +58,7 @@ brew list --cask | sort > ${TMPDIR}f2
 newCasks=$(diff -w --old-line-format='%L' --new-line-format='' --unchanged-line-format='' ${TMPDIR}f1 ${TMPDIR}f2)
 if [ "$newCasks" != "" ]; then
   echo installing new casks: $newCasks
-  brew cask install $newCasks
+  brew install $newCasks
 fi
 echo upgrading casks: "${casks[@]}"
 brew upgrade --cask "${casks[@]}"

@@ -1,6 +1,6 @@
 #! /bin/bash
 function __terminal_title() {
-  echo "$__TITLE$(pwd | sed "s|$SCROLL_HOME|~S|; s|$HOME|~|")"
+  echo "$__TITLE$(pwd | sed "s|$HOME/workspace/source|Src|; s|$SCROLL_HOME|~S|; s|$HOME|~|;")"
 }
 
 function __set_title() {
@@ -59,7 +59,8 @@ function __get_emoji () {
 
 
 # this will be run prior to printing starship prompt
-function __prompt_command() {
+function prompt_hook() {
+
   case "$TERM" in
     screen*) # set window title tmux
       printf '\033k$(__terminal_title)\033\\'
@@ -70,24 +71,12 @@ function __prompt_command() {
   esac
 
   # starship captures $? as $STATUS
-  if [ "$STATUS" != "0" ]; then
-    log_shell_event program.error -c $STATUS
-    echo -e "⇒ E$STATUS" # print err
-  fi
+  #if [ "$STATUS" != "0" ]; then
+  #  log_shell_event program.error -c $STATUS
+  #  echo -e "⇒ E$STATUS" # print err
+  #fi
+
   log_shell_event prompt
-
-#$(git status origin/master --short --branch)
-# PS1='$(is-git-clean && echo ✨ || echo 🥀)'
-# PS1="$PS1"'\[\033[32m\]'       # change color
-# PS1="$PS1"'$(__git_ps1 "%s")' # bash function
-# PS1="$PS1"'\[\033[33m\]'       # change color
-# PS1="$PS1"' \w'                 # current working directory
-# PS1="$PS1"'\[\033[0m\]'        # change color
-# PS1="$PS1"' \D{%l:%M} $(__get_emoji)\n'
-# PS1="$PS1"'λ '                 # prompt
-# PS1="$PS1"'$(__end_prompt)'    # trigger
-# bash -c "$PS1"
-
 }
-starship_precmd_user_func="__prompt_command"
-eval "$(starship init bash)"
+
+eval "$(starship init zsh)"

@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
   // Font
-  "editor.fontFamily": "'Source Code Pro'",
+  "editor.fontFamily": "'SauceCodePro Nerd Font'",
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "editor.lineHeight": 20,
@@ -42,7 +42,6 @@
     "vendor/*": true
   },
   "window.title": "${activeEditorMedium}",
-  "workbench.colorTheme": "Noctis Minimus",
   "java.autobuild.enabled": false,
   "java.errors.incompleteClasspath.severity": "ignore",
   "editor.suggestSelection": "first",
@@ -162,5 +161,14 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
   }
 }

@@ -1,6 +1,6 @@
 ## git completions
 P source "$DOTFILES/scripts/.git-completion.bash"
-P source "$DOTFILES/scripts/hub.bash_completion.sh"
+# P source "$DOTFILES/scripts/hub.bash_completion.sh"
 P source "$DOTFILES/scripts/git-prompt.sh"
 
 ## git aliases
@@ -11,6 +11,11 @@ alias gfp="gfg package.json"
 alias hgo=github_go
 alias hpr="hub pull-request"
 alias prs="hub pr list"
+
+function update_main_branch() {
+  MAIN_BRANCH=$(git config --get x.main || git config --get init.defaultBranch || echo "master")
+}
+update_main_branch
 
 function git-reset-main () {
   local MESSAGE

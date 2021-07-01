@@ -15,14 +15,14 @@ export PATH="$HOME/bin:$PATH:/usr/libexec:/usr/local/sbin"
 PATH="$PATH:/usr/local/opt/gettext/bin" #grr @ brew
 
 # android!
-export ANDROID_HOME=$HOME/Library/Android/sdk
-PATH="$PATH:$ANDROID_HOME/emulator"
-PATH="$PATH:$ANDROID_HOME/tools"
-PATH="$PATH:$ANDROID_HOME/tools/bin"
-PATH="$PATH:$ANDROID_HOME/platform-tools"
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# PATH="$PATH:$ANDROID_HOME/emulator"
+# PATH="$PATH:$ANDROID_HOME/tools"
+# PATH="$PATH:$ANDROID_HOME/tools/bin"
+# PATH="$PATH:$ANDROID_HOME/platform-tools"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 11 2>/dev/null)
-export CATALINA_HOME="/usr/local/Cellar/tomcat@6/6.0.53/libexec/"
+# export JAVA_HOME=$(/usr/libexec/java_home -v 11 2>/dev/null)
+# export CATALINA_HOME="/usr/local/Cellar/tomcat@6/6.0.53/libexec/"
 
 export SHELL_LOG="$HOME/.shell_log"
 
@@ -41,6 +41,15 @@ __include prompt
 log_shell_event shell.new
 
 __endbashrc
+
+## Hooks (using zsh)
+precmd_functions=(
+  prompt_hook
+)
+
+chpwd_functions=(
+  update_main_branch
+)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
