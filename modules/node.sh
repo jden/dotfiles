@@ -66,9 +66,7 @@ init-nvm() {
 #   return $?
 # }
 
-# autoload -U add-zsh-hook
 load-nvmrc() {
-
   if [[ $(pwd) = "$HOME/workspace"* ]]; then
     # in ~/workspace, opt out of nvm managed versions altogether, and restore `prefix` config
     npm config set prefix "$HOME/.npm-global"
@@ -93,4 +91,3 @@ load-nvmrc() {
     nvm use default --silent
   fi
 }
-# add-zsh-hook chpwd load-nvmrc
