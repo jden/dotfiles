@@ -1,6 +1,6 @@
 #! /bin/bash
 function __terminal_title() {
-  echo "$__TITLE$(pwd | sed "s|$HOME/workspace/source|Src|; s|$SCROLL_HOME|~S|; s|$HOME|~|;")"
+  echo "$__TITLE$(pwd | sed "s|$HOME/workspace/source|~Src|; s|$HOME/workspace/web|~Web|; s|$HOME/workspace|~Wk|; s|$SCROLL_HOME|~Scroll|; s|$HOME|~|;")"
 }
 
 function __set_title() {

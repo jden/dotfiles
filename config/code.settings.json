@@ -170,5 +170,7 @@
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
-  }
+  },
+  "flow.pathToFlow": "web flow",
+  "java.project.importHint": false
 }
