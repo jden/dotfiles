@@ -100,4 +100,4 @@ function xin () {
 
 # configure ssh agent for key forwarding
 eval `ssh-agent` > /dev/null
-ssh-add -K -q
+ssh-add --apple-use-keychain -q

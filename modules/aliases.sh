@@ -23,7 +23,7 @@ alias cat=bat # https://github.com/sharkdp/bat
 alias batdiff="git diff --name-only --diff-filter=d | xargs bat --diff"
 
 # dotfiles management workflow
-alias resource="source ~/.bashrc && log_shell_event dotfiles.resource && echo reloaded ~/.bashrc"
+alias resource="source ~/.zshrc && log_shell_event dotfiles.resource && echo reloaded ~/.zshrc"
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
@@ -164,6 +164,3 @@ alias keychain="open '/Applications/Utilities/Keychain Access.app'"
 # kubernetes
 alias k=kubectl
 alias ko="kubectl -o yaml"
-
-
-alias rw="web ws rweb"

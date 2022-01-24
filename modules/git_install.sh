@@ -9,6 +9,7 @@ git config --global mergetool.diffmerge.trustExitCode true
 
 ## make pull safe
 git config --global pull.ff only
+git config --global branch.autosetuprebase always # no merge commits
 
 ## have sensible upstream push behavior for new branches
 git config --global push.default current

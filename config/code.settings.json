@@ -135,17 +135,13 @@
   },
   "terraform.languageServer": {
     "external": true,
-    "args": [
-      "serve"
-    ]
+    "args": ["serve"]
   },
   "eslint.packageManager": "yarn",
   "editor.renderControlCharacters": true,
   "prettier.packageManager": "yarn",
   "gitlens.advanced.telemetry.enabled": false,
-  "gitlens.mode.active": "zen",
   "editor.accessibilitySupport": "off",
-  "window.zoomLevel": 1,
   "fileTemplates.templates_dir": "/Users/juno/Templates/Code",
   "java.semanticHighlighting.enabled": true,
   "[typescriptreact]": {
@@ -171,6 +167,31 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "flow.pathToFlow": "web flow",
-  "java.project.importHint": false
+  "java.project.importHint": false,
+  "flow.pathToFlow": "/Users/jsuarez/workspace/web/node_modules/.bin/flow",
+  "flow.logLevel": "trace",
+  "sourcegraph.remoteUrlReplacements": {
+    "git.twitter.biz": "git.twitter.biz/ro"
+  },
+  "sourcegraph.url": "https://sourcegraph.twitter.biz/",
+  "sourcegraph.defaultBranch": "master",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "window.zoomLevel": 1,
+  "redhat.telemetry.enabled": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.schemas": {
+    "file:///Users/jsuarez/.vscode/extensions/atlassian.atlascode-2.10.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.jira.enabled": false,
+  "atlascode.bitbucket.enabled": false,
+  "cSpell.userWords": [
+    "Downvote",
+    "flowtypes",
+    "ondemand",
+    "serverside",
+    "Typeahead"
+  ],
+  "cSpell.enabled": false
 }

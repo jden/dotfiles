@@ -44,12 +44,17 @@ __endbashrc
 ## Hooks (using zsh)
 autoload -U add-zsh-hook
 
-add-zsh-hook chpwd load-nvmrc
+# add-zsh-hook chpwd load-nvmrc
 add-zsh-hook precmd prompt_hook
 add-zsh-hook chpwd update_main_branch
 
 # initialize autocompletions
 autoload -Uz compinit
 compinit
+
+# optional work stuff (not in this repo)
+if [ -d "$HOME/.workrc" ]; then
+  source "$HOME/.workrc"
+fi
 
 # note: see the .zlogin file, which runs once per shell _after_ .zshrc, for additional setup

@@ -68,11 +68,11 @@ format = "[$symbol$version]($style) "
 
 [cmd_duration]
 min_time = 1_000
-show_notifications = true
+show_notifications = false
 min_time_to_notify = 5_000
 
 [kubernetes]
-disabled = false
+disabled = true
 style = "blue"
 [kubernetes.context_aliases]
 "gke_affable-visitor-137123_us-central1-b_cluster-6" = "prod"
