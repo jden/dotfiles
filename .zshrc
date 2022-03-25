@@ -53,8 +53,8 @@ autoload -Uz compinit
 compinit
 
 # optional work stuff (not in this repo)
-if [ -d "$HOME/.workrc" ]; then
-  source "$HOME/.workrc"
+if [ -f "$HOME/.dotfiles/.workrc" ]; then
+  source "$HOME/.dotfiles/.workrc"
 fi
 
 # note: see the .zlogin file, which runs once per shell _after_ .zshrc, for additional setup
