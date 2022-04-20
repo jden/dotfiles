@@ -49,13 +49,13 @@ function bumpdep() {
 
 ## nvm support
 
-export NVM_DIR="$HOME/.nvm"
+#export NVM_DIR="$HOME/.nvm"
 # called in .zlogin to force PATH precedence
-init-nvm() {
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  load-nvmrc
-}
+#init-nvm() {
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#   load-nvmrc
+# }
 
 # export NVM_DIR="$HOME/.nvm"
 # # a stub to lazy-load nvm
@@ -66,28 +66,28 @@ init-nvm() {
 #   return $?
 # }
 
-load-nvmrc() {
-  if [[ $(pwd) = "$HOME/workspace"* ]]; then
-    # in ~/workspace, opt out of nvm managed versions altogether, and restore `prefix` config
-    npm config set prefix "$HOME/.npm-global"
-    nvm use system --silent
-    return
-  else
-    npm config delete prefix
-  fi
+# load-nvmrc() {
+#   if [[ $(pwd) = "$HOME/workspace"* ]]; then
+#     # in ~/workspace, opt out of nvm managed versions altogether, and restore `prefix` config
+#     npm config set prefix "$HOME/.npm-global"
+#     nvm use system --silent
+#     return
+#   else
+#     npm config delete prefix
+#   fi
 
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+#   local node_version="$(nvm version)"
+#   local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use --silent
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    nvm use default --silent
-  fi
-}
+#     if [ "$nvmrc_node_version" = "N/A" ]; then
+#       nvm install
+#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#       nvm use --silent
+#     fi
+#   elif [ "$node_version" != "$(nvm version default)" ]; then
+#     nvm use default --silent
+#   fi
+# }

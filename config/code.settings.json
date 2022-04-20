@@ -1,7 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
   // Font
-  "editor.fontFamily": "'SauceCodePro Nerd Font'",
+  // "editor.fontFamily": "'SauceCodePro Nerd Font'",
+  "editor.fontFamily": "'Berkeley Mono'",
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "editor.lineHeight": 20,
@@ -203,5 +204,5 @@
   "html.autoClosingTags": false,
   "workbench.startupEditor": "none",
   "search.useParentIgnoreFiles": true,
-  "window.zoomLevel": 1
+  "window.zoomLevel": 2
 }
