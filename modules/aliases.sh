@@ -121,6 +121,7 @@ function gfom() {
 function grom() {
   git rebase origin/$MAIN_BRANCH
 }
+alias rss="git fetch origin master && git reset --hard && git checkout"
 
 # clean up the files left by my git mergetool
 # shellcheck disable=SC2142 # the $2 below isn't a positional arg, it's an awk column reference

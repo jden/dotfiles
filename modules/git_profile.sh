@@ -22,9 +22,10 @@ function git-reset-main () {
   local MESSAGE
   MESSAGE="${*:-RESET} - rsm $(whatbranch)@$(git rev-parse --short HEAD) $(date +'%Y-%m-%dT%l:%M%z')"
   git stash push --include-untracked -m "$MESSAGE"
-  git checkout $MAIN_BRANCH
+  git -c core.hooksPath=/dev/null checkout $MAIN_BRANCH # skip post-checkout hooks
   git fetch --force --tags origin $MAIN_BRANCH
   git reset origin/$MAIN_BRANCH --hard
+  git checkout # trigger post-checkout again
 }
 alias rsm="git-reset-main"
 

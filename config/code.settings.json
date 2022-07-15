@@ -33,6 +33,7 @@
     "**/.settings": true,
     "**/.svn": true,
     "**/bin/*": true,
+    "**/dist/*": true,
     "node_modules/*x": true,
     "obj/*": true,
     "tmp/cache/*": true
@@ -204,5 +205,14 @@
   "html.autoClosingTags": false,
   "workbench.startupEditor": "none",
   "search.useParentIgnoreFiles": true,
-  "window.zoomLevel": 2
+  "window.zoomLevel": 2,
+  "sourcegraph.accessToken": "c3f7eafb34210cbf3e93149ba68f65b7419803aa",
+  "sourcegraph.basePath": "/Users/jsuarez/workspace",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "polacode.transparentBackground": true,
+  "codesnap.backgroundColor": "transparent",
+  "gitblame.commitUrl": "https://phabricator.twitter.biz/source/web/browse/master/${file.path};${hash}%24${file.line}",
+  "window.commandCenter": true
 }
