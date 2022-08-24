@@ -13,7 +13,7 @@ alias blah="head /dev/urandom | base64"
 alias tarls="tar -tvf"
 alias lst="tarls"
 alias jid="jid > /dev/null" # https://github.com/simeji/jid
-alias code-stable="`which code`"
+alias code-stable="$(which code)"
 #alias code=code-insiders
 alias c=code
 alias c.="c ."
@@ -165,3 +165,5 @@ alias keychain="open '/Applications/Utilities/Keychain Access.app'"
 # kubernetes
 alias k=kubectl
 alias ko="kubectl -o yaml"
+
+alias join="paste -sd ',' -"

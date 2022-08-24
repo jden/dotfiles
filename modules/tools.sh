@@ -7,7 +7,9 @@ function demomode {
 }
 
 function psgrep () {
-  ps ax | grep $1 | grep -v grep
+  local PIDS
+  PIDS=$(pgrep $1 | paste -sd ',' -)
+  ps x -p "$PIDS"
 }
 alias psg="psgrep"
 
@@ -99,5 +101,5 @@ function xin () {
 }
 
 # configure ssh agent for key forwarding
-eval `ssh-agent` > /dev/null
+eval "$(ssh-agent)" > /dev/null
 ssh-add --apple-use-keychain -q

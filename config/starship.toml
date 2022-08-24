@@ -41,7 +41,8 @@ truncate_to_repo = true
 fish_style_pwd_dir_length = 1
 
 [git_status]
-format = '([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )' # remove stashed
+# remove stashed
+format = '([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )'
 
 [package]
 disabled = true

@@ -80,3 +80,4 @@ function prompt_hook() {
 }
 
 eval "$(starship init zsh)"
+export STARSHIP_LOG=error # disable slow git command warnings

@@ -1,6 +1,8 @@
 # path like npm (run package-local bins first)
 PATH="./node_modules/.bin:$PATH"
 
+alias bnode="babel-node --presets @babel/preset-flow,@babel/preset-env"
+
 function tdd() {
   local filter=$1
   if [ $# -eq 0 ]; then
