@@ -9,7 +9,7 @@ function demomode {
 function psgrep () {
   local PIDS
   PIDS=$(pgrep "$1" | paste -sd ',' -)
-  ps x -p "$PIDS"
+  ps u -p "$PIDS"
 }
 alias psg="psgrep"
 
