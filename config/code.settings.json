@@ -205,7 +205,7 @@
   "html.autoClosingTags": false,
   "workbench.startupEditor": "none",
   "search.useParentIgnoreFiles": true,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "sourcegraph.accessToken": "c3f7eafb34210cbf3e93149ba68f65b7419803aa",
   "sourcegraph.basePath": "/Users/jsuarez/workspace",
   "[javascriptreact]": {

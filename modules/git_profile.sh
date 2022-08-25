@@ -75,6 +75,7 @@ function tpush () {
   git push origin $(whatbranch)
 }
 
+alias gsf="git show --name-only" # git show files
 
 
 
