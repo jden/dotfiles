@@ -13,6 +13,9 @@ function psgrep () {
 }
 alias psg="psgrep"
 
+alias pstop="ps ux | sort -nrk3 | head -n 10"
+alias pst="pstop"
+
 function cdl () {
   cd $1
   ls
