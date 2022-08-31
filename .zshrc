@@ -33,6 +33,7 @@ __include node
 __include git
 
 __include tools
+__include ssh-agent
 __include rust
 
 ## Prompt

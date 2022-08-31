@@ -21,11 +21,11 @@ function cdl () {
   ls
 }
 
-function whichVersion() {
-  which $1
-  $1 --version
-}
-alias wv=whichVersion
+# function whichVersion() {
+#   which $1
+#   $1 --version
+# }
+# alias wv=whichVersion
 
 function get_ssid() {
   /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'
@@ -73,26 +73,26 @@ function tail_shell_log() {
   tail $1 $SHELL_LOG
 }
 
-function secret () {
-  case $1 in
-    get)
-      NAME="$2"
-      KEYCHAIN="${3:-$HOME/Library/Keychains/login.keychain-db}"
-      SECRET=$(security find-generic-password -w -s "$2" "$KEYCHAIN" 2> /dev/null)
-      if [[ $SECRET == "" ]]; then
-        echo Could not read secret: $NAME
-        return 1
-      fi
-      echo $SECRET
-      ;;
-    help)
-      echo 'secret get <name> <keychain?>'
-      ;;
-    *)
-      echo invalid command $1, see "'secret help'"
-      return 1
-    esac
-}
+# function secret () {
+#   case $1 in
+#     get)
+#       NAME="$2"
+#       KEYCHAIN="${3:-$HOME/Library/Keychains/login.keychain-db}"
+#       SECRET=$(security find-generic-password -w -s "$2" "$KEYCHAIN" 2> /dev/null)
+#       if [[ $SECRET == "" ]]; then
+#         echo Could not read secret: $NAME
+#         return 1
+#       fi
+#       echo $SECRET
+#       ;;
+#     help)
+#       echo 'secret get <name> <keychain?>'
+#       ;;
+#     *)
+#       echo invalid command $1, see "'secret help'"
+#       return 1
+#     esac
+# }
 
 function xin () {
   if [[ $1  == "-p" ]]; then
@@ -102,7 +102,3 @@ function xin () {
   # cat - | xargs -n1 $PARALLEL -t (cd "$(dirname {})"; '"$@"'
   cat - | xargs -n1 $PARALLEL -I{} sh -c 'cd $(dirname {}); '"$@"
 }
-
-# configure ssh agent for key forwarding
-eval "$(ssh-agent)" > /dev/null
-ssh-add --apple-use-keychain -q
