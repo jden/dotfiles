@@ -1,13 +1,22 @@
 #! /bin/bash
 # this file checks for updates to packages
 
+function needs {
+  ! command -v $1 > /dev/null
+}
+
+if needs brew; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 brew cleanup
 
 packages=(
   cloc
   coreutils
   inetutils
-  jid
+  jid # json incremental digger
+  jq  # jsonquery
   lsd # ls replacement https://github.com/Peltoche/lsd
   #reattach-to-user-namespace # see see https://github.com/Microsoft/vscode/issues/12587#issuecomment-280681178
   starship # shell prompt https://starship.rs/

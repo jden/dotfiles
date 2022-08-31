@@ -94,9 +94,11 @@ full_symbol = ""
 charging_symbol = "⚡️ "
 discharging_symbol = " "
 format = "[$symbol]($style)"
+style ="bg:#47536b"
+threshold = 90
 [[battery.display]]  # "bold red" style when capacity is between 0% and 10%
 threshold = 15
-style = "bold red"
+style = "bold red bg:#47536b"
 
 [aws]
 disabled = true

@@ -1,4 +1,6 @@
+#!/bin/sh
 # configs
+# must be idempotent
 
 ## setup diffmerge
 git config --global diff.tool diffmerge
@@ -18,7 +20,12 @@ git config --global push.default current
 git config --global url."ssh://git@github.com".insteadOf "https://github.com"
 
 ## aliases
+git config --global alias.thank blame
+git config --global alias.whom blame
 git config --global alias.whomst blame
 git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 git config --global alias.find 'ls-files'
+
+# set global git ignore
+git config --global core.excludesfile ~/.dotfiles/config/gitignore

@@ -1,18 +1,33 @@
 # .dotfiles
 
-note for people who aren't me: these are a total mess and have been schlepped about from system to system over several years. it's stuff that i'm used to and have muscle memory for, but certainly not stuff i can recommend that other's copy. consider y'selves warned.
+these are (for the most part) my daily driver dotfiles
+they're not really organized for public consumption,
+but do what you like
 
 ## installation
 
 ```sh
 cd ~
-git clone git@github.com:jden/.dotfiles.git
-./install.sh
+git clone git@github.com:junosuarez/.dotfiles.git
+./init.sh
 ```
 
 ## show dotfiles on macos:
 
 `CMD + SHIFT + .`
+
+## modules
+this is a way of organizing related things for a specific tool
+the directory structure looks something like this:
+
+```
+ /modules
+   /module
+     /init.sh     # idempotent, setup basic config
+     /bin         # optional, contents get linked to ~/bin
+```
+
+
 
 ### windows (no longer really supported)
 
