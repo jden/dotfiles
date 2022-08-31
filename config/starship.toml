@@ -1,53 +1,87 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# run `starship timings` to debug slow prompts
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
 format = """
-$username\
-$hostname\
-$shlvl\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$directory\
-$docker_context\
-$kubernetes\
-$package\
-$golang\
-$helm\
-$java\
-$julia\
-$nim\
-$nodejs\
-$ocaml\
-$python\
-$ruby\
-$rust\
-$swift\
-$terraform\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$env_var\
-$crystal\
-$cmd_duration\
-$jobs\
+$status$cmd_duration\
+[](fg:#bac6de bg:#47536b)\
+[ $time ](fg:#bdc7db bold bg:#47536b)\
 $battery\
-$time\
-$status\
+[${custom.vpn}$sudo](fg:#ffffff bg:#47536b)\
+[](fg:#47536b)\
+[                ]()\
+${env_var}\
+[$git_state$git_status$git_branch$git_commit]()\
+[$directory]()\
 $line_break\
-$character"""
+$character\
+"""
+
+right_format="${custom.gsd_hint}"
 
 [directory]
+truncation_length=9
+truncation_symbol="+"
 truncate_to_repo = true
 fish_style_pwd_dir_length = 1
+#repo_root_format="[ $repo_root]($repo_root_style)[:$path]($style)[$read_only]($read_only_style) "
+repo_root_format="[~$path]($style)[$read_only]($read_only_style) "
+repo_root_style="bold"
+read_only=" "
+
+[directory.substitutions]
+"/Users/jsuarez/workspace" = "/w"
+
+[git_branch]
+#format= "[ $branch(:$remote_branch)]($style) "
+format= "[@$branch(:$remote_branch)]($style) "
+disabled=true
+
+[git_commit]
+format="[ $hash]($style) "
 
 [git_status]
+disabled=true
 # remove stashed
-format = '([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )'
+# format = '([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )'
+# format = "$conflicted$stashed$deleted$renamed$modified$staged$untracked$ahead_behind$ahead$behind$diverged$up_to_date "
+style="bold"
+ahead="a $count"
+behind="b $count"
+up_to_date="x"
+staged = '[++\($count\)](green)'
+untracked="u $count"
+
+[env_var.1]
+variable="GSD_STATUS"
+format="[$env_value  ]()"
+[env_var.2]
+variable="GSD_REPO"
+format="[$env_value](white bold)"
+[env_var.3]
+variable="GSD_ON"
+format="[@$env_value](purple bold)"
+[env_var.4]
+variable="GSD_BRANCH_STATUS"
+format="[ $env_value ]()"
+
+# we have to use this because multiple envvar modules arent supported
+# sadly this is kinda slow,
+# one day we'll get this merged
+# https://github.com/starship/starship/pull/3375
+[custom.gsd_hint]
+when="""[[ $GSD_HINT != "" ]]"""
+command="echo $GSD_HINT"
+format="[ $output](yellow)"
+
 
 [package]
 disabled = true
 
-# Replace the "❯" symbol in the prompt with "λ"
 [character]
 success_symbol = ";;"
 error_symbol = ";;"
@@ -66,26 +100,56 @@ disabled = true
 
 [nodejs]
 format = "[$symbol$version]($style) "
-
-[cmd_duration]
-min_time = 1_000
-show_notifications = false
-min_time_to_notify = 5_000
+disabled = true
 
 [kubernetes]
 disabled = true
 style = "blue"
-[kubernetes.context_aliases]
-"gke_affable-visitor-137123_us-central1-b_cluster-6" = "prod"
 
 [gcloud]
 format = '$symbol'
-
-[custom.foo]
-command = "echo foo"
-when = "true"
 disabled = true
+
+[custom.vpn]
+format = " 睊"
+when = "! grep -q .biz /etc/resolv.conf"
 
 [time]
 disabled = false
+format = '$time'
 time_format = "%H:%M" # see https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html
+
+[sudo]
+disabled = true
+format = ""
+
+[fill]
+symbol = " "
+style="white"
+
+[status]
+disabled = false
+symbol = "[  $int](fg:#b30000 bg:#bac6de bold)"
+success_symbol = "[ ](fg:#1f3547 bg:#bac6de bold)"
+format = "$symbol"
+
+[custom.ret_aa]
+format="[]($style)"
+when=true
+
+[custom.pill_start]
+format="[](fg:#bac6de bold)"
+when=true
+
+[custom.pill_end]
+format="[](fg:#bac6de bold)"
+when=true
+
+[cmd_duration]
+min_time = 1_500
+format = "[  $duration]($style)"
+style = "bg:#bac6de fg:#4d4d4d bold"
+disabled=false
+
+[[battery.display]]
+threshold = 100

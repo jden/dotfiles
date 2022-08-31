@@ -42,7 +42,6 @@ function __get_emoji () {
 
 
 
-
 # PS1='$(__ps1_errs)\n'"$PS1" # show exit code
 
 # # PS1="$PS1"'$(git status origin/master --short --branch)\n'
@@ -81,3 +80,5 @@ function prompt_hook() {
 
 eval "$(starship init zsh)"
 export STARSHIP_LOG=error # disable slow git command warnings
+
+

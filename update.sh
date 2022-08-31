@@ -19,6 +19,7 @@ packages=(
   bat # cat with syntax highlighting https://github.com/sharkdp/bat
   #git-absorb # fixup atomic commits https://github.com/tummychow/git-absorb
   fzf # fuzzy find https://github.com/junegunn/fzf#usage
+  romkatv/gitstatus/gitstatus # gitstatusd https://github.com/romkatv/gitstatus
 )
 
 # sort and diff packages to find the new ones
