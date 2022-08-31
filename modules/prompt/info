@@ -1,0 +1,3 @@
+# my overall shell prompt
+USE: git-status
+USE: starship

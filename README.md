@@ -23,13 +23,24 @@ the directory structure looks something like this:
 ```
  /modules
    /module
+     /info        # module manifest, uses DSL (see below)
      /init.sh     # idempotent, setup basic config that modifies the system
      /bin         # optional, contents get linked to ~/bin
      /alias.sh    # optional, shell aliases
      /profile.sh  # optional, shell profile
 ```
 
+### `info` manifest
+this is evaluated as a shell file, use these special functions to specify dependencies:
 
+- `USE: <module>` depend on another module within this repo
+- `BREW: <package>` depend on a package from homebrew
+
+
+see `./graph.zsh` to explore the module dependency graph
+
+Q: is this whole system a litte elaborate for a personal dotfiles repo?
+A: yes.
 
 ### windows (no longer really supported)
 

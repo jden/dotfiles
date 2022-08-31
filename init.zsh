@@ -1,39 +1,6 @@
 #! /bin/zsh
 # Ensure this file is idempotent!
-
-DOTFILES=~/.dotfiles
-
-if [[ "$@" =~ "-v" ]]; then VERBOSE=true fi
-if [[ "$@" =~ "-vv" ]]; then set -x; fi
-
-function STEP:() {
-  print '[STEP]' $@
-  : "====================================================================="
-}
-function DONE:() {
-  print '[DONE]' $@
-  : "====================================================================="
-}
-function LOG:() {
-  $VERBOSE && print ' [LOG]' $@
-  : "====================================================================="
-}
-
-function __initModule() {
-  local module=$1
-  local modpath=$DOTFILES/modules/$1
-
-   if [[ -f $modpath/init.zsh ]]; then
-    STEP: module init: $module
-    source $modpath/init.zsh
-
-    for F in $modpath/bin/*(N.); do
-      local bname=$(basename $F)
-      LOG: linking $bname
-      ln -sf $F ~/bin/$bname
-    done
-  fi
-}
+source ./mod.zsh
 
 :
 STEP: init profile
