@@ -1,8 +1,12 @@
 #!/bin/zsh
 
-source "$HOME/gitstatus/gitstatus.plugin.zsh" || return
-gitstatusd_instance='GSD'
 
+P source "$HOMEBREW_PREFIX/opt/gitstatus/gitstatus.plugin.zsh" || return
+gitstatusd_instance='GSD'
+# the following are a myster - why do they define the fn names with $1?
+alias gitstatus_query=gitstatus_querysource
+alias gitstatus_start=gitstatus_startsource
+alias gitstatus_stop=gitstatus_stopsource
 
 function chalk() {
   print -P "%$1F$2%f"
@@ -134,7 +138,7 @@ function gsd_refresh() {
 }
 
 function gitstatusd_up() {
-  gitstatus_stop 'GSD' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'GSD'
+  gitstatus_stopsource 'GSD' && gitstatus_startsource -s -1 -u -1 -c -1 -d -1 'GSD'
 }
 
 gitstatusd_up
