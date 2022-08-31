@@ -11,7 +11,6 @@ function chalk() {
 # export some env vars we pick up in statship config
 function gitstatus_prompt_update() {
 
-
   gitstatus_query $gitstatusd_instance || return 1  # error
   [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || {
     # not a git repo
@@ -115,6 +114,23 @@ function gitstatus_prompt_update() {
   export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL)"
   unset GSD_NOT_REPO
   # echo update $STATUS $HINT $ON
+
+  # while we're here, let's keep it fresh
+  gsd_refresh
+}
+
+function gsd_refresh() {
+  local LAST_REFRESHED=$(git config --local --get gsd.refresh 2> /dev/null || true)
+  local NOW=$(gdate +%s)
+  local ELAPSED_SEC=$(($NOW - ${LAST_REFRESHED:-0}))
+  # echo last $LAST_REFRESHED
+  # echo now $NOW
+  # echo elapsed $ELAPSED_SEC
+  if [[ $ELAPSED_SEC -gt 300 ]]; then
+    # echo refreshing
+    git config --local --add gsd.refresh $NOW
+    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git fetch origin master &)
+  fi
 }
 
 function gitstatusd_up() {

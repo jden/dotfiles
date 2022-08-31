@@ -20,10 +20,18 @@ update_main_branch
 
 function git-reset-main () {
   local MESSAGE
+  local OUT
   MESSAGE="${*:-RESET} - rsm $(whatbranch)@$(git rev-parse --short HEAD) $(date +'%Y-%m-%dT%l:%M%z')"
   git stash push --include-untracked -m "$MESSAGE"
   git -c core.hooksPath=/dev/null checkout $MAIN_BRANCH # skip post-checkout hooks
-  git fetch --force --tags origin $MAIN_BRANCH
+
+  OUT=$(git fetch --force --tags origin $MAIN_BRANCH 2>&1)
+  if [[ "$OUT" =~ "Could not resolve host" ]]; then
+    if ! grep -q .biz /etc/resolv.conf; then
+      echo "not connected to vpn"
+      return 1
+    fi
+  fi
   git reset origin/$MAIN_BRANCH --hard
   git checkout # trigger post-checkout again
 }
