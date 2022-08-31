@@ -1,6 +1,7 @@
+#!/bin/zsh
 # preamble
-# __BASHRC_DEBUG=true
-# __BASHRC_PROFILE=true
+__BASHRC_DEBUG=true
+__BASHRC_PROFILE=true
 
 function timestamp () {
   echo $(($(gdate +%s%N)/1000000))
@@ -24,8 +25,15 @@ function __profile () {
 alias P=__profile
 
 function __include () {
-  [[ $__BASHRC_DEBUG ]] && echo loading "modules/$1.sh"
-  P source "$DOTFILES/modules/$1.sh"
+
+  if [[ -d $DOTFILES/modules/$1 ]]; then
+    [[ $__BASHRC_DEBUG ]] && echo loading modules/$1/
+    [[ -f $DOTFILES/modules/$1/alias.zsh ]] && P source $DOTFILES/modules/$1/alias.zsh
+    [[ -f $DOTFILES/modules/$1/profile.zsh ]] && P source $DOTFILES/modules/$1/profile.zsh
+  else
+  [[ $__BASHRC_DEBUG ]] && echo loading modules/$1
+    P source $DOTFILES/modules/$1.*sh
+  fi
 }
 
 function __endbashrc () {

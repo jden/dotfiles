@@ -23,8 +23,10 @@ the directory structure looks something like this:
 ```
  /modules
    /module
-     /init.sh     # idempotent, setup basic config
+     /init.sh     # idempotent, setup basic config that modifies the system
      /bin         # optional, contents get linked to ~/bin
+     /alias.sh    # optional, shell aliases
+     /profile.sh  # optional, shell profile
 ```
 
 

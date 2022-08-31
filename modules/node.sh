@@ -12,42 +12,41 @@ function tdd() {
   mocha --recursive --watch --grep $filter
 }
 
+# function bumpdep() {
+#   if [ ! -f package.json ]; then
+#     echo must be in a dir with package.json
+#     return
+#   fi
 
-function bumpdep() {
-  if [ ! -f package.json ]; then
-    echo must be in a dir with package.json
-    return
-  fi
+#   DEP=$1
+#   REF=$DEP@latest
+#   DEV=$2
 
-  DEP=$1
-  REF=$DEP@latest
-  DEV=$2
+#   if [ $(cat package.json | jq --arg d "$DEP" '[.dependencies["$d"] != null, .devDependencies["$d"] != null] | any' -e) ]; then
+#     TYPE=transitive
+#   else
+#     TYPE=direct
+#   fi
 
-  if [ $(cat package.json | jq --arg d "$DEP" '[.dependencies["$d"] != null, .devDependencies["$d"] != null] | any' -e) ]; then
-    TYPE=transitive
-  else
-    TYPE=direct
-  fi
+#   echo upgrading $DEP as a $TYPE dep...
 
-  echo upgrading $DEP as a $TYPE dep...
+#   # get latest version of the dep
+#   if [ $TYPE == transitive ]; then
+#     yarn add $REF $DEV
+#   else
+#     yarn upgrade $REF $DEV
+#   fi
 
-  # get latest version of the dep
-  if [ $TYPE == transitive ]; then
-    yarn add $REF $DEV
-  else
-    yarn upgrade $REF $DEV
-  fi
+#   # dedupe transitive dependencies which can be satisfied by upgraded version
+#   npx yarn-deduplicate --packages $DEP
 
-  # dedupe transitive dependencies which can be satisfied by upgraded version
-  npx yarn-deduplicate --packages $DEP
+#   # cleanup if added
+#   if [ $TYPE == transitive ]; then
+#     yarn remove $DEP
+#   fi
 
-  # cleanup if added
-  if [ $TYPE == transitive ]; then
-    yarn remove $DEP
-  fi
-
-  yarn why $DEP
-}
+#   yarn why $DEP
+# }
 
 ## nvm support
 

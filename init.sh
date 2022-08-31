@@ -1,47 +1,61 @@
-#! /bin/sh
+#! /bin/zsh
 # Ensure this file is idempotent!
 
-set -x
-:
-: profile
-:
-ln -sf ~/.dotfiles/.zshrc ~/.zshrc
-#ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
+DOTFILES=~/.dotfiles
 
-:
-: .config
-:
-mkdir -p ~/.config
-ln -sf ~/.dotfiles/config/starship.toml ~/.config/starship.toml
-mkdir -p ~/.config/kitty
-ln -sf ~/.dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
+if [[ "$@" =~ "-v" ]]; then VERBOSE=true fi
+if [[ "$@" =~ "-vv" ]]; then set -x; fi
 
-:
-: bin
-:
-mkdir -p ~/bin
-for F in ~/.dotfiles/bin/*; do
-  ln -sf $F ~/bin/$(basename $F)
-done
+function STEP:() {
+  print '[STEP]' $@
+  : "====================================================================="
+}
+function DONE:() {
+  print '[DONE]' $@
+  : "====================================================================="
+}
+function LOG:() {
+  $VERBOSE && print ' [LOG]' $@
+  : "====================================================================="
+}
 
+function __initModule() {
+  local module=$1
+  local modpath=$DOTFILES/modules/$1
 
-:
-: modules
-:
-modules=(
-  git
-)
-for M in "${modules[@]}"; do
-  if [[ -f modules/$M/init.sh ]]; then
-    : module init: $M
-    source modules/$M/init.sh
+   if [[ -f $modpath/init.zsh ]]; then
+    STEP: module init: $module
+    source $modpath/init.zsh
 
-    for F in modules/$M/bin/*; do
-      ln -sf $F ~/bin/$(basename $F)
+    for F in $modpath/bin/*(N.); do
+      local bname=$(basename $F)
+      LOG: linking $bname
+      ln -sf $F ~/bin/$bname
     done
   fi
-done
+}
 
+:
+STEP: init profile
+ln -sf $DOTFILES/.zshrc ~/.zshrc
+mkdir -p ~/.config ~/bin
+
+
+:
+STEP: config
+mkdir -p ~/.config
+ln -sf $DOTFILES/config/starship.toml ~/.config/starship.toml
+mkdir -p ~/.config/kitty
+ln -sf $DOTFILES/config/kitty.conf ~/.config/kitty/kitty.conf
+
+:
+STEP: modules
+# order matters if it matters
+for m (
+  git
+  git-status
+  font
+) __initModule $m
 
 
 # case $(uname) in
@@ -68,12 +82,4 @@ done
 # )
 # npm install --global ${deps[*]}
 
-:
-: installing fonts
-:
-[[ -d ./font ]] || git clone git@github.com:junosuarez/font.git
-./font/init.sh
-
-:
-: setup ok
-:
+DONE: setup ok

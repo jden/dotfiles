@@ -29,8 +29,9 @@ export SHELL_LOG="$HOME/.shell_log"
 
 # __include ruby
 __include node
-__include go
-__include git_profile
+# __include go
+__include git
+
 __include tools
 __include rust
 
@@ -58,8 +59,3 @@ if [ -f "$HOME/.dotfiles/.workrc" ]; then
 fi
 
 # note: see the .zlogin file, which runs once per shell _after_ .zshrc, for additional setup
-
-
-# source $HOME/gitstatus/gitstatus.plugin.zsh
-# source $HOME/gitstatus/gitstatus.prompt.zsh
-source "$HOME/.dotfiles/modules/git_status.zsh"
