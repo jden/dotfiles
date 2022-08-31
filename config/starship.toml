@@ -13,7 +13,7 @@ $status$cmd_duration\
 $battery\
 [${custom.vpn}$sudo](fg:#ffffff bg:#47536b)\
 [](fg:#47536b)\
-[                ]()\
+[        ]()\
 ${env_var}\
 [$git_state$git_status$git_branch$git_commit]()\
 [$directory]()\
@@ -68,6 +68,9 @@ format="[@$env_value](purple bold)"
 [env_var.4]
 variable="GSD_BRANCH_STATUS"
 format="[ $env_value ]()"
+[env_var.5]
+variable="GSD_NOT_REPO"
+format="[ ]()"
 
 # we have to use this because multiple envvar modules arent supported
 # sadly this is kinda slow,
@@ -111,7 +114,8 @@ format = '$symbol'
 disabled = true
 
 [custom.vpn]
-format = " 睊"
+# format = " 睊"
+format = "  "
 when = "! grep -q .biz /etc/resolv.conf"
 
 [time]
