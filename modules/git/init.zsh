@@ -26,6 +26,7 @@ git config --global alias.whomst blame
 git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 git config --global alias.find 'ls-files'
+git config --global alias.fast-forward "rebase origin"
 
 # set global git ignore
 git config --global core.excludesfile $DOTFILES/modules/git/global-gitignore

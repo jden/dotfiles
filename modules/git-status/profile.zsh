@@ -68,6 +68,7 @@ function _gitstatus_prompt_update() {
   if [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]]; then
       BRANCH_STATUS="$(chalk $YELLOW $behind)"
       HINT="git rebase"
+      HINT_CMD="git fast-forward"
     else
       BRANCH_STATUS="$(chalk $WHITE $up_to_date)"
     fi
@@ -124,6 +125,7 @@ function _gitstatus_prompt_update() {
   export GSD_STATUS="$STATUS"
   export GSD_BRANCH_STATUS="$BRANCH_STATUS"
   export GSD_HINT="$HINT"
+  export GSD_HINT_CMD="$HINT_CMD"
   export GSD_ON="$ON"
   export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL | sed 's|\.git$||')"
   export GSD_REMOTE="$REMOTE"
@@ -161,3 +163,7 @@ gitstatusd_up
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd gitstatus_prompt_update
+
+function gsd_hint() {
+  echo cmd: $GSD_HINT_CMD
+}
