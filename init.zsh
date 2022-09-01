@@ -2,6 +2,22 @@
 # Ensure this file is idempotent!
 source ~/.dotfiles/mod.zsh
 
+function __initModule() {
+  local module=$1
+  local modpath=$DOTFILES/modules/$1
+
+   if [[ -f $modpath/init.zsh ]]; then
+    STEP: module init: $module
+    source $modpath/init.zsh
+
+    for F in $modpath/bin/*(N.); do
+      local bname=$(basename $F)
+      LOG: linking $bname
+      ln -sf $F ~/bin/$bname
+    done
+  fi
+}
+
 :
 STEP: init profile
 ln -sf $DOTFILES/.zshrc ~/.zshrc
@@ -11,7 +27,6 @@ mkdir -p ~/.config ~/bin
 :
 STEP: config
 mkdir -p ~/.config
-mkdir -p ~/.config/kitty
 ln -sf $DOTFILES/config/kitty.conf ~/.config/kitty/kitty.conf
 
 :
@@ -22,6 +37,7 @@ for m (
   git-status
   starship
   font
+  kitty
 ) __initModule $m
 
 
