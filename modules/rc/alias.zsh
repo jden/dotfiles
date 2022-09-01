@@ -28,6 +28,12 @@ function rc-edit () {
 }
 alias rce="rc edit"
 
+desc rc-profile "reload shell with profiling"
+function rc-profile () {
+  DOTFILES_PROFILE=true
+  rc-source
+}
+
 function _rc-commit () {
   message="${1:-save settings}"
   gitrc commit -am "$message" || return 1
