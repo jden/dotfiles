@@ -41,6 +41,19 @@ function _rc-commit () {
 }
 alias pushrc="gitrc push origin master"
 
+desc rc-todo "see list (empty) or add a todo item (vararg)"
+function rc-todo () {
+  echo todo
+  if [[ $# -eq 0 ]]; then
+    # get
+    command cat $DOTFILES/TODO
+  else
+    # add
+    echo "- [] $@" >> $DOTFILES/TODO
+    _rc-commit "todo: $@"
+  fi
+}
+
 desc rc-sync "do some things"
 function rc-sync () {
   # TODO: this doesnt work, need to make an inner rc-source # ensure we have the latest
