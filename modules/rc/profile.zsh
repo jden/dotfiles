@@ -18,7 +18,7 @@ desc rc-source "reload dotfile (alias: rcs)"
 function rc-source () {
   source ~/.zshrc
   MARK dotfiles.resource
-  echo reloaded ~/.zshrc
+  printf "reloaded ~/.zshrc in %sms\n" $DOTFILES_SPAN_START_MS
 }
 alias rcs="rc source"
 

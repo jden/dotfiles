@@ -1,14 +1,31 @@
 #!/bin/zsh
 # preamble
+zmodload zsh/datetime
 
+# slow, do not use for math internally since it returns a string
 function timestamp () {
-  echo $(($(gdate +%s%N)/1000000))
+  printf "%.0f\n" $(( $EPOCHREALTIME * 1000 ))
 }
+
 function elapsed () {
-  expr $(timestamp) - ${1:-$DOTFILES_START_MS}
+  # local val
+  # local since
+  # local now=$EPOCHREALTIME
+  # local offset=${1:-0}
+  # (( since = $offset + $DOTFILES_START_S ))
+  # (( val = $now - $since ))
+  # echo $val since ${1:-start} off $offset 1>&2
+  # echo $val
+  echo 2
 }
-DOTFILES_START_MS=$(timestamp)
 DOTFILES_HOSTNAME=$(hostname -f -s)
+local started=$EPOCHREALTIME
+DOTFILES_START_S=$started
+local -A profile_start=()
+local -A profile_span=()
+local -A profile_level=()
+local _profile_level=0
+local -a profile_name=()
 
 ## Logging
 ##
@@ -19,9 +36,9 @@ function _get_ssid() {
 alias get_ssid="P _get_ssid"
 
 function _log_shell_event() {
-  if [[ ! __SHELL_LOG ]]; then return 0; fi
+  if [[ ! $DOTFILES_LOG ]]; then return 0; fi
 
-  local time=$(timestamp)
+  (( time = $EPOCHREALTIME * 1000 ))
   local user=$USER
   # local network=$(get_ssid)
   local type=$1
@@ -40,7 +57,7 @@ function _log_shell_event() {
     message=""
   fi
 
-  J=$(printf '{"time":%s,"shellpid":"%s","user":"%s","hostname":"%s"' $time $shellpid $user $DOTFILES_HOSTNAME)
+  J=$(printf '{"time":%3.0f,"shellpid":"%s","user":"%s","hostname":"%s"' $time $shellpid $user $DOTFILES_HOSTNAME)
   if [[ $network != "" ]]; then
     J="$J$(printf ',"network":"%s"' "$network")"
   else
@@ -70,13 +87,21 @@ function __profile () {
     $@
     return $?
   fi
+  (( _profile_level = _profile_level + 1))
 
-  local _START=$(timestamp)
+  local name="$@"
+  (( i = ${#profile_start} + 1 ))
+  profile_start[$name]=$EPOCHREALTIME
+  profile_name+=$name
+  profile_level[$name]=$_profile_level
+
   $@
   RET=$?
-  local elapsed=$(expr $(timestamp) - $_START)
-  local from_start=$(elapsed)
-  echo '  `'"$@"'`'" $elapsed +$from_start"
+
+
+  (( t = $EPOCHREALTIME - profile_start[$name]))
+  profile_span[$name]=$t
+  (( _profile_level = _profile_level - 1))
   return $RET
 }
 alias P=__profile
@@ -85,26 +110,33 @@ function SPAN () {
   local name=$1
   local RET
   shift
-  local start=$(timestamp)
+  profile_start[$name]=$EPOCHREALTIME
 
   $@
   RET=$?
 
-  local elapsed=$(elapsed $start)
-  local from_start=$(elapsed)
+  (( t = $EPOCHREALTIME - profile_start[$name] ))
 
-  local varname="DOTFILES_${name}_SPAN_MS"
-  export $varname=$elapsed
+  local varname="DOTFILES_${name}_SPAN_S"
+  export $varname=$t
 
   return $RET
 }
 
 function __shell_startup_end () {
-  export DOTFILES_START_SPAN_MS=$(elapsed)
-  DEBUG zshrc took ${DOTFILES_START_SPAN_MS}ms to execute
+  DOTFILES_SPAN_START_MS=$(printf "%.0f" $((( $EPOCHREALTIME - $started ) * 1000)))
+  DEBUG "zshrc took %sms to execute" $DOTFILES_SPAN_START_MS
   MARK shell.new
-  if [[ "$DOTFILES_START_SPAN_MS" -gt 100 ]]; then
-    echo "🐢 dotfiles took ${DOTFILES_START_SPAN_MS}ms"
+  if [[  $DOTFILES_PROFILE || true ]]; then
+    for key in ${profile_name}; do
+      (( offset = $profile_start[$key] - $started ))
+      (( indent = $profile_level[$key] * 2 ))
+      printf "+%3.0f %3.0f%${indent}s%s\n" $(( $offset * 1000 )) $(( profile_span[$key] * 1000 )) "•" $key
+    done
+  fi
+
+  if [[ "$DOTFILES_SPAN_START_MS" -gt 500 ]]; then
+    printf "🐢 dotfiles took %3.0fms\n" $(( $DOTFILES_SPAN_START_MS ))
   fi
 }
 
@@ -114,23 +146,26 @@ function __shell_startup_end () {
 # debug logging
 function DEBUG() {
   if [[ $DOTFILES_DEBUG ]]; then
-    echo $@
+    printf $@
+    printf "\n"
   fi
 }
 
 # profiled, safer "source"
 function SOURCE() {
   if [[ -f $1 ]]; then
+    DEBUG "  sourcing %s" $1
     __profile source $1
   fi
 }
 
 # load a module
 # $1 - name of the module to load in :/modules
-function LOAD () {
+function __loadModule () {
   [[ -d $DOTFILES/modules/$1 ]] || return 1
 
-  DEBUG loading modules/$1/
+  DEBUG "loading modules/%s/" $1
   SOURCE $DOTFILES/modules/$1/alias.zsh
   SOURCE $DOTFILES/modules/$1/profile.zsh
 }
+alias LOAD="P __loadModule"
