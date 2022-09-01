@@ -20,7 +20,6 @@ function elapsed () {
 }
 DOTFILES_HOSTNAME=$(hostname -f -s)
 local started=$EPOCHREALTIME
-DOTFILES_START_S=$started
 local -A profile_start=()
 local -A profile_span=()
 local -A profile_level=()
@@ -115,15 +114,16 @@ function SPAN () {
   $@
   RET=$?
 
-  (( t = $EPOCHREALTIME - profile_start[$name] ))
+  (( t = ($EPOCHREALTIME - profile_start[$name]) * 1000 ))
 
-  local varname="DOTFILES_${name}_SPAN_S"
-  export $varname=$t
+  local varname="DOTFILES_SPAN_${name}_MS"
+  export $varname=$(printf "%0.f" $t)
 
   return $RET
 }
 
 function __shell_startup_end () {
+  DOTFILES_START_MS=$(printf "%.0f" $(( $started * 1000 )))
   DOTFILES_SPAN_START_MS=$(printf "%.0f" $((( $EPOCHREALTIME - $started ) * 1000)))
   DEBUG "zshrc took %sms to execute" $DOTFILES_SPAN_START_MS
   MARK shell.new
