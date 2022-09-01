@@ -1,3 +1,5 @@
 USE: font
 USE: git
 USE: prompt
+USE: tools
+USE: kitty

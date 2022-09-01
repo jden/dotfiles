@@ -9,4 +9,5 @@ for m (
   rust
   ## Prompt
   prompt
+  kitty
 ) __include $m

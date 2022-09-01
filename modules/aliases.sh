@@ -38,14 +38,17 @@ function syncrc () {
   commitrc "$*" || return 1
   pushrc || return 1
 }
+alias graphrc="zsh $DOTFILES/graph.zsh"
+alias initrc="zsh $DOTFILES/init.zsh"
 alias glorc="gitrc log --pretty=format:'%C(dim white)%h%Creset %C(bold white)%>(15)%ar%Creset %Cgreen%d%Creset %s' --color=always"
 
 # navigation
 alias co="cd ~/Code"
 alias cj="cd ~/Code/junosuarez"
-alias ghub="npx ghub-cli"
+function ghub() {
+  open "https://ghub.io/$1"
+}
 alias s="cd ~/workspace/source"
-alias so=s # maybe a better mnemonic?
 alias sw="cd ~/workspace/web"
 alias sp="cd ~/Desktop/Projects"
 
@@ -55,18 +58,6 @@ alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}
 
 alias cd..="cd .."
 alias lc="wc -l" #line count
-
-# terminal
-alias icat="kitty icat --align=left"
-alias isvg="rsvg-convert --dpi-x=120 --dpi-y=120 | icat"
-alias isvg2="rsvg-convert --zoom=2 | icat"
-## require npm i -g vega-cli, draws vega lite charts
-alias ivl="vl2svg | isvg2"
-## dot with default styles, reference https://graphviz.org/doc/info/attrs.html
-alias idot="dot -Gbgcolor=transparent -Ncolor=white -Nfontcolor=white -Nfontsize=16 -Nfontname=monospace -Ecolor=white -Tsvg | isvg"
-function itex() {
-  tex2svg "$1" | sed 's|</svg>|<style>*{fill:white;}</style></svg>|' | rsvg-convert --zoom 3 | icat
-}
 
 # git aliases
 alias g=git

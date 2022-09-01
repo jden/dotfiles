@@ -1,6 +1,5 @@
 #!/bin/zsh
-
-source ./mod.zsh
+source ~/.dotfiles/mod.zsh
 
 function __initModule() {
   local module=$1
@@ -30,4 +29,4 @@ function __initModule() {
 
 __initModule $1
 echo
-echo brew: $_brew
+echo brew: $MOD_BREW

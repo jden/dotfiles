@@ -1,6 +1,6 @@
 #! /bin/zsh
 # Ensure this file is idempotent!
-source ./mod.zsh
+source ~/.dotfiles/mod.zsh
 
 :
 STEP: init profile
