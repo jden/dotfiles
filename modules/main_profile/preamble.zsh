@@ -103,6 +103,9 @@ function __shell_startup_end () {
   export DOTFILES_START_SPAN_MS=$(elapsed)
   DEBUG zshrc took ${DOTFILES_START_SPAN_MS}ms to execute
   MARK shell.new
+  if [[ "$DOTFILES_START_SPAN_MS" -gt 100 ]]; then
+    echo "🐢 dotfiles took ${DOTFILES_START_SPAN_MS}ms"
+  fi
 }
 
 ## Module loading, etc
@@ -125,13 +128,9 @@ function SOURCE() {
 # load a module
 # $1 - name of the module to load in :/modules
 function LOAD () {
-  if [[ -d $DOTFILES/modules/$1 ]]; then
-    DEBUG loading modules/$1/
-    SOURCE $DOTFILES/modules/$1/alias.zsh
-    SOURCE $DOTFILES/modules/$1/profile.zsh
-  else
-    # legacy non-dir version. remove soon.
-    DEBUG loading modules/$1
-    SOURCE $DOTFILES/modules/$1.*sh
-  fi
+  [[ -d $DOTFILES/modules/$1 ]] || return 1
+
+  DEBUG loading modules/$1/
+  SOURCE $DOTFILES/modules/$1/alias.zsh
+  SOURCE $DOTFILES/modules/$1/profile.zsh
 }

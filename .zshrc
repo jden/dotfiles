@@ -6,7 +6,6 @@ source "$DOTFILES/modules/main_profile/preamble.zsh"
 ## Use zsh hooks
 autoload -U add-zsh-hook
 
-LOAD aliases
 LOAD main_profile
 
 add-zsh-hook chpwd update_main_branch
