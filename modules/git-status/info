@@ -1,2 +1,4 @@
 # gitstatusd https://github.com/romkatv/gitstatus
+
 BREW: romkatv/gitstatus/gitstatus
+USE: git
