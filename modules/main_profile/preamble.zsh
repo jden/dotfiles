@@ -5,7 +5,7 @@ function timestamp () {
   echo $(($(gdate +%s%N)/1000000))
 }
 function elapsed () {
-  expr $(timestamp) - $DOTFILES_START_MS
+  expr $(timestamp) - ${1:-$DOTFILES_START_MS}
 }
 DOTFILES_START_MS=$(timestamp)
 DOTFILES_HOSTNAME=$(hostname -f -s)
@@ -81,6 +81,23 @@ function __profile () {
 }
 alias P=__profile
 
+function SPAN () {
+  local name=$1
+  local RET
+  shift
+  local start=$(timestamp)
+
+  $@
+  RET=$?
+
+  local elapsed=$(elapsed $start)
+  local from_start=$(elapsed)
+
+  local varname="DOTFILES_${name}_SPAN_MS"
+  export $varname=$elapsed
+
+  return $RET
+}
 
 function __shell_startup_end () {
   export DOTFILES_START_SPAN_MS=$(elapsed)

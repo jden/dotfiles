@@ -2,7 +2,7 @@
 
 SOURCE "${HOMEBREW_PREFIX:-/usr/local}/opt/gitstatus/gitstatus.plugin.zsh" || return
 gitstatusd_instance='GSD'
-# the following are a myster - why do they define the fn names with $1?
+# the following are a mystery - why do they define the fn names with $1?
 alias gitstatus_query=gitstatus_querysource
 alias gitstatus_start=gitstatus_startsource
 alias gitstatus_stop=gitstatus_stopsource
@@ -12,7 +12,7 @@ function chalk() {
 }
 
 # export some env vars we pick up in statship config
-function gitstatus_prompt_update() {
+function _gitstatus_prompt_update() {
 
   gitstatus_query $gitstatusd_instance || return 1  # error
   [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || {
@@ -132,6 +132,9 @@ function gitstatus_prompt_update() {
 
   # while we're here, let's keep it fresh
   gsd_refresh
+}
+function gitstatus_prompt_update() {
+  SPAN GSD _gitstatus_prompt_update
 }
 
 function gsd_refresh() {
