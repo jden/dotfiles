@@ -43,7 +43,6 @@ alias pushrc="gitrc push origin master"
 
 desc rc-todo "see list (empty) or add a todo item (vararg)"
 function rc-todo () {
-  echo todo
   if [[ $# -eq 0 ]]; then
     # get
     command cat $DOTFILES/TODO
@@ -51,7 +50,7 @@ function rc-todo () {
     # add
     local todo="$@"
     echo "- [] $todo" >> $DOTFILES/TODO
-    _rc-commit "todo: $todo"
+    _rc-commit "todo: $todo" && echo added
   fi
 }
 
