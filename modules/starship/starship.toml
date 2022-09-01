@@ -119,7 +119,7 @@ disabled = true
 [custom.vpn]
 # format = " 睊"
 format = "  "
-when = "! grep -q .biz /etc/resolv.conf"
+when = '[[ "$USER" == jsuarez ]] && ! grep -q .biz /etc/resolv.conf'
 
 [time]
 disabled = false
