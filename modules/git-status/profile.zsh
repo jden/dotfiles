@@ -91,6 +91,7 @@ function _gitstatus_prompt_update() {
     if [[ $VCS_STATUS_HAS_UNSTAGED  -gt 0 ]]; then
       STATUS="$STATUS $(chalk $GREEN $modified)"
       HINT="git commit changes"
+      HINT_CMD="git commit -a"
     fi
   fi
 
@@ -164,6 +165,25 @@ gitstatusd_up
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd gitstatus_prompt_update
 
-function gsd_hint() {
-  echo cmd: $GSD_HINT_CMD
+function gsd_show_hint() {
+  if [[ $GSD_HINT_CMD ]]; then
+    echo cmd: $GSD_HINT_CMD
+    echo 'run this command with `zz`'
+  else
+    echo no hint available
+    return 1
+  fi
 }
+alias z="gsd_show_hint"
+
+function gsd_use_hint() {
+  if [[ $GSD_HINT_CMD ]]; then
+    echo running: $GSD_HINT_CMD
+    MARK gsd.use_hint -m "$GSD_HINT_CMD"
+    $GSD_HINT_CMD
+  else
+    return 1
+  fi
+}
+alias zz="gsd_use_hint"
+
