@@ -44,10 +44,27 @@ alias pushrc="gitrc push origin master"
 desc rc-sync "do some things"
 function rc-sync () {
   rc-source # ensure we have the latest
-  pullrc || return 1
+
+  let added=$(git status --porcelain=1 | grep -e '^A')
+  if [[ $added != "" ]]; then
+  echo added $added
+  echo "use 'gitrc add -A' if you want to continue"
+  return 1
+  else
+  echo nothiing added
+  fi
+  return 0
+
+  local om1=$(git rev-parse origin/master)
+  gitrc fetch origin master --quiet
+  local om2=$(git rev-parse origin/master)
+  if [[ $om1 != $om2 ]]; then
+    echo updating with remote changes
+    gitrc rebase origin/master
+    rc-init # TODO: detect when this is necessary
+  fi
   _rc-commit "$*" || return 1
   pushrc || return 1
-  rc-init # TODO: detect when this is necessary
 }
 desc rc-graph "see modules with graphviz"
 function rc-graph () {
