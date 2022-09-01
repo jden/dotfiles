@@ -28,4 +28,4 @@ git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 git config --global alias.find 'ls-files'
 
 # set global git ignore
-git config --global core.excludesfile ~/.dotfiles/config/gitignore
+git config --global core.excludesfile $DOTFILES/modules/git/global-gitignore
