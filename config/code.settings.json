@@ -2,7 +2,9 @@
 {
   // Font
   // "editor.fontFamily": "'SauceCodePro Nerd Font'",
-  "editor.fontFamily": "'Berkeley Mono'",
+  "editor.fontFamily": "'Berkeley Mono', 'BerkeleyMono Nerd Font'",
+  "terminal.integrated.fontFamily": "'Berkeley Mono', 'BerkeleyMono Nerd Font'",
+  "terminal.integrated.customGlyphs": true,
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "editor.lineHeight": 20,
@@ -214,5 +216,6 @@
   "polacode.transparentBackground": true,
   "codesnap.backgroundColor": "transparent",
   "gitblame.commitUrl": "https://phabricator.twitter.biz/source/web/browse/master/${file.path};${hash}%24${file.line}",
-  "window.commandCenter": true
+  "window.commandCenter": true,
+  "editor.fontLigatures": false
 }

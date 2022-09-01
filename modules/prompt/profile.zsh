@@ -21,7 +21,7 @@ function prompt_hook() {
     screen*) # set window title tmux
       printf '\033k$(__terminal_title)\033\\'
       ;;
-    xterm*) # set window title in iterm, etc
+    xterm*) # set window title in kitty, etc
       printf '\033]0;'"$(__terminal_title)"'\007'
       ;;
   esac

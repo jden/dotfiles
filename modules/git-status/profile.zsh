@@ -30,7 +30,7 @@ function _gitstatus_prompt_update() {
 
   local BRANCH_STATUS=""
   local STATUS=""
-  local HINT=""
+  local HINT="" # TODO find a way to trap cmd+? to auto-complete hint
   local ON=""
   local REMOTE=""
 
@@ -113,6 +113,7 @@ function _gitstatus_prompt_update() {
       ;;
   esac
 
+# formatted with starship
 # if [[ $HINT != "" ]]; then
 #   HINT=$(chalk $YELLOW " $HINT")
 # fi

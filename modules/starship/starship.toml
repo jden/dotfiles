@@ -1,6 +1,9 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# TODO - add fallback symbols if nerd font glyphs unavailable
+# (eg, vscode term)
+
 # run `starship timings` to debug slow prompts
 
 # Inserts a blank line between shell prompts
