@@ -180,10 +180,9 @@ function gsd_use_hint() {
   if [[ $GSD_HINT_CMD ]]; then
     echo running: $GSD_HINT_CMD
     MARK gsd.use_hint -m "$GSD_HINT_CMD"
-    $GSD_HINT_CMD
+    ${(z)GSD_HINT_CMD}
   else
     return 1
   fi
 }
 alias zz="gsd_use_hint"
-
