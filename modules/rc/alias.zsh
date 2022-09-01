@@ -43,17 +43,14 @@ alias pushrc="gitrc push origin master"
 
 desc rc-sync "do some things"
 function rc-sync () {
-  rc-source # ensure we have the latest
-
-  let added=$(git status --porcelain=1 | grep -e '^A')
-  if [[ $added != "" ]]; then
-  echo added $added
+  # TODO: this doesnt work, need to make an inner rc-source # ensure we have the latest
+  local untracked=$(gitrc status --porcelain=1 | grep -e '^??')
+  if [[ $untracked != "" ]]; then
+  gitrc status
+  echo
   echo "use 'gitrc add -A' if you want to continue"
   return 1
-  else
-  echo nothiing added
   fi
-  return 0
 
   local om1=$(git rev-parse origin/master)
   gitrc fetch origin master --quiet
