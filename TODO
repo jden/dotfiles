@@ -4,3 +4,4 @@
 - [] real git submodule support: multiple modules in one repo
 - [] capslock to open headsup term
 - [] rename branch "main"
+- [] add autoformatting
