@@ -49,8 +49,9 @@ function rc-todo () {
     command cat $DOTFILES/TODO
   else
     # add
-    echo "- [] $@" >> $DOTFILES/TODO
-    _rc-commit "todo: $@"
+    local todo="$@"
+    echo "- [] $todo" >> $DOTFILES/TODO
+    _rc-commit "todo: $todo"
   fi
 }
 
