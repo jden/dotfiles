@@ -142,13 +142,14 @@ function gsd_refresh() {
   local LAST_REFRESHED=$(git config --local --get gsd.refresh 2> /dev/null || true)
   local NOW=$(gdate +%s)
   local ELAPSED_SEC=$(($NOW - ${LAST_REFRESHED:-0}))
+  local TTL=2
   # echo last $LAST_REFRESHED
   # echo now $NOW
   # echo elapsed $ELAPSED_SEC
-  if [[ $ELAPSED_SEC -gt 300 ]]; then
+  if [[ $ELAPSED_SEC -gt $TTL ]]; then
     # echo refreshing
     git config --local --add gsd.refresh $NOW
-    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git fetch origin master &)
+    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git fetch origin master --quiet &)
   fi
 }
 
