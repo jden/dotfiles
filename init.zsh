@@ -11,7 +11,6 @@ mkdir -p ~/.config ~/bin
 :
 STEP: config
 mkdir -p ~/.config
-ln -sf $DOTFILES/config/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/kitty
 ln -sf $DOTFILES/config/kitty.conf ~/.config/kitty/kitty.conf
 
@@ -21,6 +20,7 @@ STEP: modules
 for m (
   git
   git-status
+  starship
   font
 ) __initModule $m
 

@@ -22,7 +22,8 @@ function __tryLoadSshAgent() {
 function __spawnSshAgent() {
     ssh-agent > $SSH_AGENT
     source $SSH_AGENT > /dev/null
-    #
+    # this is what's slow, we only need it once
+    # when spawning a new agent
     ssh-add --apple-use-keychain -q
 }
 

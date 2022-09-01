@@ -1,7 +1,5 @@
 #!/bin/zsh
 # preamble
-__BASHRC_DEBUG=true
-__BASHRC_PROFILE=true
 
 function timestamp () {
   echo $(($(gdate +%s%N)/1000000))
@@ -38,5 +36,5 @@ function __include () {
 
 function __endbashrc () {
   [[ $__BASHRC_DEBUG ]] || return 0
-  echo bashrc took $(expr $(timestamp) - $DOTFILES_START)ms to execute
+  echo zshrc took $(expr $(timestamp) - $DOTFILES_START)ms to execute
 }

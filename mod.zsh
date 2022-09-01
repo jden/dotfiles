@@ -18,13 +18,26 @@ function LOG:() {
   : "====================================================================="
 }
 
+
+
 # DSL for "info" files
+declare -A _deps
+declare -a _pending
+declare -a _brew
+
 function USE:() {
-  echo "  uses $1"
+  echo "  ↳ $1"
+  _pending+=$1
 }
 function BREW:() {
-  echo "  uses $1 from homebrew"
+  echo "  ↳ $1 (homebrew)"
+  _brew+=$1
 }
+function GIT:() {
+  echo "  ↳ $1 (git submodule)"
+  #todo: automate
+}
+
 
 function __initModule() {
   local module=$1

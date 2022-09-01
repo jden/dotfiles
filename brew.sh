@@ -9,10 +9,9 @@ if needs brew; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-brew cleanup
+# brew cleanup
 
 packages=(
-  cloc
   coreutils
   inetutils
   jid # json incremental digger

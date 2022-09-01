@@ -1,0 +1,1 @@
+alias bnode="babel-node --presets @babel/preset-flow,@babel/preset-env"

@@ -33,6 +33,7 @@ function gitstatus_prompt_update() {
   local STATUS=""
   local HINT=""
   local ON=""
+  local REMOTE=""
 
   # see https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html#Character-Highlighting
   # for COLOR in {0..255}
@@ -104,6 +105,15 @@ function gitstatus_prompt_update() {
     ON="${VCS_STATUS_COMMIT:0:7}"
   fi
 
+  case "$VCS_STATUS_REMOTE_URL" in
+    *@github.com*)
+      REMOTE=""
+      ;;
+    *twitter.*)
+      REMOTE="暑"
+      ;;
+  esac
+
 # if [[ $HINT != "" ]]; then
 #   HINT=$(chalk $YELLOW " $HINT")
 # fi
@@ -115,7 +125,9 @@ function gitstatus_prompt_update() {
   export GSD_BRANCH_STATUS="$BRANCH_STATUS"
   export GSD_HINT="$HINT"
   export GSD_ON="$ON"
-  export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL)"
+  export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL | sed 's|\.git$||')"
+  export GSD_REMOTE="$REMOTE"
+
   unset GSD_NOT_REPO
   # echo update $STATUS $HINT $ON
 
