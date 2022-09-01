@@ -36,7 +36,7 @@ function rc-profile () {
 
 function _rc-commit () {
   message="${1:-save settings}"
-  gitrc commit -am "$message" || return 1
+  gitrc commit --quiet -am "$message" || return 1
   MARK dotfiles.saved
 }
 alias pushrc="gitrc push origin master"
