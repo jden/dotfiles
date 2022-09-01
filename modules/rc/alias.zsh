@@ -1,7 +1,5 @@
 
 # dotfiles management workflow
-alias resource="source ~/.zshrc && MARK dotfiles.resource && echo reloaded ~/.zshrc"
-alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
 
@@ -16,6 +14,20 @@ function desc() {
   fi
 }
 
+desc rc-source "reload dotfile (alias: rcs)"
+function rc-source () {
+  source ~/.zshrc
+  MARK dotfiles.resource
+  echo reloaded ~/.zshrc
+}
+alias rcs="rc source"
+
+desc rc-edit "edit dotfiles (alias: rce)"
+function rc-edit () {
+  edit $DOTFILES
+}
+alias rce="rc edit"
+
 function _rc-commit () {
   message="${1:-save settings}"
   gitrc commit -am "$message" || return 1
@@ -25,9 +37,11 @@ alias pushrc="gitrc push origin master"
 
 desc rc-sync "do some things"
 function rc-sync () {
+  rc-source # ensure we have the latest
   pullrc || return 1
   _rc-commit "$*" || return 1
   pushrc || return 1
+  rc-init # TODO: detect when this is necessary
 }
 desc rc-graph "see modules with graphviz"
 function rc-graph () {
