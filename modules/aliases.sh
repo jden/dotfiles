@@ -23,14 +23,14 @@ alias cat=bat # https://github.com/sharkdp/bat
 alias batdiff="git diff --name-only --diff-filter=d | xargs bat --diff"
 
 # dotfiles management workflow
-alias resource="source ~/.zshrc && log_shell_event dotfiles.resource && echo reloaded ~/.zshrc"
+alias resource="source ~/.zshrc && MARK dotfiles.resource && echo reloaded ~/.zshrc"
 alias editrc="edit $DOTFILES"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin master"
 function commitrc () {
   message="${1:-save settings}"
   gitrc commit -am "$message" || return 1
-  log_shell_event dotfiles.saved
+  MARK dotfiles.saved
 }
 alias pushrc="gitrc push origin master"
 function syncrc () {
@@ -134,8 +134,7 @@ alias scf="cd $SCROLL_HOME/cloud-functions"
 function sgc () {
   gitw grep -I $@ $SCROLL_HOME/client/**/*.{js,jsx,ts,tsx}
 }
-alias review='sc && log_shell_event work.review -m "$@" && $SCROLL_HOME/review.sh'
-alias scn="cd ~/Code/Nuzzel"
+alias review='sc && MARK work.review -m "$@" && $SCROLL_HOME/review.sh'
 
 # npm workflow
 alias npmi="npm install"

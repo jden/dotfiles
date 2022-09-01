@@ -28,15 +28,15 @@ function prompt_hook() {
 
   # starship captures $? as $STATUS
   #if [ "$STATUS" != "0" ]; then
-  #  log_shell_event program.error -c $STATUS
+  #  MARK program.error -c $STATUS
   #  echo -e "⇒ E$STATUS" # print err
   #fi
 
-  log_shell_event prompt
+  MARK prompt
 }
 add-zsh-hook precmd prompt_hook
 
-__include git-status
+LOAD git-status
 
 eval "$(starship init zsh)"
 # export STARSHIP_LOG=error # disable slow git command warnings

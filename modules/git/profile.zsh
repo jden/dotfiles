@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 ## git completions
-# P source "$DOTFILES/scripts/.git-completion.bash"
-# P source "$DOTFILES/scripts/hub.bash_completion.sh"
-P source "$DOTFILES/scripts/git-prompt.sh"
+# SOURCE "$DOTFILES/scripts/.git-completion.bash"
+# SOURCE "$DOTFILES/scripts/hub.bash_completion.sh"
+SOURCE "$DOTFILES/scripts/git-prompt.sh"
 
 ## git aliases
 
@@ -105,7 +105,7 @@ function workon () {
   TASK="$(basename $URL)"
   BRANCH="a$TASK"
 
-  log_shell_event work.workon -m "$URL"
+  MARK work.workon -m "$URL"
 
   git fetch origin master >/dev/null 2>&1
 

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-P source "${HOMEBREW_PREFIX:-/usr/local}/opt/gitstatus/gitstatus.plugin.zsh" || return
+SOURCE "${HOMEBREW_PREFIX:-/usr/local}/opt/gitstatus/gitstatus.plugin.zsh" || return
 gitstatusd_instance='GSD'
 # the following are a myster - why do they define the fn names with $1?
 alias gitstatus_query=gitstatus_querysource

@@ -10,7 +10,7 @@ function __tryLoadSshAgent() {
   if [[ -f $SSH_AGENT ]]; then
     source $SSH_AGENT > /dev/null
     if ! ps -p $SSH_AGENT_PID > /dev/null; then
-      [[ $__BASHRC_DEBUG ]] && echo agent not running $SSH_AGENT_PID
+      [[ $__SHELL_DEBUG ]] && echo agent not running $SSH_AGENT_PID
       rm $SSH_AGENT
       __spawnSshAgent
     fi

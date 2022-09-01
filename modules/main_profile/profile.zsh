@@ -10,4 +10,4 @@ for m (
   ## Prompt
   prompt
   kitty
-) __include $m
+) LOAD $m

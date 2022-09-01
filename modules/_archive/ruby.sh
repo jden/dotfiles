@@ -6,8 +6,8 @@ alias bt="b ruby -Ilib/test"
 alias brt=bundle_rake_test
 
 # chruby
-# P source /usr/local/opt/chruby/share/chruby/chruby.sh
-# P source /usr/local/opt/chruby/share/chruby/auto.sh
+# SOURCE /usr/local/opt/chruby/share/chruby/chruby.sh
+# SOURCE /usr/local/opt/chruby/share/chruby/auto.sh
 # configure readline to be good:
 # the original version is:
 ## export RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline) --with-openssl-dir=$(brew --prefix openssl)"
