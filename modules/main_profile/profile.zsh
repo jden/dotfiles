@@ -10,4 +10,5 @@ for m (
   ## Prompt
   prompt
   kitty
+  rc
 ) LOAD $m

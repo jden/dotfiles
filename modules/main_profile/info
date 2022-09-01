@@ -3,3 +3,4 @@ USE: git
 USE: prompt
 USE: tools
 USE: kitty
+USE: rc
