@@ -19,24 +19,46 @@ function __on_mod_cb() {
     done
     lines+="  }"
   fi
+  if [[ ${#MOD_CURRENT[git]} -gt 0 ]]; then
+    lines+="  \"$name\" -> {"
+    for d in ${(z)MOD_CURRENT[git]}; do
+      local label=$(echo "$d" | sed -e 's|.*:||' -e 's|\.git||')
+      lines+="    \"b_$d\" [shape=box, peripheries=2, label=\"$label\"]"
+    done
+    lines+="  }"
+  fi
 }
 
 lines+="digraph A {"
 __walkModules main_profile "__on_mod_cb"
 
 if [[ ${#MOD_BREWS} -gt 0 ]]; then
-  lines+="  subgraph cluster_BREW { rank=same;"
+  lines+="  subgraph cluster_BREW { color=white; style=\"dotted\"; rank=same;"
   for d in ${(z)MOD_BREWS}; do
     lines+="    \"b_$d\" [shape=box, label=\"$d\"];"
   done
-  lines+="    label = \"brew\";"
   lines+="  }"
 fi
 
-  lines+="  subgraph cluster_legend { color=white; shape=note; "
+
+if [[ ${#MOD_GITS} -gt 0 ]]; then
+  # for d in ${(z)MOD_GITS}; do
+  #   lines+="    \"g_$d\" [shape=hexagon, label=\"$d\"];"
+  # done
+  # lines+="  subgraph cluster_GIT { rank=same;"
+  # for d in ${(z)MOD_GITS}; do
+  #   lines+="    \"g_$d\" [shape=hexagon, label=\"$d\"];"
+  # done
+  # lines+="    label = \"git\";"
+  # lines+="  }"
+fi
+
+
+  lines+="  subgraph cluster_legend { style=filled; color=\"#ffffff44\"; "
   lines+="    node [shape=box, label=\"brew\"]l1;"
   lines+="    node [shape=oval, label=\"module\"]l2;"
-  # lines+="    label = \"key\";"
+  lines+="    node [shape=box, peripheries=2, label=\"git\"]l3;"
+  lines+="    label=key; fontcolor=white; fontname=courier"
   lines+="  }"
 
 lines+="}"
