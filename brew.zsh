@@ -25,8 +25,6 @@ __walkModules main_profile #"__on_mod_cb"
 ## Packages ("formulae")
 ##
 function apply_packages() {
-  echo 🧙‍♀️ packages
-  echo
 
 local -a pkg_declared=(${(@)MOD_BREWS})
 local -a pkg_installed=(${(s| |)$(brew list --formula --full-name| sort)})
@@ -35,33 +33,26 @@ local -a pkg_to_install=()
 for p in ${(@)pkg_declared}; do
   # array includes?
   if [[ $pkg_installed[(Ie)$p] -eq 0 ]]; then
-    echo p: $p not installed
     pkg_to_install+=$p
-  # else
-    # echo p: $p already installed
   fi
 done
 
-echo declared: $pkg_declared
+LOG: declared: $pkg_declared
 # echo to_install: $pkg_to_install
 
 if [[ "$pkg_to_install" != "" ]]; then
-  echo installing new packages: $pkg_to_install
+  LOG: installing new packages: $pkg_to_install
   brew install --formula $pkg_to_install
 fi
 
-echo upgrading packages
+LOG: upgrading packages
 brew upgrade --formula $pkg_declared 2>/dev/null
 
-echo
 }
 
 ## Casks
 ## (i know this code is repetitive, oh well)
 function apply_casks() {
-  echo 🧙‍♀️ casks
-  echo
-
 local -a cask_declared=(${(@)MOD_CASKS})
 local -a cask_installed=(${(s| |)$(brew list --cask --full-name| sort)})
 local -a cask_to_install=()
@@ -69,29 +60,34 @@ local -a cask_to_install=()
 for c in ${(@)cask_declared}; do
   # array includes?
   if [[ $cask_installed[(Ie)$c] -eq 0 ]]; then
-    echo c: $c not installed
     cask_to_install+=$c
-  # else
-    # echo c: $c already installed
   fi
 done
 
-echo declared: $cask_declared
+LOG: declared: $cask_declared
 # echo to_install: $cask_to_install
 
 if [[ "$cask_to_install" != "" ]]; then
-  echo installing new casks: $cask_to_install
+  LOG: installing new casks: $cask_to_install
   brew install --cask $cask_to_install
 fi
 
 
-echo upgrading casks
+LOG: upgrading casks
 brew upgrade --cask $cask_declared 2>/dev/null
-
-echo
 }
 
+############
+##
+
+:
+STEP: packages
+
 apply_packages
+
+:
+STEP: casks
+
 apply_casks
 
 
@@ -115,3 +111,5 @@ apply_casks
 # fi
 # echo upgrading casks: "${casks[@]}"
 # brew upgrade --cask "${casks[@]}"
+
+DONE: brew ok

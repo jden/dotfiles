@@ -18,6 +18,9 @@ function __initModule() {
   fi
 }
 
+############
+##
+
 :
 STEP: init profile
 ln -sf $DOTFILES/.zshrc ~/.zshrc
@@ -31,15 +34,22 @@ ln -sf $DOTFILES/config/kitty.conf ~/.config/kitty/kitty.conf
 
 :
 STEP: modules
+
+
+__walkModules main_profile
+for m in ${(o)MOD_USES}; do
+  __initModule $m
+done
+
 # order matters if it matters
-for m (
-  git
-  git-status
-  starship
-  font
-  kitty
-  window_mgr
-) __initModule $m
+# for m (
+#   git
+#   git-status
+#   starship
+#   font
+#   kitty
+#   window_mgr
+# ) __initModule $m
 
 
 # case $(uname) in
@@ -66,4 +76,4 @@ for m (
 # )
 # npm install --global ${deps[*]}
 
-DONE: setup ok
+DONE: 'init ok. optional: `rc brew`'

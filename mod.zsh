@@ -25,6 +25,7 @@ declare -a MOD_use
 declare -a MOD_brew
 declare -a MOD_cask
 declare -a MOD_git
+declare -a MOD_USES
 declare -a MOD_BREWS
 declare -a MOD_CASKS
 declare -a MOD_GITS
@@ -114,6 +115,7 @@ function __walkModules() {
 
   done
 
+    for M in ${(@k)seen}; MOD_USES+=$M;
   # while pending {
   # }
 }
