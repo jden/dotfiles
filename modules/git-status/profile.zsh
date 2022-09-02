@@ -69,7 +69,7 @@ function __gitstatus_prompt_update_impl () {
       HINT="git push changes"
     fi
   else
-  if [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]]; then
+    if [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]]; then
       BRANCH_STATUS="$(chalk $YELLOW $behind)"
       HINT="git rebase"
       HINT_CMD="git fast-forward"
@@ -161,8 +161,16 @@ function gitstatusd_up() {
 
 function gsd_show_hint() {
   if [[ $GSD_HINT_CMD ]]; then
-    echo cmd: $GSD_HINT_CMD
-    echo 'run this command with `zz`'
+    echo " $GSD_HINT"
+    echo
+    echo "  [return] will run the following command:"
+    echo
+    echo "  $GSD_HINT_CMD"
+    echo
+    echo '                 skip this pause with `zz`'
+    read
+    echo $GSD_HINT_CMD
+    ${(z)GSD_HINT_CMD}
   else
     echo no hint available
     return 1
