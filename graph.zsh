@@ -32,6 +32,13 @@ function __on_mod_cb() {
     done
     lines+="  }"
   fi
+    if [[ ${#MOD_CURRENT[cask]} -gt 0 ]]; then
+    lines+="  \"$name\" -> {"
+    for d in ${(z)MOD_CURRENT[cask]}; do
+      lines+="    \"c_$d\" [shape=box]"
+    done
+    lines+="  }"
+  fi
   if [[ ${#MOD_CURRENT[git]} -gt 0 ]]; then
     lines+="  \"$name\" -> {"
     for d in ${(z)MOD_CURRENT[git]}; do
@@ -45,10 +52,14 @@ function __on_mod_cb() {
 lines+="digraph A {"
 __walkModules main_profile "__on_mod_cb"
 
-if [[ ${#MOD_BREWS} -gt 0 ]]; then
+if [[ ${#MOD_BREWS} -gt 0 || ${#MOD_CASKS} -gt 0 ]]; then
   lines+="  subgraph cluster_BREW { color=white; style=\"dotted\"; rank=same;"
   for d in ${(z)MOD_BREWS}; do
     lines+="    \"b_$d\" [shape=box, label=\"$d\"];"
+  done
+
+  for d in ${(z)MOD_CASKS}; do
+    lines+="    \"c_$d\" [shape=box, label=\"$d (cask)\", style=\"filled,solid\"; fillcolor=\"#ffffff22\"];"
   done
   lines+="  }"
 fi
