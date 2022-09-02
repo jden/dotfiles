@@ -4,7 +4,8 @@
 alias g=git
 alias gst="git status"
 alias gj="git status"
-alias glo="git log --pretty=format:'%C(dim white)%h%Creset %C(bold white)EML%aEEML%Creset  %Cgreen%d%Creset %s' --color=always | sed 's/EML\(.\{1,7\}\).*@.*EML/EML\1     EML/; s/EML\(.\{7\}\).*EML/\1/' | less -R"
+export GLOF="%h%n%aE%n%s%n"
+alias glo="git log --pretty=format:\"$GLOF\" | awk -f $DOTFILES/modules/git/glo.awk | less -RS"
 alias glog="git log --graph"
 alias gam="git commit -a --amend"
 function gpom(){
