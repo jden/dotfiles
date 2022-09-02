@@ -54,6 +54,21 @@ function rc-todo () {
   fi
 }
 
+function rc-commit() {
+  local untracked=$(gitrc status --porcelain=1 | grep -e '^??')
+  if [[ $untracked != "" ]]; then
+    gitrc status
+    echo
+    echo "use 'gitrc add -A' if you want to continue"
+    return 1
+  fi
+
+  # grab all args as one to allow for use without quotes
+  local message="$*"
+  _rc-commit "$message" || return 1
+}
+alias rcc="rc-commit"
+
 desc rc-sync "do some things"
 function rc-sync () {
   # TODO: this doesnt work, need to make an inner rc-source # ensure we have the latest
@@ -73,7 +88,7 @@ function rc-sync () {
     gitrc rebase origin/master
     rc-init # TODO: detect when this is necessary
   fi
-  _rc-commit "$*" || return 1
+  rc-commit "$*" || return 1
   pushrc || return 1
 }
 desc rc-graph "see modules with graphviz"
