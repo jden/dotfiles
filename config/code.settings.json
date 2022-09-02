@@ -217,5 +217,6 @@
   "codesnap.backgroundColor": "transparent",
   "gitblame.commitUrl": "https://phabricator.twitter.biz/source/web/browse/master/${file.path};${hash}%24${file.line}",
   "window.commandCenter": true,
-  "editor.fontLigatures": false
+  "editor.fontLigatures": false,
+  "workbench.colorTheme": "One Dark Pro Darker"
 }
