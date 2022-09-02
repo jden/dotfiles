@@ -23,8 +23,10 @@ function LOG:() {
 # DSL for "info" files
 declare -a MOD_use
 declare -a MOD_brew
+declare -a MOD_cask
 declare -a MOD_git
 declare -a MOD_BREWS
+declare -a MOD_CASKS
 declare -a MOD_GITS
 
 function USE:() {
@@ -34,6 +36,11 @@ function USE:() {
 function BREW:() {
   # echo "  ↳ $1 (homebrew)"
   MOD_brew+=$1
+}
+function CASK:() {
+  # sadly i think we have to treat this separately from brew
+  # echo "  ↳ $1 (homebrew)"
+  MOD_cask+=$1
 }
 function GIT:() {
   # echo "  ↳ $1 (git submodule)"
@@ -47,10 +54,8 @@ function __modulePath() {
 
 function __walkModules() {
   #sets some variables:
-  #MOD_BREW - array of all brew modules
   local -a pending=()
   local -A seen
-  MOD_BREW=()
 
   declare -A MOD_CURRENT
 
@@ -62,6 +67,7 @@ function __walkModules() {
     local modpath=$(__modulePath $module)
     MOD_use=()
     MOD_brew=()
+    MOD_cask=()
     MOD_git=()
 
     MOD_CURRENT[name]=$module
@@ -70,6 +76,7 @@ function __walkModules() {
       source $modpath/info
       MOD_CURRENT[use]=$MOD_use
       MOD_CURRENT[brew]=$MOD_brew
+      MOD_CURRENT[cask]=$MOD_cask
       MOD_CURRENT[git]=$MOD_git
     fi
   }
@@ -102,6 +109,7 @@ function __walkModules() {
     #reduce
     for M in $MOD_use; pending+=$M;
     for M in $MOD_brew; MOD_BREWS+=$M;
+    for M in $MOD_cask; MOD_CASKS+=$M;
     for M in $MOD_git; MOD_GITS+=$M;
 
   done

@@ -1,2 +1,3 @@
-# BREW: kitty we dont yet support casks?
+# kitty terminal emulator
+CASK: kitty
 BREW: imagemagick

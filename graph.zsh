@@ -3,6 +3,19 @@ source ~/.dotfiles/mod.zsh
 
 declare -a lines=()
 
+if [[ "$@" =~ "-tree" ]]; then
+  function __on_mod_tree_cb() {
+    echo $MOD_CURRENT[name]
+    for type ("use" "brew" "cask" "git"); do
+    [[ ${MOD_CURRENT[$type]} != "" ]] && echo "  ↳ $type: ${MOD_CURRENT[$type]}"
+    done
+    echo
+  }
+
+  __walkModules main_profile "__on_mod_tree_cb"
+  exit
+fi
+
 function __on_mod_cb() {
   local name=${MOD_CURRENT[name]}
   if [[ ${#MOD_CURRENT[use]} -gt 0 ]]; then
