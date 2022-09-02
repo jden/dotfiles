@@ -67,3 +67,4 @@ BEGIN {
 # TODO
 # group by date
 # show phab number
+# conventional commit icons
