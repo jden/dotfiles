@@ -168,6 +168,7 @@ function gsd_show_hint() {
     echo "  $GSD_HINT_CMD"
     echo
     echo '                 skip this pause with `zz`'
+    echo '                          ctrl+c to cancel'
     read
     echo $GSD_HINT_CMD
     ${(z)GSD_HINT_CMD}
