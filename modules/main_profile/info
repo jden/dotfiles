@@ -4,3 +4,4 @@ USE: prompt
 USE: tools
 USE: kitty
 USE: rc
+USE: window_mgr
