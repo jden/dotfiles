@@ -2,6 +2,10 @@
 # configs
 # must be idempotent
 
+## me
+git config --global user.name juno suárez
+git config --get user.email || git config --global user.email juno@localhost
+
 ## setup diffmerge
 git config --global diff.tool diffmerge
 git config --global difftool.diffmerge.cmd 'diffmerge "$LOCAL" "$REMOTE"'

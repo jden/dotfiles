@@ -151,7 +151,7 @@ function gsd_refresh() {
   # echo elapsed $ELAPSED_SEC
   if [[ $ELAPSED_SEC -gt $TTL ]]; then
     # echo refreshing
-    git config --local --add gsd.refresh $NOW
+    git config --local --replace-all gsd.refresh $NOW
     (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git fetch origin master --quiet &)
   fi
 }
