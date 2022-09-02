@@ -20,33 +20,33 @@ function __on_mod_cb() {
 }
 
 __walkModules main_profile #"__on_mod_cb"
-echo
-echo brew: $MOD_BREWS
-# brew install "${MOD_BREWS[@]}"
+# echo brew: $MOD_BREWS
 
+local -a pkg_declared=(${(@)MOD_BREWS})
+local -a pkg_installed=(${(s| |)$(brew list --formula --full-name| sort)})
+local -a to_install=()
 
-# exit
+for p in ${(@)pkg_declared}; do
+  # array includes?
+  if [[ $pkg_installed[(Ie)$p] -eq 0 ]]; then
+    echo p: $p not installed
+    to_install+=$p
+  # else
+    # echo p: $p already pkg_installed
+  fi
+done
 
+# echo declared: $pkg_declared
+# echo to_install: $to_install
 
-# # brew cleanup
-
-packages=(${(@)MOD_BREWS})
-
-# sort and diff packages to find the new ones
-IFS=$'\n' packages=($(sort <<<"${packages[*]}")); unset IFS
-printf '%s\n' "${packages[@]}" > ${TMPDIR}f1
-brew list --formula | sort > ${TMPDIR}f2
-newPackages=$(diff -w --old-line-format='%L' --new-line-format='' --unchanged-line-format='' ${TMPDIR}f1 ${TMPDIR}f2)
-
-# todo: handle packages from taps
-
-if [ "$newPackages" != "" ]; then
-  echo installing new packages: $newPackages
-  brew install $newPackages
+if [ "$to_install" != "" ]; then
+  echo installing new packages: $to_install
+  brew install $to_install
 fi
 
-echo upgrading packages: "${packages[@]}"
-brew upgrade --formula "${packages[@]}" 2>/dev/null
+
+echo upgrading packages
+brew upgrade --formula $pkg_declared 2>/dev/null
 
 # # setup stubby, if newly installed
 # # if [[ "$newPackages" == *"stubby"* ]]; then

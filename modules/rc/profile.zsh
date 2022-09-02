@@ -86,6 +86,11 @@ function rc-init() {
   zsh $DOTFILES/init.zsh $@
 }
 
+desc rc-brew "install brew dependencies"
+function rc-brew() {
+  zsh $DOTFILES/brew.zsh $@
+}
+
 desc rc-log "see changes to dotfiles"
 function rc-log() {
   local format='%C(dim white)%h%Creset %C(bold white)%>(15)%ar%Creset %Cgreen%d%Creset %s'
