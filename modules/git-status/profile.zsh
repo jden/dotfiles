@@ -20,6 +20,8 @@ function _gitstatus_prompt_update() {
     unset GSD_STATUS
     unset GSD_BRANCH_STATUS
     unset GSD_HINT
+    unset GSD_HINT_CMD
+    unset GSD_REMOTE
     unset GSD_ON
     unset GSD_REPO
     export GSD_NOT_REPO="1"
