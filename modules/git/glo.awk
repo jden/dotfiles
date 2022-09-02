@@ -34,6 +34,9 @@ function fmt(str, style) {
 function col(str, len, style) {
   return fmt(sprintf("%-*.*s", len, len, str), style)
 }
+function rcol(str, len, style) {
+  return fmt(sprintf("%*.*s", len, len, str), style)
+}
 function fcol(str, minlen, len, style) {
   return fmt(sprintf("%-*.*s", minlen, len, str), style)
 }
@@ -57,14 +60,23 @@ BEGIN {
       sub("javascript-server", "jss", scopes)
     rest=summary[3]
 
-  print col(hash, 6, "dim"),
-        col(name, 8, "cyan"),
-        col(stype, 2, "bold"),
-        fcol(scopes, 4, 16, "dim")," ",
-        rest
+  # print col(hash, 6, "dim"),
+  #       col(name, 8, "cyan"),
+  #       col(stype, 2, "bold"),
+  #       fcol(scopes, 4, 16, "dim")," ",
+  #       rest
+  print fcol(rest, 2, 100, "bold")
+  print " ", rcol(type, 5, "dim"),
+        col(name, 8, "dim cyan"),
+        fcol(scopes, 4, 16, "dim"),
+        rcol("http://go/s/"hash, 50 "dim")
 }
 
 # TODO
 # group by date
 # show phab number
 # conventional commit icons
+# JIRA Issues: RWEB-41910
+# Differential Revision: https://.../D967304
+# AUTOMATED_COMMIT=true
+# maybe a 2-liner format, with full title, then other metadata + links
