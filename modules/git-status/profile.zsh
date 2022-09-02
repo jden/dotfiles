@@ -1,6 +1,7 @@
 #!/bin/zsh
-
+autoload -Uz add-zsh-hook
 SOURCE "${HOMEBREW_PREFIX:-/usr/local}/opt/gitstatus/gitstatus.plugin.zsh" || return
+
 gitstatusd_instance='GSD'
 # the following are a mystery - why do they define the fn names with $1?
 alias gitstatus_query=gitstatus_querysource
@@ -12,18 +13,19 @@ function chalk() {
 }
 
 # export some env vars we pick up in statship config
-function _gitstatus_prompt_update() {
+function __gitstatus_prompt_update_impl () {
+  unset GSD_STATUS
+  unset GSD_BRANCH_STATUS
+  unset GSD_HINT
+  unset GSD_HINT_CMD
+  unset GSD_REMOTE
+  unset GSD_ON
+  unset GSD_REPO
+  unset GSD_NOT_REPO
 
   gitstatus_query $gitstatusd_instance || return 1  # error
   [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || {
     # not a git repo
-    unset GSD_STATUS
-    unset GSD_BRANCH_STATUS
-    unset GSD_HINT
-    unset GSD_HINT_CMD
-    unset GSD_REMOTE
-    unset GSD_ON
-    unset GSD_REPO
     export GSD_NOT_REPO="1"
     return 0
   }
@@ -133,17 +135,11 @@ function _gitstatus_prompt_update() {
   export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL | sed 's|\.git$||')"
   export GSD_REMOTE="$REMOTE"
 
-  unset GSD_NOT_REPO
-  # echo update $STATUS $HINT $ON
-
   # while we're here, let's keep it fresh
-  gsd_refresh
-}
-function gitstatus_prompt_update() {
-  SPAN GSD _gitstatus_prompt_update
+  __gsd_maybe_refresh
 }
 
-function gsd_refresh() {
+function __gsd_maybe_refresh() {
   local LAST_REFRESHED=$(git config --local --get gsd.refresh 2> /dev/null || true)
   local NOW=$(gdate +%s)
   local ELAPSED_SEC=$(($NOW - ${LAST_REFRESHED:-0}))
@@ -162,10 +158,6 @@ function gitstatusd_up() {
   gitstatus_stopsource 'GSD' && gitstatus_startsource -s -1 -u -1 -c -1 -d -1 'GSD'
 }
 
-gitstatusd_up
-# On every prompt, fetch git status and set GITSTATUS_PROMPT.
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd gitstatus_prompt_update
 
 function gsd_show_hint() {
   if [[ $GSD_HINT_CMD ]]; then
@@ -188,3 +180,11 @@ function gsd_use_hint() {
   fi
 }
 alias zz="gsd_use_hint"
+
+
+gitstatusd_up
+function __gitstatus_prompt_update() {
+  SPAN GSD __gitstatus_prompt_update_impl
+}
+# On every prompt, fetch git status and set GITSTATUS_PROMPT.
+add-zsh-hook precmd __gitstatus_prompt_update
