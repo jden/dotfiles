@@ -38,6 +38,7 @@ for m (
   starship
   font
   kitty
+  window_mgr
 ) __initModule $m
 
 
