@@ -14,17 +14,25 @@ alias cd..="cd .."
 
 ## jump
 ##
-alias co="cd ~/Code"
-alias cj="cd ~/Code/junosuarez"
 function ghub() {
   open "https://ghub.io/$1"
 }
-alias s="cd ~/workspace/source"
-alias sw="cd ~/workspace/web"
-alias sp="cd ~/Desktop/Projects"
+# alias co="cd ~/Code"
+# alias cj="cd ~/Code/junosuarez"
+# alias s="cd ~/workspace/source"
+# alias sw="cd ~/workspace/web"
+# alias sp="cd ~/Desktop/Projects"
+# transition period, moding to a "jump" metaphor (also j is home row)
+alias co="echo use: jc"
+alias cj="echo use: jj"
+alias s="echo use: js"
+alias sw="echo use: jw"
 
-
-
+alias jc="cd ~/Code"
+alias jj="~/Code/junosuarez"
+alias j="cd ~/workspace"
+alias js="cd ~/workspace/source"
+alias jw="cd ~/workspace/web"
 
 ## files
 ##
