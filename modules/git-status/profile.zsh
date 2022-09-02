@@ -67,6 +67,7 @@ function __gitstatus_prompt_update_impl () {
     else
       BRANCH_STATUS="$(chalk $YELLOW $ahead)"
       HINT="git push changes"
+      HINT_CMD="git push"
     fi
   else
     if [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]]; then
