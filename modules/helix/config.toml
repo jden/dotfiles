@@ -1,0 +1,29 @@
+# see https://docs.helix-editor.com/configuration.html
+theme = "onedark"
+
+[editor]
+scrolloff = 3
+mouse = true
+cursorline = true
+auto-completion = true
+auto-format = true
+
+[editor.statusline]
+
+[editor.lsp]
+
+[editor.cursor-shape]
+insert = "bar"
+
+
+[keys.normal]
+ret = "insert_mode" # :trollface:
+esc = "insert_mode" # esc to toggle between modes
+"A-p" = ["insert_mode", "command_mode"]
+
+[keys.insert]
+#"A-shift-p" = "command_mode"
+#"A-p" = "file_picker"
+#"esc" = "insert_mode"
+#"A-s" = "write"
+"A-p" = "file_picker"
