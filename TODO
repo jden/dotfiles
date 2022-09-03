@@ -7,3 +7,4 @@
 - [] add autoformatting
 - [] refactor exract hint module
 - [] fix vim shortcuts situation
+- [] custom kitty tabbar https://github.com/kovidgoyal/kitty/discussions/4447
