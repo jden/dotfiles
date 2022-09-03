@@ -1,7 +1,8 @@
 USE: font
 USE: git
-USE: prompt
-USE: tools
 USE: kitty
+USE: prompt
 USE: rc
+USE: tools
+USE: vim
 USE: window_mgr
