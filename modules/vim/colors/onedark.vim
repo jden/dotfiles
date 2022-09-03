@@ -5,6 +5,9 @@
 " License:    The MIT License (MIT)
 " Based On:   https://github.com/MaxSt/FlatColor/
 
+" note junosz: i reset all the colors
+" to match https://github.com/Binaryify/OneDark-Pro
+
 " Companion statusline plugin and terminal themes are included with onedark.vim:
 "  * https://github.com/joshdick/onedark.vim#lightlinevim-colorscheme
 "  * https://github.com/joshdick/onedark.vim#vim-airline-theme
@@ -52,7 +55,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-set t_Co=256
+"set t_Co=256
 
 let g:colors_name="onedark"
 

@@ -57,6 +57,10 @@ autocmd VimEnter * startinsert
 
 syntax on
 colorscheme onedark
+set termguicolors
+" fix bg color on scroll
+" https://github.com/kovidgoyal/kitty/issues/108
+let &t_ut=''
 
 """ boring stuff: """
 
