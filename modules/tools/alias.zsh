@@ -3,6 +3,13 @@
 alias ls="CLICOLOR_FORCE=1 ls -p -G" # show slashes after folders and color
 alias ls="lsd --classify --group-dirs first " # https://github.com/Peltoche/lsd
 alias less="less -R" # enable color
+function clear() {
+  # keep whats on screen in scrollback by printing
+  # some blank lines first
+  # (h/t https://sw.kovidgoyal.net/kitty/conf/#shortcut-kitty.Reset-the-terminal )
+  printf '\n%.0s' {1..$LINES}
+  command clear
+}
 alias cls="clear && echo 🔎 && ls"
 alias la="ls -a"
 alias ll="ls -al"

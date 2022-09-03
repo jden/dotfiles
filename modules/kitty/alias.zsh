@@ -18,3 +18,6 @@ function cleanpath() {
   local clean=${(j|:|)${split:#*mde*}}
   PATH=$clean
 }
+
+alias launch-tab="kitty @ launch --type=tab --cwd=current"
+# see https://sw.kovidgoyal.net/kitty/launch/
