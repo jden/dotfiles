@@ -85,7 +85,7 @@ format="[ ]()"
 [custom.gsd_hint]
 when="""[[ $GSD_HINT != "" ]]"""
 command="echo $GSD_HINT"
-format="[ $output](yellow)"
+format="[ $output ](yellow)[גּ /](#666600)"
 
 
 [package]

@@ -160,22 +160,35 @@ function gitstatusd_up() {
   gitstatus_stopsource 'GSD' && gitstatus_startsource -s -1 -u -1 -c -1 -d -1 'GSD'
 }
 
+function gsd_pause_hint() {
+  read -s -k1 'foo?return to continue, any other key to cancel...'
+  echo
+  echo
+  keycode=$(echo -n "$foo" | hexdump -ve '"%i"')
+  ENTER=10
+  [[ $keycode -eq $ENTER ]]
+  # if ; then
+  #   return 0
+  # else
+  #   return 1
+  # fi
+}
 
 function gsd_show_hint() {
   if [[ $GSD_HINT_CMD ]]; then
-    echo " $GSD_HINT"
     echo
-    echo "  [return] will run the following command:"
+    echo "  \x1b[33m $GSD_HINT\x1b[0m"
     echo
-    echo "  $GSD_HINT_CMD"
+    echo "      \x1b[1m$GSD_HINT_CMD\x1b[0m"
     echo
-    echo '                 skip this pause with `zz`'
-    echo '                          ctrl+c to cancel'
-    read
-    echo $GSD_HINT_CMD
-    ${(z)GSD_HINT_CMD}
+    echo '                     \x1b[2mskip this pause with\x1b[0m גּ ?'
+    echo
+    if gsd_pause_hint; then
+      echo $GSD_HINT_CMD
+      ${(z)GSD_HINT_CMD}
+    fi
   else
-    echo no hint available
+    # echo no hint available
     return 1
   fi
 }
