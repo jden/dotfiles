@@ -35,6 +35,7 @@ function __gitstatus_prompt_update_impl () {
   local BRANCH_STATUS=""
   local STATUS=""
   local HINT="" # TODO find a way to trap cmd+? to auto-complete hint
+  local HINT_CMD=""
   local ON=""
   local REMOTE=""
 
@@ -132,6 +133,7 @@ function __gitstatus_prompt_update_impl () {
   export GSD_BRANCH_STATUS="$BRANCH_STATUS"
   export GSD_HINT="$HINT"
   export GSD_HINT_CMD="$HINT_CMD"
+  echo hint $HINT cmd $HINT_CMD
   export GSD_ON="$ON"
   export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL | sed 's|\.git$||')"
   export GSD_REMOTE="$REMOTE"
