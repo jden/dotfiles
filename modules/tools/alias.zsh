@@ -36,7 +36,7 @@ alias s="echo use: js"
 alias sw="echo use: jw"
 
 alias jc="cd ~/Code"
-alias jj="~/Code/junosuarez"
+alias jj="cd ~/Code/junosuarez"
 alias j="cd ~/workspace"
 alias js="cd ~/workspace/source"
 alias jw="cd ~/workspace/web"
