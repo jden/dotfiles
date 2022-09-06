@@ -4,7 +4,7 @@
 
 ## me
 git config --global user.name juno suárez
-git config --get user.email || git config --global user.email juno@localhost
+git config --get user.email > /dev/null || git config --global user.email juno@localhost
 
 ## setup diffmerge
 git config --global diff.tool diffmerge
@@ -31,6 +31,6 @@ git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 git config --global alias.find 'ls-files'
 git config --global alias.fast-forward "rebase origin"
-
+git config --global alias.fixup "commit --all --fixup=amend"
 # set global git ignore
 git config --global core.excludesfile $DOTFILES/modules/git/global-gitignore
