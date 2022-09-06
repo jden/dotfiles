@@ -80,9 +80,9 @@ function rc-sync () {
     return 1
   fi
 
-  local om1=$(git rev-parse origin/master)
+  local om1=$(gitrc rev-parse origin/master)
   gitrc fetch origin master --quiet
-  local om2=$(git rev-parse origin/master)
+  local om2=$(gitrc rev-parse origin/master)
   if [[ $om1 != $om2 ]]; then
     echo updating with remote changes
     gitrc rebase origin/master
