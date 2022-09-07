@@ -9,6 +9,10 @@ function demomode {
 function psgrep () {
   local PIDS
   PIDS=$(pgrep "$1" | paste -sd ',' -)
+  if [[ $PIDS == "" ]]; then
+    echo no processes match $1
+    return 1
+  fi
   ps u -p "$PIDS"
 }
 alias psg="psgrep"
