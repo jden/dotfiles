@@ -119,6 +119,9 @@ function __gitstatus_prompt_update_impl () {
     *twitter.*)
       REMOTE="暑"
       ;;
+    "")
+      REMOTE="" # local-only
+      ;;
   esac
 
 # formatted with starship
@@ -134,8 +137,13 @@ function __gitstatus_prompt_update_impl () {
   export GSD_HINT="$HINT"
   export GSD_HINT_CMD="$HINT_CMD"
   export GSD_ON="$ON"
-  export GSD_REPO="$(basename "$VCS_STATUS_REMOTE_URL" | sed 's|\.git$||')"
+  export GSD_REPO=$(basename "$VCS_STATUS_REMOTE_URL" | sed 's|\.git$||')
+  if [[ $GSD_REPO == "" ]]; then
+    # we're working on a local-only repo, no origin, so let's use the dir name
+    export GSD_REPO=$(basename "$VCS_STATUS_WORKDIR")
+  fi
   export GSD_REMOTE="$REMOTE"
+
 
   # while we're here, let's keep it fresh
   __gsd_maybe_refresh
