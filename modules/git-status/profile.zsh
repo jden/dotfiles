@@ -134,7 +134,7 @@ function __gitstatus_prompt_update_impl () {
   export GSD_HINT="$HINT"
   export GSD_HINT_CMD="$HINT_CMD"
   export GSD_ON="$ON"
-  export GSD_REPO="$(basename $VCS_STATUS_REMOTE_URL | sed 's|\.git$||')"
+  export GSD_REPO="$(basename "$VCS_STATUS_REMOTE_URL" | sed 's|\.git$||')"
   export GSD_REMOTE="$REMOTE"
 
   # while we're here, let's keep it fresh
@@ -152,7 +152,7 @@ function __gsd_maybe_refresh() {
   if [[ $ELAPSED_SEC -gt $TTL ]]; then
     # echo refreshing
     git config --local --replace-all gsd.refresh $NOW
-    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git fetch origin master --quiet &)
+    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git remote | grep -q origin && git fetch origin master --quiet &)
   fi
 }
 
