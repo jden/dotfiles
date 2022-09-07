@@ -67,8 +67,9 @@ function __gitstatus_prompt_update_impl () {
       HINT="git sync needed"
     else
       BRANCH_STATUS="$(chalk $YELLOW $ahead)"
-      HINT="git push changes"
-      HINT_CMD="git push"
+      # HINT="git push changes"
+      # HINT_CMD="git push"
+      # TODO: figure out a smarter hint that takes into account branch/flows for various repos
     fi
   else
     if [[ $VCS_STATUS_COMMITS_BEHIND -gt 0 ]]; then
