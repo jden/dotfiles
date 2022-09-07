@@ -87,6 +87,7 @@ function rc-sync () {
     echo updating with remote changes
     gitrc rebase origin/master
     rc-init # TODO: detect when this is necessary
+    rc-source
   fi
   rc-commit "$*" || return 1
   pushrc || return 1
