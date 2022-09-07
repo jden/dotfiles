@@ -17,6 +17,9 @@ git config --global mergetool.diffmerge.trustExitCode true
 git config --global pull.ff only
 git config --global branch.autosetuprebase always # no merge commits
 
+# better default for `git commit --fixup:<hash>`
+git config --global rebase.autoSquash true
+
 ## have sensible upstream push behavior for new branches
 git config --global push.default current
 
@@ -31,6 +34,6 @@ git config --global alias.whomstdve blame
 git config --global alias.diff-exact "diff --word-diff --word-diff-regex=."
 git config --global alias.find 'ls-files'
 git config --global alias.fast-forward "rebase origin"
-git config --global alias.fixup "commit --all --fixup=amend"
+git config --global alias.fixup "commit --all --fixup"
 # set global git ignore
 git config --global core.excludesfile $DOTFILES/modules/git/global-gitignore

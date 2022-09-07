@@ -113,3 +113,4 @@ alias rss="git fetch origin master && git reset --hard && git checkout"
 alias cleanorig="git status --untracked-files --porcelain | grep -e '^?? .*\.orig' | awk '{print \$2}' | xargs rm"
 
 alias gff="git fast-forward" # defined in init.zsh
+alias rbi="git rebase --interactive"
