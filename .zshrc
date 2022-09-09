@@ -8,8 +8,6 @@ autoload -U add-zsh-hook
 
 LOAD main_profile
 
-add-zsh-hook chpwd update_main_branch
-
 # initialize autocompletions
 autoload -Uz compinit
 compinit

@@ -218,5 +218,6 @@
   "gitblame.commitUrl": "https://phabricator.twitter.biz/source/web/browse/master/${file.path};${hash}%24${file.line}",
   "window.commandCenter": true,
   "editor.fontLigatures": false,
-  "workbench.colorTheme": "One Dark Pro Darker"
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "editor.stickyScroll.enabled": true
 }

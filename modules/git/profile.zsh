@@ -16,9 +16,35 @@ alias prs="hub pr list"
 
 # set $MAIN_BRANCH env based on the current git repo
 function update_main_branch() {
-  MAIN_BRANCH=$(git config --get x.main || git config --get init.defaultBranch || echo "master")
+  # first check for explicit config
+  local explicit;
+  explicit=$(git config --get x.main 2>/dev/null)
+  if [[ $? -eq 0 ]]; then
+    export MAIN_BRANCH=$explicit
+    return
+  fi
+
+  # second, infer from present branches
+  local branches;
+  branches=("${(@f)$(git branch --list --no-color --format='%(refname:short)' 'ma*' 2>/dev/null)}")
+
+  if (($branches[(Ie)main])); then
+    export MAIN_BRANCH=main
+    return
+  fi
+
+  if (($branches[(Ie)master])); then
+    export MAIN_BRANCH=master
+    return
+    # if both are defined, prefer main.
+    # if you need to override, set `git config x.main`
+  fi
+
+  export MAIN_BRANCH=$(git config --get init.defaultBranch || echo "main")
 }
 update_main_branch
+autoload -U add-zsh-hook
+add-zsh-hook chpwd update_main_branch
 
 function git-reset-main () {
   local MESSAGE
@@ -61,8 +87,8 @@ function push () {
   git push origin $(whatbranch)
 }
 function fush () {
-  if [ $(whatbranch) == master ]; then
-    echo "don't fush to master"
+  if [ $(whatbranch) == $MAIN_BRANCH ]; then
+    echo "don't fush to $MAIN_BRANCH"
     printf '\a'
     return 1
   fi
@@ -107,16 +133,16 @@ function workon () {
 
   MARK work.workon -m "$URL"
 
-  git fetch origin master >/dev/null 2>&1
+  git fetch origin $MAIN_BRANCH >/dev/null 2>&1
 
   git branch | grep $BRANCH > /dev/null
   if [[ $? == 0 ]]; then
-    # if branch exists, switch to it and fetch / rebase origin master
+    # if branch exists, switch to it and fetch / rebase origin $MAIN_BRANCH
     git checkout $BRANCH
-    git rebase origin/master
+    git rebase origin/$MAIN_BRANCH
   else
     # if branch doesnt exist, init
-    git checkout origin/master
+    git checkout origin/$MAIN_BRANCH
     git checkout -b $BRANCH
     git commit --allow-empty -m "$USER began work on $URL"
   fi

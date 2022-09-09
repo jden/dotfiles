@@ -161,7 +161,7 @@ function __gsd_maybe_refresh() {
   if [[ $ELAPSED_SEC -gt $TTL ]]; then
     # echo refreshing
     git config --local --replace-all gsd.refresh $NOW
-    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git remote | grep -q origin && git fetch origin master --quiet &)
+    (&>/dev/null nohup grep -q .biz /etc/resolv.conf && git remote | grep -q origin && git fetch origin $MAIN_BRANCH --quiet &)
   fi
 }
 
