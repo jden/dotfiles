@@ -152,7 +152,7 @@ function refreshRawData() {
 
 
   log read raw data ok
-  # print $res > $(cacheFile "rawdata")
+  print $res > $(cacheFile "rawdata")
   print $res
   ret=$C_OK
   MARK aqi.refreshrawdata -c $ret
