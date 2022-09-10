@@ -13,7 +13,8 @@ function set_aqi() {
   fi
 
   local aqi=$(__to_aqi $(__correct_pm25 $aqi_pm25_m10 $aqi_humidity))
-
+  # echo corrected pm15: $(__correct_pm25 $aqi_pm25_m10 $aqi_humidity)
+  # echo aqi: $aqi
 
   if [[ $aqi -gt 50 ]]; then
     export AQI_TREND=$trend
@@ -64,7 +65,6 @@ function __correct_pm25() {
     (( corrected_pm25 = (.786 * (p / 20 - 1.5) + .524 * (1 - (p / 20 - 1.5))) * p - .0862
     * h + 5.75 ))
   elif [[ $p -lt 210 ]]; then
-  echo c
     (( corrected_pm25 = .786 * p - .0862 * h + 5.75 ))
   elif [[ $p -lt 260 ]]; then
     (( corrected_pm25 = (.69 * (p / 50 - 4.2) + .786 * (1 - (p / 50 - 4.2))) * p - .0862 * h * (1 - (p / 50 - 4.2)) + 2.966 * (p / 50 - 4.2) + 5.75 * (1 - (p / 50 - 4.2)) + 8.84 * (10 ** -4) * (t ** 2) * (p / 50 - 4.2)
@@ -115,7 +115,7 @@ function __to_aqi() {
     e=150
     i=101
     r=55.4
-    n=55.5
+    n=35.5
   elif [[ $t -gt 12.1 ]]; then
     e=100
     i=51
@@ -126,14 +126,22 @@ function __to_aqi() {
     i=51
     r=35.4
     n=12.1
+  elif [[ $t -gt 0 ]]; then
+    e=50
+    i=0
+    r=12
+    n=0
   else
     return 1
   fi
+
+  # echo t: $t e: $e r: $r i: $i n: $n >&2
 
   (( o = $e - $i ))
   (( a = $r - $n ))
   (( s = $t - $n ))
 
+  # echo o: $o a: $a s: $s >&2
   local result;
   (( result = $o / $a * $s + $i ))
 
