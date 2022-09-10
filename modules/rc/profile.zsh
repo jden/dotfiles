@@ -120,7 +120,7 @@ function rc() {
   if [[ "$command" == "" || "$command" =~ "help" ]]; then
     echo "usage: rc <command>"
     echo
-    echo "  manage dotfiles, see https://github.com/junosuarez/.dotfiles"
+    echo "  manage dotfiles, see https://github.com/junosuarez/rc"
     echo
     echo "commands:"
     for fn in ${(ok)functions[(I)rc-*]}; do

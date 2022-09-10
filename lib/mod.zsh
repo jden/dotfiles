@@ -1,5 +1,5 @@
 #! /bin/zsh
-DOTFILES=~/.dotfiles
+DOTFILES=~/.rc
 cd $DOTFILES
 
 if [[ "$@" =~ "-v" ]]; then VERBOSE=true fi

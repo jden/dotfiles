@@ -1,5 +1,5 @@
 # see .env for debug + profiling flags
-DOTFILES="$HOME/.dotfiles"
+DOTFILES="$HOME/.rc"
 source $DOTFILES/.env
 source "$DOTFILES/modules/main_profile/preamble.zsh"
 
@@ -13,7 +13,7 @@ autoload -Uz compinit
 compinit
 
 # optional work stuff (not in this repo)
-SOURCE "$HOME/.dotfiles/.workrc"
+SOURCE "$DOTFILES/.workrc"
 
 # note: see the .zlogin file, which runs once per shell _after_ .zshrc, for additional setup
 

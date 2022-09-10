@@ -1,6 +1,6 @@
 #! /bin/zsh
 # Ensure this file is idempotent!
-source ~/.dotfiles/lib/mod.zsh
+source ~/.rc/lib/mod.zsh
 
 function __initModule() {
   local module=$1
@@ -55,7 +55,7 @@ done
 # case $(uname) in
 #   Darwin)
 #     # VS Code settings
-#     ln -sf ~/.dotfiles/config/code.settings.json ~/Library/Application\ Support/Code/User/settings.json
+#     ln -sf $DOTFILES/config/code.settings.json ~/Library/Application\ Support/Code/User/settings.json
 #     ;;
 #   Linux)
 #     ;;

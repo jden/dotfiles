@@ -8,7 +8,7 @@ but do what you like
 
 ```sh
 cd ~
-git clone git@github.com:junosuarez/.dotfiles.git
+git clone git@github.com:junosuarez/rc.git .rc
 ./init.sh
 ```
 
@@ -41,18 +41,3 @@ see `./graph.zsh` to explore the module dependency graph
 
 Q: is this whole system a litte elaborate for a personal dotfiles repo?
 A: yes.
-
-### windows (no longer really supported)
-
-with mingw
-
-```sh
-cd ~
-git clone git@github.com:jden/.dotfiles.git
-ln ~/.dotfiles/windows/.bashrc .bashrc
-rm ~/AppData/Roaming/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-ln ~/.dotfiles/Preferences.sublime-settings ~/AppData/Roaming/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-```
-
-cat > ~/.profile
-source ~/.dotfiles/windows/.bashrc
