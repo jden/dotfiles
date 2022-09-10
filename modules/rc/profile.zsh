@@ -69,6 +69,16 @@ function rc-commit() {
 }
 alias rcc="rc-commit"
 
+desc rc-tip "show a random cool thing these dotfiles can do"
+function rc-tip () {
+  # ugh what a silly way to shell unescape... works for now though
+  local aliases=$(alias | grep -v desc- | sed -E "s|^([^=]*)='?([^'].*[^'])'?\$|alias: \1 \t [\2]|")
+  local tips=$(cat $DOTFILES/modules/rc/tips.txt)
+  echo ""
+  echo "    拾 $(echo "$aliases$tips" | shuf -n 1 -)"
+  echo ""
+}
+
 desc rc-sync "do some things"
 function rc-sync () {
   # TODO: this doesnt work, need to make an inner rc-source # ensure we have the latest

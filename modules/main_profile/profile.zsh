@@ -12,3 +12,6 @@ for m (
   kitty
   rc
 ) LOAD $m
+
+# show an educational tip on new shell
+rc tip

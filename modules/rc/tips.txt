@@ -1,0 +1,3 @@
+גּ p  "peek" by toggling terminal opacity
+גּ /  apply autofix when a hint is showing
+גּ ,  edit kitty config (should we change this to 'rc edit'?)
