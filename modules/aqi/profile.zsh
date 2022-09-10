@@ -2,6 +2,7 @@ add-zsh-hook precmd set_aqi
 function set_aqi() {
   # load json to local vars
   eval $($DOTFILES/modules/aqi/aqi.zsh | jq -r '. as $root | keys | map("local aqi_" + . + "=" + ($root[.] | tostring)) | join("; ")')
+
   # typeset -m 'aqi*'
 
   local trend="";
