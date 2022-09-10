@@ -37,6 +37,7 @@ function prompt_hook() {
 add-zsh-hook precmd prompt_hook
 
 LOAD git-status
+LOAD aqi
 
 eval "$(starship init zsh)"
 # export STARSHIP_LOG=error # disable slow git command warnings

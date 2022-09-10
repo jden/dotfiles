@@ -1,3 +1,4 @@
 # my overall shell prompt
 USE: git-status
+USE: aqi
 USE: starship

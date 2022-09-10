@@ -15,6 +15,7 @@ $status$cmd_duration\
 [ $time ](fg:#bdc7db bold bg:#47536b)\
 $battery\
 [${custom.vpn}$sudo](fg:#ffffff bg:#47536b)\
+${custom.aqi}\
 [](fg:#47536b)\
 [        ]()\
 ${env_var}\
@@ -118,6 +119,11 @@ style = "blue"
 [gcloud]
 format = '$symbol'
 disabled = true
+
+[custom.aqi]
+format = "[$output](bg:#47536b)"
+command = 'echo $AQI_STR'
+when=true
 
 [custom.vpn]
 # format = " 睊"
