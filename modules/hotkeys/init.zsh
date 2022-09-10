@@ -1,0 +1,7 @@
+# karabiner
+mkdir -p ~/.config/karabiner/assets/complex_modifications
+ln -sf $DOTFILES/modules/hotkeys/remap.json ~/.config/karabiner/assets/complex_modifications/remap.json
+
+# hammerspoon
+mkdir -p ~/.hammerspoon
+ln -sf $DOTFILES/modules/hotkeys/hammerspoon.lua ~/.hammerspoon/init.lua

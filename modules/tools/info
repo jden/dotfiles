@@ -1,10 +1,12 @@
 # misc cli tools that make life better
+
 BREW: coreutils
 BREW: inetutils
 BREW: jid # json incremental digger
-BREW: jq  # jsonquery
+BREW: jq # jsonquery
 BREW: lsd # ls replacement https://github.com/Peltoche/lsd
 BREW: p7zip # handle various archive formats https://www.7-zip.org/
 BREW: graphviz
 BREW: bat # cat with syntax highlighting https://github.com/sharkdp/bat
 BREW: fzf # fuzzy find https://github.com/junegunn/fzf#usage
+CASK: keycastr
