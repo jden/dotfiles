@@ -1,7 +1,7 @@
 
 # dotfiles management workflow
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
-alias pullrc="gitrc pull origin $MAIN_BRACH"
+alias pullrc="gitrc pull origin $MAIN_BRANCH"
 
 function desc() {
   ## this abuses the aliases as an exported hashtable, since you cant well use env
@@ -80,12 +80,12 @@ function rc-sync () {
     return 1
   fi
 
-  local om1=$(gitrc rev-parse origin/$MAIN_BRACH)
-  gitrc fetch origin $MAIN_BRACH --quiet
-  local om2=$(gitrc rev-parse origin/$MAIN_BRACH)
+  local om1=$(gitrc rev-parse origin/$MAIN_BRANCH)
+  gitrc fetch origin $MAIN_BRANCH --quiet
+  local om2=$(gitrc rev-parse origin/$MAIN_BRANCH)
   if [[ $om1 != $om2 ]]; then
     echo updating with remote changes
-    gitrc rebase origin/$MAIN_BRACH
+    gitrc rebase origin/$MAIN_BRANCH
     rc-init # TODO: detect when this is necessary
     rc-source
   fi
