@@ -1,6 +1,6 @@
 #! /bin/zsh
 # Ensure this file is idempotent!
-source ~/.dotfiles/mod.zsh
+source ~/.dotfiles/lib/mod.zsh
 
 function __initModule() {
   local module=$1

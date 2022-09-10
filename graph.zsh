@@ -1,5 +1,5 @@
 #!/bin/zsh
-source ~/.dotfiles/mod.zsh
+source ~/.dotfiles/lib/mod.zsh
 
 declare -a lines=()
 

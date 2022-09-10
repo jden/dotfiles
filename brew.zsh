@@ -1,6 +1,6 @@
 #! /bin/zsh
 # this file checks for updates to packages
-source ~/.dotfiles/mod.zsh
+source ~/.dotfiles/lib/mod.zsh
 
 function needs {
   ! command -v $1 > /dev/null
