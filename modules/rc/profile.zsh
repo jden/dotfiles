@@ -1,5 +1,6 @@
 
 # dotfiles management workflow
+MAIN_BRANCH="main"
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
 alias pullrc="gitrc pull origin $MAIN_BRANCH"
 
