@@ -7,9 +7,9 @@ function set_aqi() {
 
   local trend="";
   if [[ $aqi_pm25_trend -gt 2 ]]; then
-    trend="+"
+    trend="勤"
   elif [[ $aqi_pm25_trend -lt -2 ]]; then
-    trend="-"
+    trend="免"
   fi
 
   local aqi=$(__to_aqi $(__correct_pm25 $aqi_pm25_m10 $aqi_humidity))
