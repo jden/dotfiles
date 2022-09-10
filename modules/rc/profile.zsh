@@ -1,7 +1,7 @@
 
 # dotfiles management workflow
 alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
-alias pullrc="gitrc pull origin master"
+alias pullrc="gitrc pull origin $MAIN_BRACH"
 
 function desc() {
   ## this abuses the aliases as an exported hashtable, since you cant well use env
@@ -39,7 +39,7 @@ function _rc-commit () {
   gitrc commit --quiet -am "$message" || return 1
   MARK dotfiles.saved
 }
-alias pushrc="gitrc push origin master"
+alias pushrc="gitrc push origin $MAIN_BRANCH"
 
 desc rc-todo "see list (empty) or add a todo item (vararg)"
 function rc-todo () {
@@ -80,12 +80,12 @@ function rc-sync () {
     return 1
   fi
 
-  local om1=$(gitrc rev-parse origin/master)
-  gitrc fetch origin master --quiet
-  local om2=$(gitrc rev-parse origin/master)
+  local om1=$(gitrc rev-parse origin/$MAIN_BRACH)
+  gitrc fetch origin $MAIN_BRACH --quiet
+  local om2=$(gitrc rev-parse origin/$MAIN_BRACH)
   if [[ $om1 != $om2 ]]; then
     echo updating with remote changes
-    gitrc rebase origin/master
+    gitrc rebase origin/$MAIN_BRACH
     rc-init # TODO: detect when this is necessary
     rc-source
   fi
