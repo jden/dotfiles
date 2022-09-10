@@ -100,7 +100,8 @@ function rc-sync () {
     rc-init # TODO: detect when this is necessary
     rc-source
   fi
-  rc-commit "$*" && pushrc
+  rc-commit "$*"
+  pushrc
   return 0
 }
 desc rc-graph "see modules with graphviz"
