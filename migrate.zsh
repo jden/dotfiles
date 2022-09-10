@@ -7,11 +7,11 @@ set -x
 
 
 # reset while iterating on migrate:
-export DOTFILES=$FROM
-rm -rf ~/.rc
-rm -rf ~/.dotfiles
-rm -rf ~/.dotfiles.bak
-cp -rp ~/.bak/. ~/.dotfiles
+# export DOTFILES=$FROM
+# rm -rf ~/.rc
+# rm -rf ~/.dotfiles
+# rm -rf ~/.dotfiles.bak
+# cp -rp ~/.bak/. ~/.dotfiles
 
 
 
