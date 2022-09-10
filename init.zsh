@@ -52,14 +52,14 @@ done
 # ) __initModule $m
 
 
-# case $(uname) in
-#   Darwin)
-#     # VS Code settings
-#     ln -sf $DOTFILES/config/code.settings.json ~/Library/Application\ Support/Code/User/settings.json
-#     ;;
-#   Linux)
-#     ;;
-# esac
+case $(uname) in
+  Darwin)
+    # VS Code settings
+    ln -sf $DOTFILES/config/code.settings.json ~/Library/Application\ Support/Code/User/settings.json
+    ;;
+  Linux)
+    ;;
+esac
 
 # :
 # : install rust
