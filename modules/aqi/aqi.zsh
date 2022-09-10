@@ -133,8 +133,6 @@ function refreshRawData() {
   -d "location_type=0" \
   -d "channel_flag=0")
 
-  # res=$(cat /private/var/folders/gj/l3m_zv7s20bbdh4ctt3m0m2c0000gn/T/.aqirawdata3)
-
   log res: $res
 
   local err;
