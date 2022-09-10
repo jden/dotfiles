@@ -102,7 +102,7 @@ function refreshToken() {
     -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
     --compressed 2>/dev/null)
 
-    MARK aqi.refrshtoken
+    MARK aqi.refreshtoken
     print $newToken
 }
 
@@ -155,7 +155,8 @@ function refreshRawData() {
   # print $res > $(cacheFile "rawdata")
   print $res
   ret=$C_OK
-  # MARK aqi.refreshrawdata -c $ret
+  MARK aqi.refreshrawdata -c $ret
+  log marked
   return $ret
 }
 
@@ -168,11 +169,11 @@ function getData(){
 }
 function refreshData() {
   local raw;
+  local ret
   raw=$(getRawData)
   # raw=$(cat $(cacheFile rawdata))
-  local ret=$?
-  log raw: $raw
-  log rawcode: $ret
+  ret=$?
+  log raw: $raw code: $ret
   if [[ $ret != 0 ]]; then
     log bailing on refreshData
     return $ret
