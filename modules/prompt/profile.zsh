@@ -40,4 +40,7 @@ LOAD git-status
 LOAD aqi
 
 eval "$(starship init zsh)"
+# move the right prompt the line above, so it doesn't interfere with copy/paste
+RPROMPT='%{'$'\e[1A''%}'$RPROMPT'%{'$'\e[1B''%}'
+
 # export STARSHIP_LOG=error # disable slow git command warnings
