@@ -2,3 +2,4 @@
 
 BREW: starship
 USE: git-status
+USE: aqi
