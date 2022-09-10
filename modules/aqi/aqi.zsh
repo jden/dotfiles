@@ -99,7 +99,7 @@ function refreshToken() {
     -H 'accept: text/plain' \
     -H "referer: https://$DOMAIN/1/mAQI/a10/p604800/cC0" \
     -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
-    --compressed)
+    --compressed 2>/dev/null)
   # newToken=foo
     print $newToken
 }
@@ -131,7 +131,7 @@ function refreshRawData() {
   -d "nwlng=$nwlng" \
   -d "selng=$selng" \
   -d "location_type=0" \
-  -d "channel_flag=0")
+  -d "channel_flag=0" 2>/dev/null)
 
   log res: $res
 
