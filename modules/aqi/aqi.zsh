@@ -1,5 +1,6 @@
-#!/bin/zsh
+#!/bin/zsh +x
 zmodload zsh/datetime
+source $DOTFILES/modules/main_profile/preamble.zsh
 
 TOKEN=$TMPDIR.aqitoken
 CACHE=$TMPDIR.aqidata
@@ -100,7 +101,8 @@ function refreshToken() {
     -H "referer: https://$DOMAIN/1/mAQI/a10/p604800/cC0" \
     -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
     --compressed 2>/dev/null)
-  # newToken=foo
+
+    MARK aqi.refrshtoken
     print $newToken
 }
 
@@ -136,57 +138,69 @@ function refreshRawData() {
   log res: $res
 
   local err;
+  local ret;
   err=$(print $res | jq .error)
+  ret=$?
   if [[ $? -gt 0 ]]; then
     log invalid json response from raw data: $res
-    return $?
-  fi
-  if [[ err == "InvalidTokenError" ]]; then
+  elif [[ err == "InvalidTokenError" ]]; then
     log err $err
     # invalidate token
     rm -f $(cacheFile "token")
-    return $C_AUTH
+    ret=$C_AUTH
   fi
 
+
   log read raw data ok
+  # print $res > $(cacheFile "rawdata")
   print $res
-  return $C_OK
+  ret=$C_OK
+  # MARK aqi.refrshrawdata -c $ret
+  # return $ret
 }
 
 function getData(){
   readThruCache "data" "refreshData" "300" # 5 minutes in seconds
+  log gotdata $(cat $(cacheFile data))
 }
 function refreshData() {
   local raw;
   raw=$(getRawData)
+  # raw=$(cat $(cacheFile rawdata))
   local ret=$?
+  log raw: $raw
+  log rawcode: $ret
   if [[ $ret != 0 ]]; then
     log bailing on refreshData
     return $ret
   fi
-  print $raw | jq '. as $root
-  | (.fields | index("confidence")) as $confidence
-  | (.fields | index("pm2.5_10minute")) as $m10
-  | (.fields | index("pm2.5_60minute")) as $m60
-  | (.fields | index("humidity")) as $humidity
 
-  # filter to sensors with confidence=100
-  | .data | map(select(.[$confidence] == 100)) as $data | 1
-
-  # TODO: calculate from radius, rather than bounding rect
-  | reduce $data[] as $d (
-      {sum_pm25_m10: 0, sum_pm25_m60: 0, sum_humidity: 0, n: 0};
-      {
-        sum_pm25_m10: (.sum_pm25_m10 + $d[$m10]),
-        sum_pm25_m60: (.sum_pm25_m60 + $d[$m60]),
-        sum_humidity: (.sum_humidity + $d[$humidity]),
-        n: (.n + 1)
-      }
-    )
-  | {pm25_m10: (.sum_pm25_m10 / .n), pm25_m60: (.sum_pm25_m60 / .n), humidity: (.sum_humidity / .n)}
-  | .pm25_trend = (.pm25_m10 - .pm25_m60)
-  '
+  jq -f $DOTFILES/modules/aqi/aqi.jq $(cacheFile rawdata)
+  ret=$?
 }
 
 
 echo $(getData)
+
+# raw=$(cat $(cacheFile rawdata))
+# print $raw | jq '. as $root
+#   | (.fields | index("confidence")) as $confidence
+#   | (.fields | index("pm2.5_10minute")) as $m10
+#   | (.fields | index("pm2.5_60minute")) as $m60
+#   | (.fields | index("humidity")) as $humidity
+
+#   # filter to sensors with confidence=100
+#   | .data | map(select(.[$confidence] == 100 and .[$humidity] != null)) as $data | 1
+
+#   # TODO: calculate from radius, rather than bounding rect
+#   | reduce $data[] as $d (
+#       {sum_pm25_m10: 0, sum_pm25_m60: 0, sum_humidity: 0, n: 0};
+#       {
+#         sum_pm25_m10: (.sum_pm25_m10 + $d[$m10]),
+#         sum_pm25_m60: (.sum_pm25_m60 + $d[$m60]),
+#         sum_humidity: (.sum_humidity + $d[$humidity]),
+#         n: (.n + 1)
+#       }
+#     )
+#   | {pm25_m10: (.sum_pm25_m10 / .n), pm25_m60: (.sum_pm25_m60 / .n), humidity: (.sum_humidity / .n)}
+#   | .pm25_trend = (.pm25_m10 - .pm25_m60)
