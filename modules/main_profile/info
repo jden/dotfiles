@@ -1,6 +1,4 @@
 USE: font
 USE: rc
-USE: tools
-USE: vim
 USE: main_shell
 USE: main_desktop

@@ -2,3 +2,4 @@ USE: window_mgr
 USE: hotkeys
 USE: bartender
 USE: vscode
+CASK: keycastr

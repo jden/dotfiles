@@ -18,6 +18,11 @@ fi
 
 function __on_mod_cb() {
   local name=${MOD_CURRENT[name]}
+
+  # if [[ name == "utils" ]]; then
+
+  # fi
+
   if [[ ${#MOD_CURRENT[use]} -gt 0 ]]; then
     lines+="  \"$name\" -> {"
     for d in ${(z)MOD_CURRENT[use]}; do
@@ -43,14 +48,14 @@ function __on_mod_cb() {
     lines+="  \"$name\" -> {"
     for d in ${(z)MOD_CURRENT[git]}; do
       local label=$(echo "$d" | sed -e 's|.*:||' -e 's|\.git||')
-      lines+="    \"b_$d\" [shape=box, peripheries=2, label=\"$label\"]"
+      lines+="    \"g_$d\" [shape=box, peripheries=2, label=\"$label\"]"
     done
     lines+="  }"
   fi
 }
 
 lines+="digraph A {"
-lines+="ranksep=0.5;"
+lines+="layout=fdp; pin=main_profile;"
 
 __walkModules main_profile "__on_mod_cb"
 
@@ -66,6 +71,13 @@ if [[ ${#MOD_BREWS} -gt 0 || ${#MOD_CASKS} -gt 0 ]]; then
   lines+="  }"
 fi
 
+# if [[ ${#MOD_UTILS} -gt 0 ]]; then
+#   lines+="  subgraph _UTILS { color=white; style=\"dotted\";"
+#   for d in ${(z)MOD_UTILS}; do
+#     lines+="    \"$d\" [shape=box, label=\"$d\"];"
+#   done
+#   lines+="  }"
+# fi
 
 if [[ ${#MOD_GITS} -gt 0 ]]; then
   # for d in ${(z)MOD_GITS}; do
@@ -92,14 +104,13 @@ out="${(j:\n:)lines}"
 
 if [[ "$@" =~ "-raw" ]]; then
   echo $out
+echo utils: ${(@)MOD_UTILS}
 elif [[ "$@" =~ "-svg" ]]; then
   source $DOTFILES/modules/kitty/alias.zsh
   local target=$DOTFILES/doc/graph.svg
   cleanpath
   echo $out | dot -Gbgcolor='#222222' -Ncolor=white -Nfontcolor=white -Nfontsize=16 -Nfontname=monospace -Ecolor=white -Tsvg > $target
   echo rendered to $target
-
-
 else
   source $DOTFILES/modules/kitty/alias.zsh
   echo $out | idot

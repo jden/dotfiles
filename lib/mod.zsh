@@ -31,6 +31,7 @@ declare -a MOD_USES
 declare -a MOD_BREWS
 declare -a MOD_CASKS
 declare -a MOD_GITS
+declare -a MOD_UTILS
 
 function USE:() {
   # echo "  ↳ $1"
@@ -117,6 +118,13 @@ function __walkModules() {
     for M in $MOD_brew; MOD_BREWS+=$M;
     for M in $MOD_cask; MOD_CASKS+=$M;
     for M in $MOD_git; MOD_GITS+=$M;
+
+    if [[ $head == "utils" ]]; then
+      MOD_UTILS+=$head
+      for M in $MOD_brew; MOD_UTILS+=$M;
+      for M in $MOD_cask; MOD_UTILS+=$M;
+      for M in $MOD_git; MOD_UTILS+=$M;
+    fi
 
   done
 

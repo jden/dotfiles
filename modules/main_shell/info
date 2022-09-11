@@ -2,4 +2,4 @@ USE: git
 USE: kitty
 USE: prompt
 USE: vim
-USE: tools
+USE: utils
