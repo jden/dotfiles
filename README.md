@@ -13,8 +13,8 @@ git clone git@github.com:junosuarez/rc.git .rc
 ```
 
 ## modules
-[![](./doc/graph.svg)](./doc/graph.svg)
-🔍 click for big
+[![](./doc/graph.svg) 🔍 click for big](https://raw.githubusercontent.com/junosuarez/rc/main/doc/graph.svg)
+
 
 ## show dotfiles on macos:
 
