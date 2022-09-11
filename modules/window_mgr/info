@@ -1,5 +1,4 @@
-# note, this is no longer maintained - one day i could find an alternative
 
-CASK: spectacle # https://github.com/eczarny/spectacle
+#CASK: spectacle # https://github.com/eczarny/spectacle
 
 CASK: itsycal # https://www.mowglii.com/itsycal/
