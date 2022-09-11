@@ -32,7 +32,7 @@ for M in $MOD_git; do
   local dir=$(echo $M | sed -E 's|.*:(.*)\.git|\1|')
   local submod="@$dir"
   STEP: " ↳ submodule: $submod"
-  echo git submodule add --name $submod $M modules/@/$dir
+
   if git submodule add --name $submod $M modules/@/$dir 2> /dev/null; then
     # this is a new submodule, in case we need to do anything with that?
     LOG: "    added git submodule $submod"
