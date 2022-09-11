@@ -127,7 +127,12 @@ function rc-init() {
 
 desc rc-brew "install brew dependencies"
 function rc-brew() {
-  zsh $DOTFILES/brew.zsh $@
+  zsh $DOTFILES/lib/brew.zsh $@
+}
+
+desc rc-check "validate modules"
+function rc-check() {
+  zsh $DOTFILES/lib/check.zsh
 }
 
 desc rc-log "see changes to dotfiles"

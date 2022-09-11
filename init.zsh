@@ -58,11 +58,6 @@ done
 # esac
 
 # :
-# : install rust
-# :
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y --no-modify-path
-
-# :
 # : installing some other tools
 # :
 # deps=(
