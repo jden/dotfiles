@@ -1,8 +1,5 @@
 - [] investigate better completions
 - [] perf?
-- [] capslock to open headsup term
-- [] rename branch "main"
 - [] add autoformatting
 - [] refactor exract hint module
 - [] custom kitty tabbar https://github.com/kovidgoyal/kitty/discussions/4447
-- [] replace spectacle with hammerspoon script

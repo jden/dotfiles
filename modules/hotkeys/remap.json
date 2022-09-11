@@ -11,7 +11,7 @@
           },
           "to": [
             {
-              "shell_command": "open /Applications/kitty.app"
+              "shell_command": "~/bin/hs -A -c 'toggleKitty()'"
             }
           ]
         }

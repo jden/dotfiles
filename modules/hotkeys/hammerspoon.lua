@@ -1,18 +1,27 @@
 -- see https://www.hammerspoon.org/docs/hs.hotkey.html
+require("hs.ipc")
 
--- hs.hotkey.bind("ctrl+option+shift", "z", function()
---   -- use with karabiner mod
---   hs.application.launchOrFocus("kitty")
--- end)
+DOTFILES=os.getenv('HOME') .. "/.rc"
+MODPATH=DOTFILES .. "/modules/hotkeys"
 
 hs.loadSpoon("ReloadConfiguration")
+spoon.ReloadConfiguration.watch_paths={
+  MODPATH .. "/hammerspoon.lua",
+  MODPATH .. "/@Hammerspoon/Spoons/Source"
+}
 spoon.ReloadConfiguration:start()
 
+hs.window.animationDuration = 0
 hs.loadSpoon("WindowHalfsAndThirds")
 hs.loadSpoon("WindowScreenLeftAndRight")
 spoon.WindowScreenLeftAndRight:bindHotkeys(spoon.WindowScreenLeftAndRight.defaultHotkeys)
 
-hs.window.animationDuration = 0
+-- Hotkeys for Window management
+
+hs.hotkey.bind("ctrl+option+shift", "z", function()
+  -- use with karabiner mod
+  hs.application.launchOrFocus("kitty")
+end)
 
 hs.hotkey.bind("ctrl+option+cmd", "right", function()
   -- MoveToNextDisplay
@@ -51,3 +60,19 @@ end)
 --   local win = hs.window.frontmostWindow()
 
 -- end)
+
+local hobj={}
+hobj.last=nil
+function toggleKitty()
+  local win = hs.window.frontmostWindow()
+  local appTitle = win:application():title()
+
+  if appTitle == "kitty" then
+    if hobj.last ~= nil then
+      hobj.last:focus()
+    end
+  else
+    hobj.last=win
+    hs.application.launchOrFocus("kitty")
+  end
+end
