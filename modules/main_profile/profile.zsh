@@ -4,7 +4,7 @@ for m (
   ## Platform-specific modules
   git
   node
-  tools
+  utils
   ssh-agent
   rust
   ## Prompt
