@@ -13,7 +13,7 @@ autoload -Uz compinit
 compinit
 
 # optional work stuff (not in this repo)
-source "$DOTFILES/.workrc"
+SOURCE "$DOTFILES/.workrc"
 
 __shell_startup_end
 
