@@ -50,25 +50,12 @@ for m in ${(o)MOD_USES}; do
   __initModule $m
 done
 
-# order matters if it matters
-# for m (
-#   git
-#   git-status
-#   starship
-#   font
-#   kitty
-#   window_mgr
-# ) __initModule $m
-
-
-case $(uname) in
-  Darwin)
-    # VS Code settings
-    ln -sf $DOTFILES/config/code.settings.json ~/Library/Application\ Support/Code/User/settings.json
-    ;;
-  Linux)
-    ;;
-esac
+# case $(uname) in
+#   Darwin)
+#     ;;
+#   Linux)
+#     ;;
+# esac
 
 # :
 # : install rust
