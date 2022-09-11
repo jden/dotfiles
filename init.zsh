@@ -6,18 +6,20 @@ function __initModule() {
   local module=$1
   local modpath=$DOTFILES/modules/$module
 
+  STEP: "$module"
+
   if grep -q GIT: "$modpath/info"; then
-    LOG: $module has git submodules
+    # LOG: $module has git submodules
     $DOTFILES/lib/init-submod.zsh $module
   fi
 
    if [[ -f $modpath/init.zsh ]]; then
-    STEP: module init: $module
+    LOG: " init"
     source $modpath/init.zsh
 
     for F in $modpath/bin/*(N.); do
       local bname=$(basename $F)
-      LOG: linking $bname
+      LOG: " linking bin: $bname"
       ln -sf $F ~/bin/$bname
     done
 

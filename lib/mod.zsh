@@ -2,7 +2,9 @@
 DOTFILES=~/.rc
 cd $DOTFILES
 
-if [[ "$@" =~ "-v" ]]; then VERBOSE=true fi
+if [[ "$@" =~ "-v" ]]; then
+  export VERBOSE=true
+fi
 if [[ "$@" =~ "-vv" ]]; then set -x; fi
 
 function STEP:() {

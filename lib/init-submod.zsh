@@ -2,7 +2,7 @@
 source $DOTFILES/lib/mod.zsh
 # echo initializing git submodules for $1
 
-GITMODULES=$DOTFILES/gitmodules
+GITMODULES=$DOTFILES/modules/@
 
 module=$1
 MOD_git=()
@@ -11,6 +11,7 @@ if [[ $module == "" ]]; then
   echo "usage: $0 <module>"
   exit 1
 fi
+local modpath=$(__modulePath $module)
 
 function __moduleScan() {
   function USE:() {}
@@ -19,9 +20,6 @@ function __moduleScan() {
   function GIT:() { MOD_git+=$1 }
 
   # 1) scan for
-
-  local modpath=$(__modulePath $module)
-
   if [[ -f $modpath/info ]]; then
     source $modpath/info
   fi
@@ -31,9 +29,30 @@ function __moduleScan() {
 __moduleScan
 
 for M in $MOD_git; do
-  STEP: submodule $M
+  local dir=$(echo $M | sed -E 's|.*:(.*)\.git|\1|')
+  STEP: " ↳ submodule: @$dir"
+
+  if git submodule add $M $GITMODULES/$dir 2> /dev/null; then
+    # this is a new submodule, in case we need to do anything with that?
+    LOG: "    added git submodule @$dir"
+  fi
+
+  # run init script if present
+  if [[ -f $GITMODULES/$dir/init.zsh ]]; then
+    LOG: "    init"
+
+    if [[ $VERBOSE != "" ]]; then
+      source $GITMODULES/$dir/init.zsh
+    else
+      source $GITMODULES/$dir/init.zsh > /dev/null
+    fi
+  fi
+
+  # link in parent module
+  local link_as=$modpath/@$dir
+  rm -rf $(dirname $link_as)
+  mkdir -p $(dirname $link_as)
+  ln -sf $GITMODULES/$dir $link_as
+  LOG: " linking $module/@$dir → @$dir"
+
 done;
-
-# echo gits: $MOD_git
-
-# echo done!
