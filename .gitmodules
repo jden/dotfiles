@@ -4,3 +4,6 @@
 [submodule "@junosuarez/font"]
 	path = modules/@/junosuarez/font
 	url = git@github.com:junosuarez/font.git
+[submodule "@Hammerspoon/Spoons"]
+	path = modules/@/Hammerspoon/Spoons
+	url = git@github.com:Hammerspoon/Spoons.git

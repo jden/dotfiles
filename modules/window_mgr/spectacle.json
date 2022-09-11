@@ -20,7 +20,7 @@
     "shortcut_name" : "MoveToBottomHalf"
   },
   {
-    "shortcut_key_binding" : "ctrl+alt+cmd+right",
+    "shortcut_key_binding" : null,
     "shortcut_name" : "MoveToNextDisplay"
   },
   {

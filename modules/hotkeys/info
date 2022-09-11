@@ -1,2 +1,3 @@
 CASK: karabiner-elements
 CASK: hammerspoon
+GIT:  git@github.com:Hammerspoon/Spoons.git
