@@ -92,6 +92,14 @@ out="${(j:\n:)lines}"
 
 if [[ "$@" =~ "-raw" ]]; then
   echo $out
+elif [[ "$@" =~ "-svg" ]]; then
+  source $DOTFILES/modules/kitty/alias.zsh
+  local target=$DOTFILES/doc/graph.svg
+  cleanpath
+  echo $out | dot -Gbgcolor='#222222' -Ncolor=white -Nfontcolor=white -Nfontsize=16 -Nfontname=monospace -Ecolor=white -Tsvg > $target
+  echo rendered to $target
+
+
 else
   source $DOTFILES/modules/kitty/alias.zsh
   echo $out | idot

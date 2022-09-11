@@ -12,6 +12,10 @@ git clone git@github.com:junosuarez/rc.git .rc
 ./init.sh
 ```
 
+## modules
+[![](./doc/graph.svg)](./doc/graph.svg)
+🔍 click for big
+
 ## show dotfiles on macos:
 
 `CMD + SHIFT + .`
