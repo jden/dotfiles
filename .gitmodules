@@ -1,6 +1,6 @@
-[submodule "/Users/juno/.rc/modules/@/junosuarez/rcbartender"]
-	path = /Users/juno/.rc/modules/@/junosuarez/rcbartender
+[submodule "@junosuarez/rcbartender"]
+	path = modules/@/junosuarez/rcbartender
 	url = git@github.com:junosuarez/rcbartender.git
-[submodule "/Users/juno/.rc/modules/@/junosuarez/font"]
-	path = /Users/juno/.rc/modules/@/junosuarez/font
+[submodule "@junosuarez/font"]
+	path = modules/@/junosuarez/font
 	url = git@github.com:junosuarez/font.git

@@ -30,11 +30,12 @@ __moduleScan
 
 for M in $MOD_git; do
   local dir=$(echo $M | sed -E 's|.*:(.*)\.git|\1|')
-  STEP: " ↳ submodule: @$dir"
-
-  if git submodule add $M $GITMODULES/$dir 2> /dev/null; then
+  local submod="@$dir"
+  STEP: " ↳ submodule: $submod"
+  echo git submodule add --name $submod $M modules/@/$dir
+  if git submodule add --name $submod $M modules/@/$dir 2> /dev/null; then
     # this is a new submodule, in case we need to do anything with that?
-    LOG: "    added git submodule @$dir"
+    LOG: "    added git submodule $submod"
   fi
 
   # run init script if present
@@ -49,10 +50,10 @@ for M in $MOD_git; do
   fi
 
   # link in parent module
-  local link_as=$modpath/@$dir
+  local link_as=$modpath/$submod
   rm -rf $(dirname $link_as)
   mkdir -p $(dirname $link_as)
   ln -sf $GITMODULES/$dir $link_as
-  LOG: " linking $module/@$dir → @$dir"
+  LOG: " linking $module/$submod → $submod"
 
 done;
