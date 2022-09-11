@@ -1,6 +1,5 @@
 function rc() {
   if ! typeset -f rc- > /dev/null; then
-  echo rc-ing $@
     source $DOTFILES/modules/rc/main.zsh
   fi
   rc- $@
