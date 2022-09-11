@@ -14,4 +14,4 @@ for m (
 ) LOAD $m
 
 # show an educational tip on new shell
-rc tip
+rc-tip
