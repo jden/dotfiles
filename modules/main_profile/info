@@ -7,3 +7,4 @@ USE: tools
 USE: vim
 USE: window_mgr
 USE: hotkeys
+USE: bartender
