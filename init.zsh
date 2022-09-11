@@ -4,7 +4,12 @@ source ~/.rc/lib/mod.zsh
 
 function __initModule() {
   local module=$1
-  local modpath=$DOTFILES/modules/$1
+  local modpath=$DOTFILES/modules/$module
+
+  if grep -q GIT: "$modpath/info"; then
+    LOG: $module has git submodules
+    $DOTFILES/lib/init-submod.zsh $module
+  fi
 
    if [[ -f $modpath/init.zsh ]]; then
     STEP: module init: $module
@@ -15,6 +20,7 @@ function __initModule() {
       LOG: linking $bname
       ln -sf $F ~/bin/$bname
     done
+
   fi
 }
 
@@ -35,8 +41,9 @@ ln -sf $DOTFILES/config/kitty.conf ~/.config/kitty/kitty.conf
 :
 STEP: modules
 
+ENTRY=${1:-main_profile}
 
-__walkModules main_profile
+__walkModules $ENTRY
 for m in ${(o)MOD_USES}; do
   __initModule $m
 done
