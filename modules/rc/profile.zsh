@@ -117,7 +117,7 @@ function rc-subsync () {
 
 desc rc-graph "see modules with graphviz"
 function rc-graph () {
-  zsh $DOTFILES/graph.zsh $@
+  zsh $DOTFILES/lib/graph.zsh $@
 }
 
 desc rc-init "initialize modules"

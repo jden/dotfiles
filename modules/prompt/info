@@ -1,4 +1,6 @@
 # my overall shell prompt
 USE: git-status
 USE: aqi
-USE: starship
+
+# shell prompt https://starship.rs/
+BREW: starship

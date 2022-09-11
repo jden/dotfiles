@@ -1,10 +1,6 @@
 USE: font
-USE: git
-USE: kitty
-USE: prompt
 USE: rc
 USE: tools
 USE: vim
-USE: window_mgr
-USE: hotkeys
-USE: bartender
+USE: main_shell
+USE: main_desktop

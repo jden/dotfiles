@@ -1,5 +1,0 @@
-# shell prompt https://starship.rs/
-
-BREW: starship
-USE: git-status
-USE: aqi

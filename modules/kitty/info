@@ -1,3 +1,4 @@
 # kitty terminal emulator
+USE: font
 CASK: kitty
 BREW: imagemagick

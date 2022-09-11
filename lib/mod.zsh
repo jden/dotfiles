@@ -99,9 +99,12 @@ function __walkModules() {
   while [[ ${#pending} -gt 0 ]]; do
     head=(${pending:0:1})
     pending=(${pending:1})
+    # echo head $head pending ${#pending}
 
     # skip modules we've already traversed
-    if (( ${+seen[$head]} )); then break; fi
+    if (( ${+seen[$head]} )); then
+      continue;
+    fi
 
     # map
     __walkModulesInner $head
