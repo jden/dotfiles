@@ -140,6 +140,29 @@ function rc-log() {
   local format='%C(dim white)%h%Creset %C(bold white)%>(15)%ar%Creset %Cgreen%d%Creset %s'
   gitrc log --pretty=format:"$format" --color=always
 }
+
+
+desc rc-new "scaffold a new module"
+function rc-new() {
+  local name=$1
+  if [[ $name == "" ]]; then
+    echo "usage: rc-new <name>"
+    return 1
+  fi
+
+  if [[ -d $DOTFILES/modules/$name ]]; then
+    echo $name already exists
+    return 1
+  fi
+
+  mkdir -p $DOTFILES/modules/$name
+  touch $DOTFILES/modules/$name/info
+  touch $DOTFILES/modules/$name/profile.zsh
+  touch $DOTFILES/modules/$name/alias.zsh
+  touch $DOTFILES/modules/$name/init.zsh
+}
+
+
 ## the base command for managing dotfiles
 function rc() {
   local command="$1"
