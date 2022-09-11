@@ -36,11 +36,6 @@ mkdir -p ~/.config ~/bin
 
 
 :
-STEP: config
-mkdir -p ~/.config
-ln -sf $DOTFILES/config/kitty.conf ~/.config/kitty/kitty.conf
-
-:
 STEP: modules
 
 ENTRY=${1:-main_profile}
@@ -56,15 +51,5 @@ done
 #   Linux)
 #     ;;
 # esac
-
-# :
-# : installing some other tools
-# :
-# deps=(
-#   npm
-#   git-recent # https://github.com/paulirish/git-recent/
-#   vega-cli # https://vega.github.io/vega/usage/#cli
-# )
-# npm install --global ${deps[*]}
 
 DONE: 'init ok. optional: `rc brew`'
