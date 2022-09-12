@@ -3,8 +3,8 @@
 # must be idempotent
 
 ## me
-git config --global user.name juno suárez
-git config --get user.email > /dev/null || git config --global user.email juno@localhost
+git config --get user.name /dev/null || git config --global --replace-all user.name "juno suárez"
+git config --get user.email > /dev/null || git config --global --replace-all user.email juno@localhost
 
 ## setup diffmerge
 git config --global diff.tool diffmerge
