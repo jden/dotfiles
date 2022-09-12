@@ -13,8 +13,6 @@ spoon.ReloadConfiguration:start()
 
 hs.window.animationDuration = 0
 hs.loadSpoon("WindowHalfsAndThirds")
-hs.loadSpoon("WindowScreenLeftAndRight")
-spoon.WindowScreenLeftAndRight:bindHotkeys(spoon.WindowScreenLeftAndRight.defaultHotkeys)
 
 -- Hotkeys for Window management
 
@@ -47,19 +45,32 @@ hs.hotkey.bind("ctrl+cmd", "up", function()
   win:move(hs.layout.maximized)
 end)
 
--- as fate would have it, these are the default
--- hot keys for spoon.WindowScreenLeftAndRight:bindHotkeys(spoon.WindowScreenLeftAndRight.defaultHotkeys)
--- hs.hotkey.bind("ctrl+option+cmd", "left", function()
---   -- MoveToPreviousDisplay
---   local win = hs.window.frontmostWindow()
---   win:move(hs.layout.maximized)
--- end)
 
--- hs.hotkey.bind("ctrl+option+cmd", "right", function()
---   -- MoveToNextDisplay
---   local win = hs.window.frontmostWindow()
+hs.hotkey.bind("ctrl+option+cmd", "up", function()
+  -- MoveToPreviousDisplay
+  local win = hs.window.frontmostWindow()
+  win:moveOneScreenNorth()
+end)
 
--- end)
+hs.hotkey.bind("ctrl+option+cmd", "down", function()
+  -- MoveToPreviousDisplay
+  local win = hs.window.frontmostWindow()
+  win:moveOneScreenSouth()
+end)
+
+hs.hotkey.bind("ctrl+option+cmd", "left", function()
+  -- MoveToPreviousDisplay
+  local win = hs.window.frontmostWindow()
+  local screen = win:screen()
+  win:moveToScreen(screen:previous())
+end)
+
+hs.hotkey.bind("ctrl+option+cmd", "right", function()
+  -- MoveToNextDisplay
+  local win = hs.window.frontmostWindow()
+  local screen = win:screen()
+  win:moveToScreen(screen:next())
+end)
 
 local hobj={}
 hobj.last=nil
