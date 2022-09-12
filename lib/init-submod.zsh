@@ -38,6 +38,9 @@ for M in $MOD_git; do
     LOG: "    added git submodule $submod"
   fi
 
+  git submodule init -- modules/@/$dir
+  git submodule update -- modules/@/$dir
+
   # run init script if present
   if [[ -f $GITMODULES/$dir/init.zsh ]]; then
     LOG: "    init"
