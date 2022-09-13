@@ -1,6 +1,8 @@
 
 desc rc-sync "git-ify the rc"
 function rc-sync () {
+
+set -x
   # TODO: this doesnt work, need to make an inner rc-source # ensure we have the latest
   local untracked=$(gitrc status --porcelain=1 | grep -e '^??')
   if [[ $untracked != "" ]]; then
