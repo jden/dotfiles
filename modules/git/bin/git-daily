@@ -61,12 +61,13 @@ limit=${args[--limit]:-365}
 if [[ "${(k)args}" =~ "--verbose" ]]; then
   verbose=true
 fi
-
+echo "a(${(@)args})"
+echo "o($orig)"
 subcmd=$@
 
-if [[ "${(@)args}" == "" && $orig != "--" ]]; then
+if [[ "${(@)args}" == "" ]] && ! [[ $orig =~ "--" ]]; then
   echo
-  echo "  did you mean 'git-daily --' ?"
+  echo "  did you mean 'git-daily -- $@' ?"
   echo ""
   echo "if no options and no subcommand are supplied, must be run with '--'"
   echo
