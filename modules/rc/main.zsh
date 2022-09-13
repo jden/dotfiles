@@ -1,9 +1,9 @@
 # dotfiles management workflow
 
-MAIN_BRANCH="main"
-alias gitrc="git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
-alias pullrc="gitrc pull origin $MAIN_BRANCH"
-alias pushrc="gitrc push origin $MAIN_BRANCH"
+RCMAIN_BRANCH="main"
+alias gitrc="MAIN_BRANCH=$RCMAIN_BRANCH git --git-dir=$DOTFILES/.git --work-tree=$DOTFILES"
+alias pullrc="gitrc pull origin $RCMAIN_BRANCH"
+alias pushrc="gitrc push origin $RCMAIN_BRANCH"
 
 for c in $DOTFILES/modules/rc/commands/*; do
     source $c
