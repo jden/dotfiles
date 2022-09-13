@@ -10,12 +10,12 @@ function rc-sync () {
     return 1
   fi
 
-  local om1=$(gitrc rev-parse origin/$MAIN_BRANCH)
-  gitrc fetch origin $MAIN_BRANCH --quiet
-  local om2=$(gitrc rev-parse origin/$MAIN_BRANCH)
+  local om1=$(gitrc rev-parse origin/$RCMAIN_BRANCH)
+  gitrc fetch origin $RCMAIN_BRANCH --quiet
+  local om2=$(gitrc rev-parse origin/$RCMAIN_BRANCH)
   if [[ $om1 != $om2 ]]; then
     echo updating with remote changes
-    gitrc rebase origin/$MAIN_BRANCH
+    gitrc rebase origin/$RCMAIN_BRANCH
     rc-init # TODO: detect when this is necessary
     rc-source
   fi
