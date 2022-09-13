@@ -1,8 +1,8 @@
 ## navigation
 ##
-alias ls="CLICOLOR_FORCE=1 ls -p -G" # show slashes after folders and color
 alias ls="lsd --classify --group-dirs first " # https://github.com/Peltoche/lsd
 alias less="less -R" # enable color
+
 function clear() {
   # keep whats on screen in scrollback by printing
   # some blank lines first
@@ -10,6 +10,7 @@ function clear() {
   printf '\n%.0s' {1..$LINES}
   command clear
 }
+
 alias cls="clear && echo 🔎 && ls"
 alias la="ls -a"
 alias ll="ls -al"
@@ -24,8 +25,8 @@ alias cd..="cd .."
 function ghub() {
   open "https://ghub.io/$1"
 }
-# alias co="cd ~/Code"
-# alias cj="cd ~/Code/junosuarez"
+# alias co="cd ~/code"
+# alias cj="cd ~/code/junosuarez"
 # alias s="cd ~/workspace/source"
 # alias sw="cd ~/workspace/web"
 # alias sp="cd ~/Desktop/Projects"
@@ -35,8 +36,8 @@ alias cj="echo use: jj"
 alias s="echo use: js"
 alias sw="echo use: jw"
 
-alias jc="cd ~/Code"
-alias jj="cd ~/Code/junosuarez"
+alias jc="cd ~/code"
+alias jj="cd ~/code/junosuarez"
 alias j="cd ~/workspace"
 alias js="cd ~/workspace/source"
 alias jw="cd ~/workspace/web"
@@ -46,17 +47,11 @@ alias jw="cd ~/workspace/web"
 alias cat=bat # https://github.com/sharkdp/bat
 alias batdiff="git diff --name-only --diff-filter=d | xargs bat --diff"
 
-
 alias jid="jid > /dev/null" # https://github.com/simeji/jid
 
 ## code
 ##
 
-alias edit=code
-alias code-stable="$(which code)"
-#alias code=code-insiders
-alias c=code
-alias c.="c ."
 alias ij=intellij
 
 ## misc
@@ -69,4 +64,3 @@ alias join="paste -sd ',' -"
 ##
 alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
 alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}\t{{.Size}}' | (head; sort)"
-
