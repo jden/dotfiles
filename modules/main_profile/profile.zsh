@@ -11,6 +11,7 @@ for m (
   prompt
   kitty
   rc
+  vscode
 ) LOAD $m
 
 # show an educational tip on new shell
