@@ -61,8 +61,8 @@ limit=${args[--limit]:-365}
 if [[ "${(k)args}" =~ "--verbose" ]]; then
   verbose=true
 fi
-echo "a(${(@)args})"
-echo "o($orig)"
+
+
 subcmd=$@
 
 if [[ "${(@)args}" == "" ]] && ! [[ $orig =~ "--" ]]; then
