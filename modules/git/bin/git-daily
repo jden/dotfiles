@@ -1,0 +1,128 @@
+#!/bin/zsh
+zmodload zsh/zutil
+zmodload zsh/datetime
+
+function usage() {
+echo "usage: git-daily [--limit <N>][--verbose] -- <xargs style command>"
+  echo ""
+  echo " query the git log by day, reverse-chronologically"
+  echo ""
+  echo " options:"
+  echo "   --limit    max number of days (default: 365)"
+  echo "                 note, this is currently limited to at most 1 year"
+  echo "   --verbose  print the subshell commands (useful for debugging)"
+  echo ""
+  echo "  <xargs style command> is the shell command to run for each commit"
+  echo "         if no present, git-daily emits a list of commit hashes, one per line per day"
+  echo "         this command is executed for each commit in a subshell with 'sh -c'"
+  echo "         the following tokens are available:"
+  echo ""
+  echo "           %c - replaced with the commit hash"
+  echo "           %d - replaced with the commit date (eg 2022-08-16)"
+  echo "           %y - replaced with the yesterday's date"
+  echo "                suitable for use with 'git log --since'"
+  echo ""
+  echo " examples:"
+  echo "    print all commit hashes, one per day:"
+  echo "      git daily --"
+  echo ""
+  echo "    print the 10 the commit hash for the 10 most recent days:"
+  echo "      git daily --limit 20"
+  echo ""
+  echo "    print up to 30 commit hashes with their day:"
+  echo "      git daily --limit 30 -- 'echo commit: %c day: %d'"
+  echo ""
+  echo "    print git log for daily commits:"
+  echo "      git daily -- 'git log -n1 --pretty=oneline %c'"
+  echo "            (note the -n1! this ensures the git log prints just for that days commits, not all commits prior)"
+  echo ""
+  echo "    print up to 5 dates with the number of files in the repo as of that day:"
+  echo "      git daily --limit 5 -- 'printf %d; git ls-tree -r %c | wc -l'"
+  echo ""
+  echo "    count the number of new commits per day:"
+  echo "      git daily --limit 20 -- 'printf %d; git log --since=%y --pretty=oneline %c | wc -l'"
+  echo ""
+  echo "    note, 'git daily' does not check out the repo at that revision. "
+  echo "    if you need to do something like that, write a shell script "
+  echo "    to run 'git checkout' and invoke that script with this command."
+  exit 1
+}
+
+orig="$@"
+
+zparseopts -D -E -F -A args \
+  -limit:: \
+  -verbose:: \
+  || usage
+end_opts=$@[(i)(--|-)]
+set -- "${@[0,end_opts-1]}" "${@[end_opts+1,-1]}"
+
+limit=${args[--limit]:-365}
+if [[ "${(k)args}" =~ "--verbose" ]]; then
+  verbose=true
+fi
+
+subcmd=$@
+
+if [[ "${(@)args}" == "" && $orig != "--" ]]; then
+  echo
+  echo "  did you mean 'git-daily --' ?"
+  echo ""
+  echo "if no options and no subcommand are supplied, must be run with '--'"
+  echo
+  usage
+fi
+
+#################################################################
+
+local SHORTDATE='%Y-%m-%d'
+function yesterday() {
+  local DATE_S=$(TZ=UTC0 strftime -r $SHORTDATE $1)
+  local YESTERDAY_S
+  (( YESTERDAY_S = $DATE_S - 86400 ))
+  TZ=UTC0 strftime $SHORTDATE $YESTERDAY_S
+}
+
+# get commit all commit dates and hashes
+# if you want to bin by something other than day,
+# eg month, adjust --date format
+all_commits=$(
+  TZ=UTC0 git log \
+  --date=short \
+  --since=1.year.ago \
+  --pretty=format:'%cd %H' \
+  origin/master
+)
+
+# limit to one (last) commit per date
+daily_commits=($(echo $all_commits | awk '
+  BEGIN {
+    last ="";
+  }
+  {
+    if ($1 != last) {
+      print $1 " " $2; last=$1;
+    }
+  }' | head -n$limit))
+
+for DATE COMMIT in $daily_commits; do
+
+  local YESTERDAY=$(yesterday $DATE)
+
+  if [[ $subcmd == "" ]]; then
+    echo $COMMIT
+  else
+    local cmd=$subcmd;
+    cmd=${cmd//\%c/$COMMIT}
+    cmd=${cmd//\%d/$DATE}
+    cmd=${cmd//\%y/$YESTERDAY}
+
+    if [[ $verbose != "" ]]; then
+      echo
+      echo TZ=UTC0 sh -c "'$cmd'"
+    fi
+
+    TZ=UTC0 sh -c $cmd
+  fi
+
+done
