@@ -34,7 +34,6 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.svn": true,
-    "**/bin/*": true,
     "**/dist/*": true,
     "node_modules/*x": true,
     "obj/*": true,
