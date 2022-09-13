@@ -11,6 +11,7 @@ done
 
 ## the base command for managing dotfiles
 function rc-() {
+  set -x
   local command="$1"
   [[ $# -gt 0 ]] && shift
 
