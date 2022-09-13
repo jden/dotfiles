@@ -2,3 +2,5 @@ USE: font
 USE: rc
 USE: main_shell
 USE: main_desktop
+
+USE: rust

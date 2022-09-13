@@ -1,0 +1,2 @@
+BREW: rustup-init
+BREW: cmake # some crates eg zlib require this
