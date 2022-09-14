@@ -15,6 +15,7 @@ function cbm() {
   cb $MAIN_BRANCH
 }
 alias gitsha="git rev-parse HEAD"
+alias whatbranch="git rev-parse --abbrev-ref HEAD"
 function rmbr() {
   # remove merged branches
   git branch --merged $MAIN_BRANCH | grep -v " $MAIN_BRANCH" | xargs git branch -d
