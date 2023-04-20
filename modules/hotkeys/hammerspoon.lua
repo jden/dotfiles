@@ -12,7 +12,6 @@ spoon.ReloadConfiguration.watch_paths={
 spoon.ReloadConfiguration:start()
 
 hs.window.animationDuration = 0
-hs.loadSpoon("WindowHalfsAndThirds")
 
 -- Hotkeys for Window management
 
@@ -21,22 +20,17 @@ hs.hotkey.bind("ctrl+option+shift", "z", function()
   hs.application.launchOrFocus("kitty")
 end)
 
-hs.hotkey.bind("ctrl+option+cmd", "right", function()
-  -- MoveToNextDisplay
-  hs.application.launchOrFocus("kitty")
-end)
-
 hs.hotkey.bind("ctrl+cmd", "right", function()
   -- MoveToRightHalf
   local win = hs.window.frontmostWindow()
-  spoon.WindowHalfsAndThirds:rightHalf(win)
+  win:move(hs.layout.right50)
 end)
 
 hs.hotkey.bind("ctrl+cmd", "left", function()
   -- MoveToLeftHalf
   -- hs.alert.show("l")
   local win = hs.window.frontmostWindow()
-  spoon.WindowHalfsAndThirds:leftHalf(win)
+  win:move(hs.layout.left50)
 end)
 
 hs.hotkey.bind("ctrl+cmd", "up", function()

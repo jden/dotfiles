@@ -36,11 +36,10 @@ alias cj="echo use: jj"
 alias s="echo use: js"
 alias sw="echo use: jw"
 
-alias jc="cd ~/code"
+alias j="cd ~/code"
+alias jc="cd ~/code/cave"
 alias jj="cd ~/code/junosuarez"
-alias j="cd ~/workspace"
-alias js="cd ~/workspace/source"
-alias jw="cd ~/workspace/web"
+alias jm="cd ~/code/ml"
 
 ## files
 ##
@@ -64,3 +63,8 @@ alias join="paste -sd ',' -"
 ##
 alias dps="docker ps --format 'table {{.Names}}\t{{.RunningFor}}' | (read; sort)"
 alias dls="docker images --format 'table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}\t{{.Size}}' | (head; sort)"
+
+
+## net (this should be its own module?)
+# also this should be portable, currently its macos only
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"

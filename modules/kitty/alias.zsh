@@ -13,6 +13,9 @@ function itex() {
   tex2svg "$1" | sed 's|</svg>|<style>*{fill:white;}</style></svg>|' | rsvg-convert --zoom 3 | icat
 }
 
+# fix TERM env for ssh
+alias ssh="env TERM=xterm-256color ssh"
+
 function cleanpath() {
   local split=(${(s|:|)PATH})
   local clean=${(j|:|)${split:#*mde*}}

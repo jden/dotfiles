@@ -34,8 +34,8 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.svn": true,
-    "**/dist/*": true,
-    "node_modules/*x": true,
+    "**/distx/*": true,
+    "node_modules/*": true,
     "obj/*": true,
     "tmp/cache/*": true
   },
@@ -121,11 +121,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "workbench.activityBar.visible": true,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "eslint.lintTask.enable": true,
   "git.ignoreLegacyWarning": true,
@@ -173,7 +173,8 @@
   },
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter.notebook.ipynb",
+    "*.xml": "default"
   },
   "java.project.importHint": false,
   "flow.pathToFlow": "/Users/jsuarez/workspace/web/node_modules/.bin/flow",
@@ -206,7 +207,6 @@
   "html.autoClosingTags": false,
   "workbench.startupEditor": "none",
   "search.useParentIgnoreFiles": true,
-  "window.zoomLevel": 2,
   "sourcegraph.accessToken": "c3f7eafb34210cbf3e93149ba68f65b7419803aa",
   "sourcegraph.basePath": "/Users/jsuarez/workspace",
   "[javascriptreact]": {
@@ -218,5 +218,8 @@
   "window.commandCenter": true,
   "editor.fontLigatures": false,
   "workbench.colorTheme": "One Dark Pro Darker",
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "nrf-connect.welcome.showOnStartup": false,
+  "nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.3.0}",
+  "nrf-connect.topdir": "${nrf-connect.sdk:2.3.0}"
 }
