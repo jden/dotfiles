@@ -202,8 +202,6 @@
   "html.autoClosingTags": false,
   "workbench.startupEditor": "none",
   "search.useParentIgnoreFiles": true,
-  "sourcegraph.accessToken": "c3f7eafb34210cbf3e93149ba68f65b7419803aa",
-  "sourcegraph.basePath": "/Users/jsuarez/workspace",
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
