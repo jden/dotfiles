@@ -179,11 +179,6 @@
   "java.project.importHint": false,
   "flow.pathToFlow": "/Users/jsuarez/workspace/web/node_modules/.bin/flow",
   "flow.logLevel": "trace",
-  "sourcegraph.remoteUrlReplacements": {
-    "git.twitter.biz": "git.twitter.biz/ro"
-  },
-  "sourcegraph.url": "https://sourcegraph.twitter.biz/",
-  "sourcegraph.defaultBranch": "master",
   "diffEditor.ignoreTrimWhitespace": false,
   "redhat.telemetry.enabled": false,
   "[html]": {
@@ -214,7 +209,6 @@
   },
   "polacode.transparentBackground": true,
   "codesnap.backgroundColor": "transparent",
-  "gitblame.commitUrl": "https://phabricator.twitter.biz/source/web/browse/master/${file.path};${hash}%24${file.line}",
   "window.commandCenter": true,
   "editor.fontLigatures": false,
   "workbench.colorTheme": "One Dark Pro Darker",
