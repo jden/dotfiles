@@ -60,3 +60,15 @@ function xin () {
   # cat - | xargs -n1 $PARALLEL -t (cd "$(dirname {})"; '"$@"'
   cat - | xargs -n1 $PARALLEL -I{} sh -c 'cd $(dirname {}); '"$@"
 }
+
+
+# open a tweet from the url:
+# tw https://twitter.com/Interior/status/463440424141459456
+function tw () {
+  if [[ $1 == https://twitter.com/* ]]; then
+    curl "https://publish.twitter.com/oembed?url=${1}" | jq -r .html > ${TMPDIR}tweet.html && open ${TMPDIR}tweet.html
+  else
+    echo usage:
+    echo "  tw https://twitter.com/Interior/status/463440424141459456"
+  fi
+}
