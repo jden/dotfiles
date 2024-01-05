@@ -39,6 +39,7 @@ alias sw="echo use: jw"
 alias j="cd ~/code"
 alias jc="cd ~/code/cave"
 alias jj="cd ~/code/junosuarez"
+alias js="cd ~/code/js-candidate-stripe"
 alias jm="cd ~/code/ml"
 
 ## files

@@ -1,12 +1,11 @@
 // Place your settings in this file to overwrite the default settings
 {
   // Font
-  // "editor.fontFamily": "'SauceCodePro Nerd Font'",
+  // "editor.fontFamily": "'MonaspiceAr Nerd Font', monospace", // still not ready for prime time
   "editor.fontFamily": "'Berkeley Mono', 'BerkeleyMono Nerd Font'",
   "terminal.integrated.fontFamily": "'Berkeley Mono', 'BerkeleyMono Nerd Font'",
   "terminal.integrated.customGlyphs": true,
   "editor.fontSize": 15,
-  "editor.fontWeight": "400",
   "editor.lineHeight": 20,
   // Other
   "editor.minimap.enabled": true,
@@ -61,7 +60,7 @@
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "peacock.favoriteColors": [
     {
@@ -123,7 +122,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "workbench.activityBar.visible": true,
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -171,7 +169,6 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb",
     "*.xml": "default"
@@ -208,10 +205,14 @@
   "polacode.transparentBackground": true,
   "codesnap.backgroundColor": "transparent",
   "window.commandCenter": true,
-  "editor.fontLigatures": false,
   "workbench.colorTheme": "One Dark Pro Darker",
   "editor.stickyScroll.enabled": true,
   "nrf-connect.welcome.showOnStartup": false,
   "nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.3.0}",
-  "nrf-connect.topdir": "${nrf-connect.sdk:2.3.0}"
+  "nrf-connect.topdir": "${nrf-connect.sdk:2.3.0}",
+  "workbench.editor.empty.hint": "hidden",
+  "terminal.integrated.env.osx": {
+    "CW_NEW_SESSION": "1"
+  },
+  "js/ts.implicitProjectConfig.checkJs": true
 }
