@@ -1,4 +1,3 @@
 # installs my personal favorite fonts
 GIT: git@github.com:junosuarez/font.git
-# brew tap homebrew/cask-fonts
-CASK: font-monaspace-nerd-font
+CASK: homebrew/cask-fonts/font-monaspace-nerd-font
