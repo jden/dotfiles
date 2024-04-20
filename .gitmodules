@@ -7,3 +7,6 @@
 [submodule "@Hammerspoon/Spoons"]
 	path = modules/@/Hammerspoon/Spoons
 	url = git@github.com:Hammerspoon/Spoons.git
+[submodule "@albertxing/sublime-hacklang"]
+	path = modules/@/albertxing/sublime-hacklang
+	url = git@github.com:albertxing/sublime-hacklang.git

@@ -39,14 +39,11 @@ alias sw="echo use: jw"
 alias j="cd ~/code"
 alias jc="cd ~/code/cave"
 alias jj="cd ~/code/junosuarez"
-alias js="cd ~/code/js-candidate-stripe"
+alias js="cd ~/code"
 alias jm="cd ~/code/ml"
 
 ## files
 ##
-alias cat=bat # https://github.com/sharkdp/bat
-alias batdiff="git diff --name-only --diff-filter=d | xargs bat --diff"
-
 alias jid="jid > /dev/null" # https://github.com/simeji/jid
 
 ## code

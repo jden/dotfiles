@@ -214,5 +214,7 @@
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1"
   },
-  "js/ts.implicitProjectConfig.checkJs": true
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "editor.renderWhitespace": "none",
+  "contextBuddy.javaHome": "/Users/juno/.jabba/jdk/adopt@1.11.0-11/Contents/Home"
 }
