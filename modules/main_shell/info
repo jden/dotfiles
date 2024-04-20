@@ -3,3 +3,4 @@ USE: kitty
 USE: prompt
 USE: vim
 USE: utils
+USE: ollama
