@@ -1,0 +1,1 @@
+alias lm="ollama run llama3"
