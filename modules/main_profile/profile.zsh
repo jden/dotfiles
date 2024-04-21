@@ -7,6 +7,7 @@ for m (
   utils
   ssh-agent
   rust
+  ollama
   ## Prompt
   prompt
   kitty
