@@ -212,7 +212,8 @@
   "nrf-connect.topdir": "${nrf-connect.sdk:2.3.0}",
   "workbench.editor.empty.hint": "hidden",
   "terminal.integrated.env.osx": {
-    "CW_NEW_SESSION": "1"
+    "CW_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
   },
   "js/ts.implicitProjectConfig.checkJs": true,
   "editor.renderWhitespace": "none",
