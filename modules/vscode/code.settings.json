@@ -217,5 +217,6 @@
   },
   "js/ts.implicitProjectConfig.checkJs": true,
   "editor.renderWhitespace": "none",
-  "contextBuddy.javaHome": "/Users/juno/.jabba/jdk/adopt@1.11.0-11/Contents/Home"
+  "contextBuddy.javaHome": "/Users/juno/.jabba/jdk/adopt@1.11.0-11/Contents/Home",
+  "twinny.ollamaApiPort": 1234
 }

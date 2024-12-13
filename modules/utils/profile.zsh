@@ -72,3 +72,13 @@ function tw () {
     echo "  tw https://twitter.com/Interior/status/463440424141459456"
   fi
 }
+
+function qr () {
+  if [[ $1 != '' ]]; then
+    npx qrcode-terminal $1
+  else
+    echo usage:
+    echo '  qr <contents>'
+    echo '    prints a qr code of <contents>'
+  fi
+}
