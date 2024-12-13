@@ -73,12 +73,12 @@ function tw () {
   fi
 }
 
+# prints a QR code of the input (e.g. a url) to the terminal
 function qr () {
-  if [[ $1 != '' ]]; then
-    npx qrcode-terminal $1
-  else
-    echo usage:
-    echo '  qr <contents>'
-    echo '    prints a qr code of <contents>'
-  fi
+  local data=$1
+  while [[ $data == '' ]]; do
+    vared -p 'Data for QR code: ' data
+  done
+
+  npx qrcode-terminal $data
 }
