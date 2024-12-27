@@ -37,7 +37,7 @@ function prompt_hook() {
 add-zsh-hook precmd prompt_hook
 
 LOAD git-status
-LOAD aqi
+# LOAD aqi
 
 eval "$(starship init zsh)"
 # move the right prompt the line above, so it doesn't interfere with copy/paste

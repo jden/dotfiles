@@ -6,3 +6,5 @@ alias rcd="cd $DOTFILES"
 alias rcs="rc source"
 alias rce="rc edit"
 alias rcc="rc-commit"
+# deconflict with work muscle memory:
+alias rc-edit="rc edit"

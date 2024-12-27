@@ -121,6 +121,7 @@ format = '$symbol'
 disabled = true
 
 [custom.aqi]
+disabled=true
 format = "[$output](bg:#47536b)"
 command = 'echo $AQI_STR'
 when=true
