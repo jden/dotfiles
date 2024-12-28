@@ -17,4 +17,6 @@ background-blur-radius = 20
 
 macos-titlebar-style = tabs
 
+window-inherit-working-directory = true
+
 auto-update = off

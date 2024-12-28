@@ -11,6 +11,7 @@ for m (
   ## Prompt
   prompt
   kitty
+  ghostty
   rc
   vscode
 ) LOAD $m
