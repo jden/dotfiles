@@ -25,6 +25,6 @@ quit-after-last-window-closed = true
 
 quick-terminal-animation-duration = 0
 
-custom-shader = cel.glsl
+custom-shader = snow.glsl
 
 auto-update = off

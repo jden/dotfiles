@@ -1,6 +1,6 @@
 ## navigation
 ##
-alias ls="lsd --classify --group-dirs first " # https://github.com/Peltoche/lsd
+alias ls="lsd --hyperlink=always --classify --group-dirs first " # https://github.com/Peltoche/lsd
 alias less="less -R" # enable color
 
 function clear() {
