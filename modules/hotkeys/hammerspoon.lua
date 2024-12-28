@@ -17,7 +17,9 @@ hs.window.animationDuration = 0
 
 hs.hotkey.bind("ctrl+option+shift", "z", function()
   -- use with karabiner mod
-  hs.application.launchOrFocus("kitty")
+
+  --hs.application.launchOrFocus("kitty")
+  hs.application.launchOrFocus("ghostty")
 end)
 
 hs.hotkey.bind("ctrl+cmd", "right", function()
@@ -68,16 +70,30 @@ end)
 
 local hobj={}
 hobj.last=nil
-function toggleKitty()
+-- function toggleKitty()
+--   local win = hs.window.frontmostWindow()
+--   local appTitle = win:application():title()
+
+--   if appTitle == "kitty" then
+--     if hobj.last ~= nil then
+--       hobj.last:focus()
+--     end
+--   else
+--     hobj.last=win
+--     hs.application.launchOrFocus("kitty")
+--   end
+-- end
+
+function toggleGhostty()
   local win = hs.window.frontmostWindow()
   local appTitle = win:application():title()
-
-  if appTitle == "kitty" then
+  -- hs.alert.show(appTitle)
+  if appTitle == "Ghostty" then
     if hobj.last ~= nil then
       hobj.last:focus()
     end
   else
     hobj.last=win
-    hs.application.launchOrFocus("kitty")
+    hs.application.launchOrFocus("Ghostty")
   end
 end
