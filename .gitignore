@@ -1,2 +1,4 @@
 .work
 modules/*/@*
+local_*
+.localrc

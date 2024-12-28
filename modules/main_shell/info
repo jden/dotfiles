@@ -1,5 +1,7 @@
 USE: git
 USE: kitty
+# for now, include both
+USE: ghostty
 USE: prompt
 USE: vim
 USE: utils

@@ -1,0 +1,20 @@
+# see https://ghostty.org/docs/config
+
+# theme browser: `ghostty +list-themes`
+theme = mirage
+font-family = "Berkeley Mono"
+
+font-size = 16
+font-thicken = true
+
+cursor-color = #F81CE5
+cursor-style = underline
+cursor-click-to-move = true
+mouse-hide-while-typing = true
+
+background-opacity = .8
+background-blur-radius = 20
+
+macos-titlebar-style = tabs
+
+auto-update = off

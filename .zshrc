@@ -4,6 +4,8 @@
 export DOTFILES="$HOME/.rc"
 source $DOTFILES/.env
 source "$DOTFILES/modules/main_profile/preamble.zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="$XDG_CONFIG_HOME"
 
 ## Use zsh hooks
 autoload -U add-zsh-hook
@@ -16,6 +18,7 @@ compinit
 
 # optional work stuff (not in this repo)
 SOURCE "$DOTFILES/.workrc"
+SOURCE "$DOTFILES/.localrc"
 
 __shell_startup_end
 
