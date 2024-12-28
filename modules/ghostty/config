@@ -19,4 +19,12 @@ macos-titlebar-style = tabs
 
 window-inherit-working-directory = true
 
+# dont warn before closing tabs or windows
+confirm-close-surface = false
+quit-after-last-window-closed = true
+
+quick-terminal-animation-duration = 0
+
+custom-shader = cel.glsl
+
 auto-update = off
