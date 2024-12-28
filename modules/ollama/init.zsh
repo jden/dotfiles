@@ -3,6 +3,7 @@
 if ! ps aux | grep -q "ollama serve"; then
   # TODO - system service?
   ollama serve &
+  sleep 0.2
 fi
 
 # if model isn't local, pull it
