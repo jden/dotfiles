@@ -1,6 +1,9 @@
 # see https://ghostty.org/docs/config
 
-# theme browser: `ghostty +list-themes`
+# Style
+##
+## theme browser: `ghostty +list-themes`
+
 theme = mirage
 font-family = "Berkeley Mono"
 
@@ -17,14 +20,33 @@ background-blur-radius = 20
 
 macos-titlebar-style = tabs
 
+# see: modules/ghostty/shaders
+# custom-shader = snow.glsl
+
+# Behavior
+##
+
 window-inherit-working-directory = true
 
 # dont warn before closing tabs or windows
+
 confirm-close-surface = false
 quit-after-last-window-closed = true
-
 quick-terminal-animation-duration = 0
 
-custom-shader = snow.glsl
-
 auto-update = off
+
+# Keybindings
+##
+## ghostty +list-keybinds --default
+
+## port of my preferred tab + splits keys from kitty
+
+keybind = cmd+\=new_split:right
+# for some reason, this binding has no effect and seems permanently bound to View > Show all tabs
+keybind = super+shift+\=new_split:down
+# I had to bind it in MacOS System Settings > Keyboard > Keyboard Shortcuts > App Shortcuts for now
+# see https://github.com/ghostty-org/ghostty/discussions/3187
+
+# in lieu of actual search: https://github.com/ghostty-org/ghostty/issues/189#issuecomment-1823196310
+keybind = cmd+f=write_screen_file:open
