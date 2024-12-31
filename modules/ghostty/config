@@ -4,10 +4,12 @@
 ##
 ## theme browser: `ghostty +list-themes`
 
-theme = mirage
-font-family = "Berkeley Mono"
+theme = lovelace 
+# others i kinda like: mirage, ...
+font-family = Berkeley Mono
+font-family = SF Symbols
 
-font-size = 16
+font-size = 18
 font-thicken = true
 
 cursor-color = #F81CE5
@@ -17,6 +19,9 @@ mouse-hide-while-typing = true
 
 background-opacity = .8
 background-blur-radius = 20
+
+window-padding-x = 0, 0
+window-padding-y = 18, 18
 
 macos-titlebar-style = tabs
 
